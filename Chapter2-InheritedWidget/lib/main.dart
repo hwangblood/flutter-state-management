@@ -41,6 +41,10 @@ class _HomePageState extends State<HomePage> {
         onTap: () async {
           final api = ApiProvider.of(context).api;
           final dateAndTime = await api.getDateAndTime();
+
+          setState(() {
+            _textKey = ValueKey(dateAndTime);
+          });
         },
         child: Container(
           color: Colors.white,
