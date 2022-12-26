@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 void main() => runApp(const MyApp());
 
@@ -56,4 +57,16 @@ class MockApi {
       return value;
     });
   }
+}
+
+class ApiProvider extends InheritedWidget {
+  final MockApi api;
+  final String uuid;
+
+  ApiProvider({
+    Key? key,
+    required Widget child,
+    required this.api,
+  })  : uuid = const Uuid().v4(),
+        super(key: key, child: child);
 }
