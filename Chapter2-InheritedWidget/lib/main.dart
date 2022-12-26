@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -30,12 +28,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  ValueKey _textKey = ValueKey<String?>(null);
+  ValueKey _textKey = const ValueKey<String?>(null);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(ApiProvider.of(context).api.dateAndTime ?? ''),
+        title:
+            Text(ApiProvider.of(context).api.dateAndTime ?? 'Material App Bar'),
       ),
       body: GestureDetector(
         onTap: () async {
@@ -46,8 +45,13 @@ class _HomePageState extends State<HomePage> {
             _textKey = ValueKey(dateAndTime);
           });
         },
-        child: Container(
-          color: Colors.white,
+        child: SizedBox.expand(
+          child: Container(
+            color: Colors.white,
+            child: DateTimeWidget(
+              key: _textKey,
+            ),
+          ),
         ),
       ),
     );
