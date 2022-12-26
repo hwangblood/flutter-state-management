@@ -58,13 +58,24 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class DateTimeWidget extends StatelessWidget {
+class DateTimeWidget extends StatefulWidget {
   const DateTimeWidget({super.key});
 
+  @override
+  State<DateTimeWidget> createState() => _DateTimeWidgetState();
+}
+
+class _DateTimeWidgetState extends State<DateTimeWidget> {
   @override
   Widget build(BuildContext context) {
     final api = ApiProvider.of(context).api;
     return Text(api.dateAndTime ?? 'Tap screen to fetch DateTime String');
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print('didChangeDependencies');
   }
 }
 
