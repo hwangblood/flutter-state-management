@@ -31,8 +31,15 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: const Center(
-        child: Text('Hello World'),
+      body: GestureDetector(
+        onTap: () {
+          setState(() {
+            title = DateTime.now().toIso8601String();
+          });
+        },
+        child: Container(
+          color: Colors.white,
+        ),
       ),
     );
   }
