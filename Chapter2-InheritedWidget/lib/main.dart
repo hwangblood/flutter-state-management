@@ -69,4 +69,9 @@ class ApiProvider extends InheritedWidget {
     required this.api,
   })  : uuid = const Uuid().v4(),
         super(key: key, child: child);
+
+  @override
+  bool updateShouldNotify(covariant ApiProvider oldWidget) {
+    return uuid != oldWidget.uuid;
+  }
 }
