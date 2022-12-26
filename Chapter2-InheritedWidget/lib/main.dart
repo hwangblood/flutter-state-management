@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -28,24 +30,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String title = 'Tap the screen';
+  ValueKey _textKey = ValueKey<String?>(null);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(ApiProvider.of(context).api.dateAndTime ?? ''),
       ),
       body: GestureDetector(
-        onTap: () {
-          setState(() {
-            title = DateTime.now().toIso8601String();
-          });
+        onTap: () async {
+          final api = ApiProvider.of(context).api;
+          final dateAndTime = await api.getDateAndTime();
         },
         child: Container(
           color: Colors.white,
         ),
       ),
     );
+  }
+}
+
+class DateTimeWidget extends StatelessWidget {
+  const DateTimeWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final api = ApiProvider.of(context).api;
+    return Text(api.dateAndTime ?? 'Tap screen to fetch DateTime String');
   }
 }
 
