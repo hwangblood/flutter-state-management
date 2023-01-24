@@ -4,13 +4,4 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+In this chapter we will talk about InheritedModel in Flutter and how it is different from InheritedWidget. InheritedModel has a constant constructor meaning that your subclasses will also need to be constants. But how can they have state when they are constants? Well, you need to have a StatefulWidget that wraps around your InheritedModel. The stateful widget will hold onto the state and pass it to the InheritedModel! Learn all about that and more in this chapter.
