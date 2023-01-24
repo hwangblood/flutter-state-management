@@ -66,10 +66,19 @@ class AvailableColorsWidget extends InheritedModel<AvailableColors> {
 
   @override
   bool updateShouldNotifyDependent(
-      covariant InheritedModel<AvailableColors> oldWidget,
-      Set<AvailableColors> dependencies) {
-    // TODO: implement updateShouldNotifyDependent
-    throw UnimplementedError();
+    covariant AvailableColorsWidget oldWidget,
+    Set<AvailableColors> dependencies,
+  ) {
+    devtools.log('updateShouldNotifyDependent');
+    if (dependencies.contains(AvailableColors.one) &&
+        color1 != oldWidget.color1) {
+      return true;
+    }
+    if (dependencies.contains(AvailableColors.two) &&
+        color2 != oldWidget.color2) {
+      return true;
+    }
+    return false;
   }
 }
 
