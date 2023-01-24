@@ -47,6 +47,16 @@ class AvailableColorsWidget extends InheritedModel<AvailableColors> {
     required Widget child,
   }) : super(key: key, child: child);
 
+  static AvailableColorsWidget of(
+    BuildContext context,
+    AvailableColors aspect,
+  ) {
+    return InheritedModel.inheritFrom<AvailableColorsWidget>(
+      context,
+      aspect: aspect,
+    )!;
+  }
+
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) {
     // TODO: implement updateShouldNotify
