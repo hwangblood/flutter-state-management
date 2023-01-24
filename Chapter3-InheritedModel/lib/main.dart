@@ -39,8 +39,8 @@ class HomePage extends StatelessWidget {
 enum AvailableColors { one, two }
 
 class AvailableColorsWidget extends InheritedModel<AvailableColors> {
-  final AvailableColors color1;
-  final AvailableColors color2;
+  final MaterialColor color1;
+  final MaterialColor color2;
   const AvailableColorsWidget({
     Key? key,
     required this.color1,
@@ -79,6 +79,30 @@ class AvailableColorsWidget extends InheritedModel<AvailableColors> {
       return true;
     }
     return false;
+  }
+}
+
+class ColorWidget extends StatelessWidget {
+  final AvailableColors colorAspect;
+  const ColorWidget({super.key, required this.colorAspect});
+
+  @override
+  Widget build(BuildContext context) {
+    switch (colorAspect) {
+      case AvailableColors.one:
+        devtools.log('Color one widget got rebuilt.');
+        break;
+      case AvailableColors.two:
+        devtools.log('Color two widget got rebuilt.');
+        break;
+    }
+    final provider = AvailableColorsWidget.of(context, colorAspect);
+    return Container(
+      height: 100,
+      color: colorAspect == AvailableColors.one
+          ? provider.color1
+          : provider.color2,
+    );
   }
 }
 
