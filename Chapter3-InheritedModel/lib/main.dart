@@ -1,7 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+
+import 'dart:developer' as devtools show log;
 
 void main() => runApp(const MyApp());
 
@@ -58,9 +59,9 @@ class AvailableColorsWidget extends InheritedModel<AvailableColors> {
   }
 
   @override
-  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
-    // TODO: implement updateShouldNotify
-    throw UnimplementedError();
+  bool updateShouldNotify(covariant AvailableColorsWidget oldWidget) {
+    devtools.log('updateShouldNotify');
+    return color1 != oldWidget.color1 || color2 != oldWidget.color2;
   }
 
   @override
