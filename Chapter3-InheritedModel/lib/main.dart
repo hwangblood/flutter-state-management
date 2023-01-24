@@ -18,10 +18,18 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var _color1 = Colors.yellow;
+  var _color2 = Colors.blue;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +37,35 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Material App Bar'),
       ),
-      body: const Center(
-        child: Text('Hello World'),
+      body: AvailableColorsWidget(
+        color1: _color1,
+        color2: _color2,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      _color1 = colors.getRandomElement();
+                    });
+                  },
+                  child: const Text('Change Color 1'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      _color2 = colors.getRandomElement();
+                    });
+                  },
+                  child: const Text('Change Color 2'),
+                ),
+              ],
+            ),
+            const ColorWidget(colorAspect: AvailableColors.one),
+            const ColorWidget(colorAspect: AvailableColors.two),
+          ],
+        ),
       ),
     );
   }
@@ -98,10 +133,16 @@ class ColorWidget extends StatelessWidget {
     }
     final provider = AvailableColorsWidget.of(context, colorAspect);
     return Container(
+      alignment: Alignment.center,
       height: 100,
+      width: double.infinity,
       color: colorAspect == AvailableColors.one
           ? provider.color1
           : provider.color2,
+      child: Text(
+        colorAspect == AvailableColors.one ? 'Color 1' : 'Color 2',
+        style: const TextStyle(fontSize: 24),
+      ),
     );
   }
 }
