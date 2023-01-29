@@ -52,27 +52,40 @@ class HomPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Material App Bar'),
+        title: const Text('ChangeNotifier & InheritedNotifier Demo'),
       ),
-      body: Column(
-        children: [
-          Slider(
-            value: 0,
-            onChanged: (double value) {},
-          ),
-          Row(
+      body: SliderInheritedNotifier(
+        sliderData: sliderData,
+        child: Builder(builder: (context) {
+          return Column(
             children: [
-              Container(
-                color: Colors.yellow,
-                height: 200,
+              Slider(
+                value: SliderInheritedNotifier.of(context),
+                onChanged: (double value) {
+                  sliderData.value = value;
+                },
               ),
-              Container(
-                color: Colors.blue,
-                height: 200,
+              Row(
+                children: [
+                  Opacity(
+                    opacity: SliderInheritedNotifier.of(context),
+                    child: Container(
+                      color: Colors.yellow,
+                      height: 200,
+                    ),
+                  ),
+                  Opacity(
+                    opacity: SliderInheritedNotifier.of(context),
+                    child: Container(
+                      color: Colors.blue,
+                      height: 200,
+                    ),
+                  ),
+                ].expandequally().toList(),
               ),
-            ].expandequally().toList(),
-          ),
-        ],
+            ],
+          );
+        }),
       ),
     );
   }
