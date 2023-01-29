@@ -25,6 +25,24 @@ class SliderData extends ChangeNotifier {
   }
 }
 
+final sliderData = SliderData();
+
+class SliderInheritedNotifier extends InheritedNotifier<SliderData> {
+  const SliderInheritedNotifier({
+    super.key,
+    required SliderData sliderData,
+    required Widget child,
+  }) : super(
+          notifier: sliderData,
+          child: child,
+        );
+
+  static double of(BuildContext context) => context
+      .dependOnInheritedWidgetOfExactType<SliderInheritedNotifier>()!
+      .notifier!
+      .value;
+}
+
 class HomPage extends StatelessWidget {
   const HomPage({
     super.key,
