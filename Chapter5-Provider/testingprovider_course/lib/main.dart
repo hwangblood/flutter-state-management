@@ -111,7 +111,9 @@ class HomePage extends StatelessWidget {
             child: const Text('Add new bread crumb'),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<BreadCrumbProvider>().reset();
+            },
             child: const Text('Reset'),
           ),
         ],
