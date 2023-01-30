@@ -1,0 +1,4 @@
+#Mon Jan 30 13:47:08 CST 2023
+base.0=/home/work/flutter_dev/flutter-state-management/Chapter5-Provider/testingprovider_course/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
