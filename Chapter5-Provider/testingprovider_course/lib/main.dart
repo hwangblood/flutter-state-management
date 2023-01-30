@@ -38,6 +38,8 @@ class BreadCrumb {
   String get title => name + (isActive ? ' > ' : '');
 }
 
+class BreadCrumbProvider extends ChangeNotifier {}
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
