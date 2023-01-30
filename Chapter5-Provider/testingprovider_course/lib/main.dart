@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -38,7 +40,11 @@ class BreadCrumb {
   String get title => name + (isActive ? ' > ' : '');
 }
 
-class BreadCrumbProvider extends ChangeNotifier {}
+class BreadCrumbProvider extends ChangeNotifier {
+  final List<BreadCrumb> _items = [];
+
+  UnmodifiableListView<BreadCrumb> get items => UnmodifiableListView(_items);
+}
 
 class HomePage extends StatelessWidget {
   const HomePage({
