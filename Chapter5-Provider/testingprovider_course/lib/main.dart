@@ -78,15 +78,25 @@ class BreadCrumbsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: breadCrumbs.map((breadCrumb) {
-        return Text(
-          breadCrumb.title,
-          style: TextStyle(
-            color: breadCrumb.isActive ? Colors.blue : Colors.black,
-          ),
-        );
-      }).toList(),
+    return Container(
+      width: double.infinity,
+      height: 100,
+      padding: const EdgeInsets.all(8.0),
+      color: const Color.fromARGB(255, 255, 255, 50),
+      child: breadCrumbs.isNotEmpty
+          ? Wrap(
+              children: breadCrumbs.map((breadCrumb) {
+                return Text(
+                  breadCrumb.title,
+                  style: TextStyle(
+                    color: breadCrumb.isActive ? Colors.blue : Colors.black,
+                  ),
+                );
+              }).toList(),
+            )
+          : const Center(
+              child: Text('No bread crumbs now.'),
+            ),
     );
   }
 }
@@ -103,23 +113,29 @@ class HomePage extends StatelessWidget {
         title: const Text('Material App Bar'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Consumer<BreadCrumbProvider>(
             builder: (context, provider, child) {
               return BreadCrumbsWidget(breadCrumbs: provider.items);
             },
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed('/new');
-            },
-            child: const Text('New bread crumb'),
-          ),
-          TextButton(
-            onPressed: () {
-              context.read<BreadCrumbProvider>().reset();
-            },
-            child: const Text('Reset'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              OutlinedButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/new');
+                },
+                child: const Text('New bread crumb'),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  context.read<BreadCrumbProvider>().reset();
+                },
+                child: const Text('Reset'),
+              ),
+            ],
           ),
         ],
       ),
@@ -154,26 +170,29 @@ class _NewBreadCrumbPageState extends State<NewBreadCrumbPage> {
       appBar: AppBar(
         title: const Text('New bread crumb'),
       ),
-      body: Column(
-        children: [
-          TextField(
-            controller: _controller,
-            decoration: const InputDecoration(
-              hintText: 'Name for Bread Crumb',
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: _controller,
+              decoration: const InputDecoration(
+                hintText: 'Name for Bread Crumb',
+              ),
             ),
-          ),
-          TextButton(
-            onPressed: () {
-              final text = _controller.text;
-              if (text.isNotEmpty) {
-                final breadCrumb = BreadCrumb(isActive: false, name: text);
-                context.read<BreadCrumbProvider>().add(breadCrumb);
-              }
-              Navigator.of(context).pop();
-            },
-            child: const Text('Add'),
-          ),
-        ],
+            ElevatedButton(
+              onPressed: () {
+                final text = _controller.text;
+                if (text.isNotEmpty) {
+                  final breadCrumb = BreadCrumb(isActive: false, name: text);
+                  context.read<BreadCrumbProvider>().add(breadCrumb);
+                }
+                Navigator.of(context).pop();
+              },
+              child: const Text('Add'),
+            ),
+          ],
+        ),
       ),
     );
   }
