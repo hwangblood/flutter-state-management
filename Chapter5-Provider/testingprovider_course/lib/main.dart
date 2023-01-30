@@ -2,18 +2,28 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(ChangeNotifierProvider(
+    create: (context) => BreadCrumbProvider(),
+    child: const MyApp(),
+  ));
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Breadcrumb App',
-      home: HomePage(),
+      debugShowCheckedModeBanner: false,
+      home: const HomePage(),
+      routes: {
+        '/new': (context) => const Material(),
+      },
     );
   }
 }
@@ -92,9 +102,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Material App Bar'),
       ),
-      body: const Center(
-        child: Text('Hello World'),
-      ),
+      body: Column(),
     );
   }
 }
