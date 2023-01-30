@@ -102,7 +102,20 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Material App Bar'),
       ),
-      body: Column(),
+      body: Column(
+        children: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed('/new');
+            },
+            child: const Text('Add new bread crumb'),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text('Reset'),
+          ),
+        ],
+      ),
     );
   }
 }
