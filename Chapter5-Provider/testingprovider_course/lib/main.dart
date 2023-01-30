@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const HomePage(),
       routes: {
-        '/new': (context) => const Material(),
+        '/new': (context) => const NewBreadCrumbPage(),
       },
     );
   }
@@ -113,13 +113,65 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pushNamed('/new');
             },
-            child: const Text('Add new bread crumb'),
+            child: const Text('New bread crumb'),
           ),
           TextButton(
             onPressed: () {
               context.read<BreadCrumbProvider>().reset();
             },
             child: const Text('Reset'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class NewBreadCrumbPage extends StatefulWidget {
+  const NewBreadCrumbPage({super.key});
+
+  @override
+  State<NewBreadCrumbPage> createState() => _NewBreadCrumbPageState();
+}
+
+class _NewBreadCrumbPageState extends State<NewBreadCrumbPage> {
+  late final TextEditingController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _controller.clear();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('New bread crumb'),
+      ),
+      body: Column(
+        children: [
+          TextField(
+            controller: _controller,
+            decoration: const InputDecoration(
+              hintText: 'Name for Bread Crumb',
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              final text = _controller.text;
+              if (text.isNotEmpty) {
+                final breadCrumb = BreadCrumb(isActive: false, name: text);
+                context.read<BreadCrumbProvider>().add(breadCrumb);
+              }
+              Navigator.of(context).pop();
+            },
+            child: const Text('Add'),
           ),
         ],
       ),
