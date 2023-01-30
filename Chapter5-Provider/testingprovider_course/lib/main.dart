@@ -59,6 +59,28 @@ class BreadCrumbProvider extends ChangeNotifier {
   }
 }
 
+class BreadCrumbsWidget extends StatelessWidget {
+  final UnmodifiableListView<BreadCrumb> breadCrumbs;
+  const BreadCrumbsWidget({
+    Key? key,
+    required this.breadCrumbs,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      children: breadCrumbs.map((breadCrumb) {
+        return Text(
+          breadCrumb.title,
+          style: TextStyle(
+            color: breadCrumb.isActive ? Colors.blue : Colors.black,
+          ),
+        );
+      }).toList(),
+    );
+  }
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
