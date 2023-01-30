@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 void main() => runApp(const MyApp());
 
@@ -17,11 +18,22 @@ class MyApp extends StatelessWidget {
 
 class BreadCrumb {
   bool isActive;
+  final String uuid;
   final String name;
   BreadCrumb({
     required this.isActive,
     required this.name,
-  });
+  }) : uuid = const Uuid().v4();
+
+  void activate() {
+    isActive = true;
+  }
+
+  @override
+  bool operator ==(covariant BreadCrumb other) => uuid == other.uuid;
+
+  @override
+  int get hashCode => uuid.hashCode;
 }
 
 class HomePage extends StatelessWidget {
