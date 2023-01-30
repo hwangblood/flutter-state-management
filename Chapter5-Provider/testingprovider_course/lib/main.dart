@@ -104,6 +104,11 @@ class HomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
+          Consumer<BreadCrumbProvider>(
+            builder: (context, provider, child) {
+              return BreadCrumbsWidget(breadCrumbs: provider.items);
+            },
+          ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pushNamed('/new');
