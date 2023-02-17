@@ -1,4 +1,4 @@
-# Bloc state management
+# Bloc State Management
 
 Bloc and Flutter Bloc are two very popular and useful libraries for Dart and Flutter developers respectively. They allow you to separate your business logic from your application's UI to an extent UI work is greatly simplified thanks to the simplicity of integrating Bloc and Flutter Bloc into an application.
 
