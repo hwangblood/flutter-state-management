@@ -8,6 +8,11 @@ Each step of the course is in its own tag and commit so either check the various
 
 I have deleted the Firebase project backing this app for security reasons so before you get started, set up your firebase backend as shown in the video of course (https://youtu.be/Mn254cnduOY)
 
+# Table of Content
+
+1. [Cubit Example](./cubitexample_course/)
+1. [First Bloc Example](./firstblocexample_course)
+
 # Course Code
 
 Checkout [source code repository](https://github.com/vandadnp/youtube-course-bloc) of this course by [Vandad Nahavandipoor](https://www.youtube.com/@VandadNP)
