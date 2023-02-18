@@ -13,6 +13,6 @@ I have deleted the Firebase project backing this app for security reasons so bef
 1. [Cubit Example](./cubitexample_course/)
 1. [First Bloc Example](./firstblocexample_course)
 
-# Course Code
+# Source Code
 
-Checkout [source code repository](https://github.com/vandadnp/youtube-course-bloc) of this course by [Vandad Nahavandipoor](https://www.youtube.com/@VandadNP)
+Checkout [youtube-course-bloc](https://github.com/vandadnp/youtube-course-bloc) repository of this course by [Vandad Nahavandipoor](https://www.youtube.com/@VandadNP)
