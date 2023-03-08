@@ -50,9 +50,9 @@ extension UrlString on PersonUrl {
   String get urlString {
     switch (this) {
       case PersonUrl.person1:
-        return 'http://192.168.1.7:5500/api/person1.json';
+        return 'http://192.168.137.95:5500/api/person1.json';
       case PersonUrl.person2:
-        return 'http://192.168.1.7:5500/api/person2.json';
+        return 'http://192.168.137.95:5500/api/person2.json';
     }
   }
 }
