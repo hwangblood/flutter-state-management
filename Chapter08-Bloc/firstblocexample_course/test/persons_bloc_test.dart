@@ -29,5 +29,11 @@ void main() {
     setUp(() {
       bloc = PersonsBloc();
     });
+
+    blocTest<PersonsBloc, FetchResult?>(
+      'Test initial state',
+      build: () => bloc,
+      verify: (bloc) => bloc.state == null,
+    );
   });
 }
