@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -30,6 +32,25 @@ class BaseObject {
   int get hashCode => id.hashCode;
 }
 
+@immutable
+class ExpensiveObject extends BaseObject {}
+
+@immutable
+class CheapObject extends BaseObject {}
+
+class ObjectProvider extends ChangeNotifier {
+  late String id;
+
+  late CheapObject _cheapObject;
+  late StreamSubscription _cheapObjStreamSubs;
+
+  late ExpensiveObject _expensiveObject;
+  late StreamSubscription _expensiveObjStreamSubs;
+
+  CheapObject get cheapObject => _cheapObject;
+  ExpensiveObject get expensiveObject => _expensiveObject;
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
@@ -39,6 +60,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Provider Details Example'),
       ),
       body: const Center(
