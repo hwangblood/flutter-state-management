@@ -49,6 +49,22 @@ class ObjectProvider extends ChangeNotifier {
 
   CheapObject get cheapObject => _cheapObject;
   ExpensiveObject get expensiveObject => _expensiveObject;
+
+  void start() {
+    _cheapObjStreamSubs = Stream.periodic(
+      const Duration(seconds: 1),
+    ).listen((_) {
+      _cheapObject = CheapObject();
+    });
+
+    _expensiveObjStreamSubs = Stream.periodic(
+      const Duration(seconds: 1),
+    ).listen((_) {
+      _expensiveObject = ExpensiveObject();
+    });
+
+    notifyListeners();
+  }
 }
 
 class HomePage extends StatelessWidget {
