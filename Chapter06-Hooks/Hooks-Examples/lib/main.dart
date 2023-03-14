@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:testingflutterhooks_course/examples/use_stream.dart';
 
 void main() {
   runApp(const MainApp());
@@ -16,26 +16,55 @@ class MainApp extends StatelessWidget {
   }
 }
 
-Stream<String> getTime = Stream.periodic(
-  const Duration(seconds: 1),
-  (_) => DateTime.now().toLocal().toString(),
-);
-
-class HomePage extends HookWidget {
-  const HomePage({
-    super.key,
+class PageRouteEntity {
+  final String title;
+  final String subtitle;
+  final Widget page;
+  PageRouteEntity({
+    required this.title,
+    required this.subtitle,
+    required this.page,
   });
+}
+
+final pages = [
+  PageRouteEntity(
+    title: 'useStream Example',
+    subtitle: 'Change time per seconds with useStream Hook.',
+    page: const UseStreamPage(),
+  ),
+];
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final datetime = useStream(getTime);
     return Scaffold(
       appBar: AppBar(
-        title: Text(datetime.data ?? 'Home Page'),
+        centerTitle: true,
+        title: const Text('Flutter Hooks Examples'),
       ),
-      body: const Center(
-        child: Text('useStream change the appbar title per second'),
+      body: ListView.separated(
+        itemCount: pages.length,
+        itemBuilder: (context, index) {
+          final routeEntity = pages[index];
+          return ListTile(
+            title: Text(routeEntity.title),
+            subtitle: Text(routeEntity.subtitle),
+            trailing: const Icon(Icons.arrow_forward),
+            onTap: () => navigateTo(context, routeEntity.page),
+          );
+        },
+        separatorBuilder: (context, index) => const Divider(),
       ),
     );
   }
+}
+
+void navigateTo(BuildContext context, Widget widget) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => widget),
+  );
 }
