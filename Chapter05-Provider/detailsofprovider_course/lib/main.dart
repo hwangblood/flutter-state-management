@@ -111,3 +111,26 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+class ExpensiveWidget extends StatelessWidget {
+  const ExpensiveWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final ExpensiveObject expensiveObject =
+        context.select<ObjectProvider, ExpensiveObject>(
+      (provider) => provider.expensiveObject,
+    );
+    return Container(
+      height: 100,
+      color: Colors.green,
+      child: Column(
+        children: [
+          const Text('Expensive Widget'),
+          const Text('Last updated'),
+          Text(expensiveObject.lastUpdated),
+        ],
+      ),
+    );
+  }
+}
