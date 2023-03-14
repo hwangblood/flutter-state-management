@@ -65,6 +65,11 @@ class ObjectProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void stop() {
+    _cheapObjStreamSubs.cancel();
+    _expensiveObjStreamSubs.cancel();
+  }
 }
 
 class HomePage extends StatelessWidget {
