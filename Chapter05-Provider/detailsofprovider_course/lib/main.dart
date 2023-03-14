@@ -56,6 +56,13 @@ class ObjectProvider extends ChangeNotifier {
         _cheapObject = CheapObject(),
         _expensiveObject = ExpensiveObject();
 
+  /// Whenever call notifyListeners(), 'id' property will be reset
+  @override
+  void notifyListeners() {
+    id = const Uuid().v4();
+    super.notifyListeners();
+  }
+
   void start() {
     _cheapObjStreamSubs = Stream.periodic(
       const Duration(seconds: 1),
