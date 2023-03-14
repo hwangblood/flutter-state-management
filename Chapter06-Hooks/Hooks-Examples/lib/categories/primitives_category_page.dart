@@ -1,36 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:testingflutterhooks_course/categories/categories.dart';
+import 'package:testingflutterhooks_course/examples/examples_entities.dart';
 import 'package:testingflutterhooks_course/navigete_to.dart';
 
-void main() {
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class PrimitivesCategoryPage extends StatelessWidget {
+  const PrimitivesCategoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Flutter Hooks Categories'),
+        title: const Text('Primitives Hooks'),
       ),
       body: ListView.separated(
-        itemCount: category_entities.length,
+        itemCount: primitives_entities.length,
         itemBuilder: (context, index) {
-          final routeEntity = category_entities[index];
+          final routeEntity = primitives_entities[index];
           return ListTile(
             title: Text(routeEntity.title),
             subtitle: Text(routeEntity.subtitle),
