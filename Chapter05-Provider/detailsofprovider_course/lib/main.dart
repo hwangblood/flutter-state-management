@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 void main() => runApp(const MyApp());
@@ -68,15 +69,15 @@ class ObjectProvider extends ChangeNotifier {
       const Duration(seconds: 1),
     ).listen((_) {
       _cheapObject = CheapObject();
+      notifyListeners();
     });
 
     _expensiveObjStreamSubs = Stream.periodic(
       const Duration(seconds: 1),
     ).listen((_) {
       _expensiveObject = ExpensiveObject();
+      notifyListeners();
     });
-
-    notifyListeners();
   }
 
   void stop() {
