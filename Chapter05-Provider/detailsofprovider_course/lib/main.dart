@@ -80,7 +80,7 @@ class ObjectProvider extends ChangeNotifier {
     });
 
     _expensiveObjStreamSubs = Stream.periodic(
-      const Duration(seconds: 1),
+      const Duration(seconds: 2),
     ).listen((_) {
       _expensiveObject = ExpensiveObject();
       notifyListeners();
@@ -105,8 +105,36 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         title: const Text('Provider Details Example'),
       ),
-      body: const Center(
-        child: Text('Hello World'),
+      body: Column(
+        children: [
+          Row(
+            children: const [
+              Expanded(child: CheapWidget()),
+              Expanded(child: ExpensiveWidget()),
+            ],
+          ),
+          Row(
+            children: const [
+              Expanded(child: ObejctProviderWidget()),
+            ],
+          ),
+          Row(
+            children: [
+              TextButton(
+                onPressed: () {
+                  context.read<ObjectProvider>().start();
+                },
+                child: const Text('Start'),
+              ),
+              TextButton(
+                onPressed: () {
+                  context.read<ObjectProvider>().stop();
+                },
+                child: const Text('Stop'),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
