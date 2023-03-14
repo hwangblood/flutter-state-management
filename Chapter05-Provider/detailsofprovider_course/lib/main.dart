@@ -112,6 +112,28 @@ class HomePage extends StatelessWidget {
   }
 }
 
+class CheapWidget extends StatelessWidget {
+  const CheapWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final CheapObject cheapObject = context.select<ObjectProvider, CheapObject>(
+      (provider) => provider.cheapObject,
+    );
+    return Container(
+      height: 100,
+      color: Colors.yellow,
+      child: Column(
+        children: [
+          const Text('Cheap Widget'),
+          const Text('Last updated'),
+          Text(cheapObject.lastUpdated),
+        ],
+      ),
+    );
+  }
+}
+
 class ExpensiveWidget extends StatelessWidget {
   const ExpensiveWidget({super.key});
 
