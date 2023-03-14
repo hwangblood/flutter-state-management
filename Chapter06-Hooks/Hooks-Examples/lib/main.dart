@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testingflutterhooks_course/examples/use_stream.dart';
+import 'package:testingflutterhooks_course/examples/use_text_editing_controller.dart';
 
 void main() {
   runApp(const MainApp());
@@ -32,6 +33,11 @@ final pages = [
     title: 'useStream Example',
     subtitle: 'Change time per seconds with useStream Hook.',
     page: const UseStreamPage(),
+  ),
+  PageRouteEntity(
+    title: 'useTextEditingController Example',
+    subtitle: 'useTextEditingController work with useState and useEffect.',
+    page: const UseTextEditingControllerPage(),
   ),
 ];
 
