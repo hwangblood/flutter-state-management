@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -49,6 +50,11 @@ class ObjectProvider extends ChangeNotifier {
 
   CheapObject get cheapObject => _cheapObject;
   ExpensiveObject get expensiveObject => _expensiveObject;
+
+  ObjectProvider()
+      : id = const Uuid().v4(),
+        _cheapObject = CheapObject(),
+        _expensiveObject = ExpensiveObject();
 
   void start() {
     _cheapObjStreamSubs = Stream.periodic(
