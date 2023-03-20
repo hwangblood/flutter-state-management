@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:testingflutterhooks_course/examples/examples_entities.dart';
+import 'package:testingflutterhooks_course/routes.dart';
 import 'package:testingflutterhooks_course/navigete_to.dart';
 
 class CategoryPage extends StatelessWidget {
   final String title;
-  final List<ExampleRouteEntity> entities;
+  final List<RouteEntity> entities;
   const CategoryPage({
     super.key,
     required this.title,
@@ -16,7 +16,7 @@ class CategoryPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Misc Hooks'),
+        title: Text(title),
       ),
       body: ListView.separated(
         itemCount: entities.length,
