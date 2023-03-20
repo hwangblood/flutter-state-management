@@ -8,3 +8,8 @@ The general idea of hooks in both Flutter Hooks and React Hooks is reusability o
 
 1. [Hooks Examples](./Hooks-Examples)
 
+# Resources
+
+- [Flutter hooks - examples how to use them in a project - iteo](https://iteo.com/blog/post/flutter-hooks-and-how-to-hook-them-up/)
+
+- [Remove Expansion Tile Lines Above And Below When Open](https://github.com/flutter/flutter/issues/67459#issuecomment-704642883)
