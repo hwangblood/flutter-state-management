@@ -19,6 +19,11 @@ final primitivesEntities = [
     page: const UseStatePage(),
   ),
   ExampleRouteEntity(
+    title: 'useEffect Example',
+    subtitle: 'Useful for side-effects and optionally canceling them.',
+    page: const UseEffectPage(),
+  ),
+  ExampleRouteEntity(
     title: 'useStream Example',
     subtitle: 'Change time per seconds with useStream Hook.',
     page: const UseStreamPage(),
