@@ -30,6 +30,14 @@ final primitivesEntities = [
   ),
 ];
 
+final asyncRelatedEntities = [
+  ExampleRouteEntity(
+    title: 'useStream Example',
+    subtitle: 'Change time per seconds with useStream Hook.',
+    page: const UseStreamPage(),
+  ),
+];
+
 final miscEntities = [
   ExampleRouteEntity(
     title: 'useTextEditingController Example',

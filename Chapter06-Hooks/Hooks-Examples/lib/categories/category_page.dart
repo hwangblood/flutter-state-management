@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:testingflutterhooks_course/examples/examples_entities.dart';
 import 'package:testingflutterhooks_course/navigete_to.dart';
 
-class MiscCategoryPage extends StatelessWidget {
-  const MiscCategoryPage({super.key});
+class CategoryPage extends StatelessWidget {
+  final String title;
+  final List<ExampleRouteEntity> entities;
+  const CategoryPage({
+    super.key,
+    required this.title,
+    required this.entities,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +19,9 @@ class MiscCategoryPage extends StatelessWidget {
         title: const Text('Misc Hooks'),
       ),
       body: ListView.separated(
-        itemCount: miscEntities.length,
+        itemCount: entities.length,
         itemBuilder: (context, index) {
-          final routeEntity = miscEntities[index];
+          final routeEntity = entities[index];
           return ListTile(
             title: Text(routeEntity.title),
             subtitle: Text(routeEntity.subtitle),

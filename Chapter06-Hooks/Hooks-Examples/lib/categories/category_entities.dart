@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testingflutterhooks_course/categories/categories.dart';
+import 'package:testingflutterhooks_course/examples/examples.dart';
 
 class CategoryRouteEntity {
   final String title;
@@ -17,16 +18,25 @@ final categoryEntities = [
     title: 'Primitives hooks',
     subtitle:
         'A set of low-level hooks that interact with the different life-cycles of a widget',
-    page: const PrimitivesCategoryPage(),
+    page: CategoryPage(
+      title: 'Primitives hooks',
+      entities: primitivesEntities,
+    ),
   ),
   CategoryRouteEntity(
     title: 'dart:async related hooks',
     subtitle: '...',
-    page: Container(),
+    page: CategoryPage(
+      title: 'dart:async related hooks',
+      entities: asyncRelatedEntities,
+    ),
   ),
   CategoryRouteEntity(
     title: 'Misc hooks',
     subtitle: 'A series of hooks with no particular theme.',
-    page: const MiscCategoryPage(),
+    page: CategoryPage(
+      title: 'Misc hooks',
+      entities: miscEntities,
+    ),
   ),
 ];
