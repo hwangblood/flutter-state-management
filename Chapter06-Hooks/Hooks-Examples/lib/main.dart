@@ -28,9 +28,9 @@ class HomePage extends StatelessWidget {
         title: const Text('Flutter Hooks Categories'),
       ),
       body: ListView.separated(
-        itemCount: category_entities.length,
+        itemCount: categoryEntities.length,
         itemBuilder: (context, index) {
-          final routeEntity = category_entities[index];
+          final routeEntity = categoryEntities[index];
           return ListTile(
             title: Text(routeEntity.title),
             subtitle: Text(routeEntity.subtitle),

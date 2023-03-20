@@ -13,9 +13,9 @@ class PrimitivesCategoryPage extends StatelessWidget {
         title: const Text('Primitives Hooks'),
       ),
       body: ListView.separated(
-        itemCount: primitives_entities.length,
+        itemCount: primitivesEntities.length,
         itemBuilder: (context, index) {
-          final routeEntity = primitives_entities[index];
+          final routeEntity = primitivesEntities[index];
           return ListTile(
             title: Text(routeEntity.title),
             subtitle: Text(routeEntity.subtitle),

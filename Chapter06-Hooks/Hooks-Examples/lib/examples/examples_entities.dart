@@ -12,7 +12,12 @@ class ExampleRouteEntity {
   });
 }
 
-final primitives_entities = [
+final primitivesEntities = [
+  ExampleRouteEntity(
+    title: 'useState Example',
+    subtitle: 'Creates a variable and subscribes to it.',
+    page: const UseStatePage(),
+  ),
   ExampleRouteEntity(
     title: 'useStream Example',
     subtitle: 'Change time per seconds with useStream Hook.',
@@ -20,7 +25,7 @@ final primitives_entities = [
   ),
 ];
 
-final misc_entities = [
+final miscEntities = [
   ExampleRouteEntity(
     title: 'useTextEditingController Example',
     subtitle: 'useTextEditingController work with useState and useEffect.',

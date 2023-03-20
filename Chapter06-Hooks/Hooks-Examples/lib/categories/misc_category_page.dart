@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testingflutterhooks_course/categories/category_entities.dart';
 import 'package:testingflutterhooks_course/examples/examples_entities.dart';
 import 'package:testingflutterhooks_course/navigete_to.dart';
 
@@ -14,9 +13,9 @@ class MiscCategoryPage extends StatelessWidget {
         title: const Text('Misc Hooks'),
       ),
       body: ListView.separated(
-        itemCount: misc_entities.length,
+        itemCount: miscEntities.length,
         itemBuilder: (context, index) {
-          final routeEntity = misc_entities[index];
+          final routeEntity = miscEntities[index];
           return ListTile(
             title: Text(routeEntity.title),
             subtitle: Text(routeEntity.subtitle),

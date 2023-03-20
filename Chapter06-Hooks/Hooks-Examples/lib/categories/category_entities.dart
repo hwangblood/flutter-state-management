@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:testingflutterhooks_course/categories/categories.dart';
-import 'package:testingflutterhooks_course/categories/misc_category_page.dart';
 
 class CategoryRouteEntity {
   final String title;
@@ -13,7 +12,7 @@ class CategoryRouteEntity {
   });
 }
 
-final category_entities = [
+final categoryEntities = [
   CategoryRouteEntity(
     title: 'Primitives hooks',
     subtitle:
