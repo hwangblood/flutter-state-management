@@ -105,6 +105,11 @@ final primitivesEntities = [
     subtitle: 'Useful for side-effects and optionally canceling them.',
     page: const UseEffectPage(),
   ),
+  RouteEntity(
+    title: 'useMemoized Example',
+    subtitle: '	Caches the instance of a complex object.',
+    page: const UseMemoizedPage(),
+  ),
 ];
 
 final asyncRelatedEntities = [
