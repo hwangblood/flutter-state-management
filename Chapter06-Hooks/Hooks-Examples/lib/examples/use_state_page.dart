@@ -16,20 +16,22 @@ class UseStatePage extends HookWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            GestureDetector(
-              // automatically triggers a rebuild of the Counter widget
-              onTap: () => counter.value++,
-              child: Text(
-                counter.value.toString(),
-                style: const TextStyle(fontSize: 40),
-              ),
+            Text(
+              counter.value.toString(),
+              style: const TextStyle(fontSize: 40),
             ),
             const Text(
-              'Click the number to increase it\'s value',
+              'Click Button to increase the number',
               style: TextStyle(fontSize: 20),
             )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        // automatically triggers a rebuild of the UseStatePage widget
+        onPressed: () => counter.value++,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }
