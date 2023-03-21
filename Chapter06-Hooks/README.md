@@ -13,3 +13,5 @@ The general idea of hooks in both Flutter Hooks and React Hooks is reusability o
 - [Flutter hooks - examples how to use them in a project - iteo](https://iteo.com/blog/post/flutter-hooks-and-how-to-hook-them-up/)
 
 - [Remove Expansion Tile Lines Above And Below When Open](https://github.com/flutter/flutter/issues/67459#issuecomment-704642883)
+
+- [Flutter Hoooks YouTube Playlist](https://www.youtube.com/playlist?list=PL7nW441lfAVLXj3_gHb_2CtjwVjX3Cp8M) by [amplifyabhi coding](https://www.youtube.com/@amplifyabhicoding)
