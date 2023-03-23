@@ -19,8 +19,7 @@ class UseEffectPage extends HookWidget {
         // or if the callback is called again.
         return timer.cancel;
       },
-      // when the stream changes, useEffect will call the callback again.
-      [numberNotifier],
+      [],
     );
     return Scaffold(
       appBar: AppBar(
