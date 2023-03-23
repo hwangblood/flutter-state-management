@@ -15,7 +15,7 @@ void main() {
         ),
         StreamProvider.value(
           value: Stream<Minuetes>.periodic(
-            const Duration(minutes: 1),
+            const Duration(seconds: 5),
             (_) => Minuetes(),
           ),
           initialData: Minuetes(),

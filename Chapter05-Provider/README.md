@@ -7,8 +7,10 @@ Provider will greatly simplify your state management in your Flutter application
 ## Projects Table of Content
 
 1. testingprovider_course
-
 1. detailsofprovider_course
-
 1. mutilprovider_course
+
+| testingprovider_course                                       | detailsofprovider_course                                     | mutilprovider_course                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![testingprovider_course](.README.assets/testingprovider_course.gif) | ![detailsofprovider_course](.README.assets/detailsofprovider_course.gif) | ![mutilprovider_course](.README.assets/mutilprovider_course.gif) |
 
