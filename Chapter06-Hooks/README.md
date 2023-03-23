@@ -17,3 +17,5 @@ The general idea of hooks in both Flutter Hooks and React Hooks is reusability o
 - [Flutter Hoooks YouTube Playlist](https://www.youtube.com/playlist?list=PL7nW441lfAVLXj3_gHb_2CtjwVjX3Cp8M) by [amplifyabhi coding](https://www.youtube.com/@amplifyabhicoding)
 
 - [How to use Flutter Hooks - LogRocket Blog](https://blog.logrocket.com/how-to-use-flutter-hooks/)
+
+- [Overview of Flutter Hooks - Medium](https://medium.com/@iamsureshsharma/overview-of-flutter-hooks-62b93eb721d9?source=topics_v2---------5-84--------------------54f0dbb3_8bdc_4f5d_aec7_b698300b45d2-------17)

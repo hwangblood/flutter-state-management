@@ -69,27 +69,11 @@ final objectBindingEntities = [
     ),
   ),
   RouteEntity(
-    title: 'dart:async related hooks',
-    subtitle: 'subtitle of dart:async related hooks',
+    title: 'Animation related hooks',
+    subtitle: 'subtitle of Animation related hooks',
     page: EntityPage(
-      title: 'dart:async related hooks',
-      entities: asyncRelatedEntities,
-    ),
-  ),
-  RouteEntity(
-    title: 'dart:async related hooks',
-    subtitle: 'subtitle of dart:async related hooks',
-    page: EntityPage(
-      title: 'dart:async related hooks',
-      entities: asyncRelatedEntities,
-    ),
-  ),
-  RouteEntity(
-    title: 'dart:async related hooks',
-    subtitle: 'subtitle of dart:async related hooks',
-    page: EntityPage(
-      title: 'dart:async related hooks',
-      entities: asyncRelatedEntities,
+      title: 'Animation related hooks',
+      entities: [],
     ),
   ),
 ];
@@ -118,6 +102,12 @@ final asyncRelatedEntities = [
     subtitle:
         'Subscribes to a Stream and returns its current state as an AsyncSnapshot.',
     page: const UseStreamPage(),
+  ),
+  RouteEntity(
+    title: 'useFuture Example',
+    subtitle:
+        'Subscribes to a Future and returns its current state as an AsyncSnapshot.',
+    page: const UseFuturePage(),
   ),
 ];
 
