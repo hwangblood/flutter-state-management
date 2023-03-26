@@ -13,7 +13,7 @@ class EntitySubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       routeEntity.subtitle,
-      maxLines: 1,
+      maxLines: 2,
       overflow: TextOverflow.ellipsis,
     );
   }

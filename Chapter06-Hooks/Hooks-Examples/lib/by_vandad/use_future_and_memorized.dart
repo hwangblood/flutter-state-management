@@ -17,8 +17,8 @@ extension CompactMap<T> on Iterable<T?> {
 const url =
     'https://img-cf.xvideos-cdn.com/videos/thumbs169poster/1b/84/46/1b84467bb828f25ab0268c33c79ee4cd-3/1b84467bb828f25ab0268c33c79ee4cd.3.jpg';
 
-class UseFuturePage extends HookWidget {
-  const UseFuturePage({super.key});
+class UseFutureAndMemorized extends HookWidget {
+  const UseFutureAndMemorized({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,10 @@ class UseFuturePage extends HookWidget {
     final snapshot = useFuture(imageFuture);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('useFuture Example')),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('useFuture & useMemoized'),
+      ),
       body: Column(
         children: [
           snapshot.hasData ? snapshot.data! : null,

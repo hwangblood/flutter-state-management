@@ -23,8 +23,8 @@ class CountDown extends ValueNotifier<int> {
   }
 }
 
-class UseListenablePage extends HookWidget {
-  const UseListenablePage({super.key});
+class UseListenableAndMemorized extends HookWidget {
+  const UseListenableAndMemorized({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,8 @@ class UseListenablePage extends HookWidget {
     final notifier = useListenable(countDown);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('useListenable Example'),
+        centerTitle: true,
+        title: const Text('useListenable & useMemoized'),
       ),
       body: Center(
         child: Column(

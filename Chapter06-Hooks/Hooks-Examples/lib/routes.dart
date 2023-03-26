@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:testingflutterhooks_course/examples/examples.dart';
+import 'package:testingflutterhooks_course/by_vandad/by_vandad.dart';
 import 'package:testingflutterhooks_course/pages/pages.dart';
 
 class BaseEntity {
@@ -33,7 +34,7 @@ class ExpansionEntity extends BaseEntity {
   }) : super(title: title, subtitle: subtitle);
 }
 
-final categoryEntities = [
+final categoryEntities = <BaseEntity>[
   RouteEntity(
     title: 'Primitives hooks',
     subtitle:
@@ -57,9 +58,17 @@ final categoryEntities = [
       entities: miscEntities,
     ),
   ),
+  RouteEntity(
+    title: 'Examples by Vandad',
+    subtitle: 'Eight examples created by Vandad',
+    page: EntityPage(
+      title: 'Examples from Vandad',
+      entities: entitiesByVandad,
+    ),
+  ),
 ];
 
-final objectBindingEntities = [
+final objectBindingEntities = <RouteEntity>[
   RouteEntity(
     title: 'dart:async related hooks',
     subtitle: 'subtitle of dart:async related hooks',
@@ -86,7 +95,7 @@ final objectBindingEntities = [
   ),
 ];
 
-final primitivesEntities = [
+final primitivesEntities = <RouteEntity>[
   RouteEntity(
     title: 'useState Example',
     subtitle: 'Creates a variable and subscribes to it.',
@@ -104,39 +113,39 @@ final primitivesEntities = [
   ),
 ];
 
-final asyncRelatedEntities = [
+final asyncRelatedEntities = <RouteEntity>[];
+
+final listenableRelatedEntities = <RouteEntity>[];
+
+final miscEntities = <RouteEntity>[];
+
+final entitiesByVandad = <RouteEntity>[
   RouteEntity(
     title: 'useStream Example',
     subtitle:
         'Subscribes to a Stream and returns its current state as an AsyncSnapshot.',
-    page: const UseStreamPage(),
+    page: const UseStream(),
   ),
   RouteEntity(
-    title: 'useFuture Example',
+    title: 'useTextEditingController & useState',
+    subtitle: 'useTextEditingController change a value of useState.',
+    page: const UseTextEditingControllerAndState(),
+  ),
+  RouteEntity(
+    title: 'useFuture & useMemorized',
     subtitle:
-        'Subscribes to a Future and returns its current state as an AsyncSnapshot.',
-    page: const UseFuturePage(),
+        'Caching a Future<Widget> with useMemorized, and show it with useFuture.',
+    page: const UseFutureAndMemorized(),
   ),
-];
-
-final listenableRelatedEntities = <RouteEntity>[
   RouteEntity(
-    title: 'useListenable Example',
+    title: 'useListenable & useMemorized',
     subtitle:
         'Subscribes to a Listenable and marks the widget as needing build whenever the listener is called.',
-    page: const UseListenablePage(),
-  ),
-];
-
-final miscEntities = [
-  RouteEntity(
-    title: 'useTextEditingController Example',
-    subtitle: 'useTextEditingController work with useState and useEffect.',
-    page: const UseTextEditingControllerPage(),
+    page: const UseListenableAndMemorized(),
   ),
   RouteEntity(
-    title: 'useScrollController Example',
-    subtitle: 'Creates and disposes a ScrollController.',
-    page: const UseScrollControllerPage(),
+    title: 'useAnimationController & useScrollController',
+    subtitle: 'useAnimationController works with useScrollController.',
+    page: const UseScrollControllerAndAnimationController(),
   ),
 ];

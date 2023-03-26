@@ -6,8 +6,8 @@ Stream<String> datetimeStream = Stream.periodic(
   (_) => DateTime.now().toLocal().toString(),
 );
 
-class UseStreamPage extends HookWidget {
-  const UseStreamPage({
+class UseStream extends HookWidget {
+  const UseStream({
     super.key,
   });
 

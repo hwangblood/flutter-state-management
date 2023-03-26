@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class UseTextEditingControllerPage extends HookWidget {
-  const UseTextEditingControllerPage({super.key});
+class UseTextEditingControllerAndState extends HookWidget {
+  const UseTextEditingControllerAndState({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class UseTextEditingControllerPage extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('useTextEditingController Example'),
+        title: const Text('useTextEditingController & useState'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

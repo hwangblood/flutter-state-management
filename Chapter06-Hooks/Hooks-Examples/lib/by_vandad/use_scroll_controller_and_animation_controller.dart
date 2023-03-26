@@ -20,8 +20,8 @@ extension Normalize on num {
       normalizedRangeMin;
 }
 
-class UseScrollControllerPage extends HookWidget {
-  const UseScrollControllerPage({super.key});
+class UseScrollControllerAndAnimationController extends HookWidget {
+  const UseScrollControllerAndAnimationController({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,8 @@ class UseScrollControllerPage extends HookWidget {
     }, [controller]);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('useScrollController Example'),
+        centerTitle: true,
+        title: const Text('useScrollController & useAnimationController'),
       ),
       body: Column(
         mainAxisSize: MainAxisSize.min,
