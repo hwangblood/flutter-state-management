@@ -10,6 +10,10 @@ We start off by creating 6 example applications using Riverpod before we get to 
 
 This course is for those who want to either learn Riverpod from scratch or  I assume that you are already quite comfortable with Flutter and don't need explanation as to how to use basic Flutter widgets such as Row and Column. We will also use Flutter Hooks in small portions of our app. Knowledge of Flutter Hooks is not at all required in order to take this course on Riverpod! However, if you are are curious about Flutter Hooks and want to learn it from the ground up, you can watch Vandad's free full course on it by following this link [https://youtu.be/XsbxM1Aztpo](https://www.youtube.com/watch?v=XsbxM1Aztpo&t=0s)
 
+# Examples
+
+1. [Provider Example](./example1)
+
 # Source Code
 
 Checkout [youtube-riverpodcourse-public](https://github.com/vandadnp/youtube-riverpodcourse-public) repository of this course by Vandad Nahavandipoor
