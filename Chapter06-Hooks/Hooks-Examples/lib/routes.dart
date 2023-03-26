@@ -134,4 +134,9 @@ final miscEntities = [
     subtitle: 'useTextEditingController work with useState and useEffect.',
     page: const UseTextEditingControllerPage(),
   ),
+  RouteEntity(
+    title: 'useScrollController Example',
+    subtitle: 'Creates and disposes a ScrollController.',
+    page: const UseScrollControllerPage(),
+  ),
 ];
