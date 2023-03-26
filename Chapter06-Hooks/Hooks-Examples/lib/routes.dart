@@ -148,4 +148,9 @@ final entitiesByVandad = <RouteEntity>[
     subtitle: 'useAnimationController works with useScrollController.',
     page: const UseScrollControllerAndAnimationController(),
   ),
+  RouteEntity(
+    title: 'useStreamScrollController',
+    subtitle: 'Show a image and rotate it on every tap.',
+    page: const UseStreamController(),
+  ),
 ];

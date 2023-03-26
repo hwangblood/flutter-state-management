@@ -23,4 +23,4 @@ example 5 useAnimationController & useScrollController:
 https://youtu.be/XsbxM1Aztpo?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=3755
 
 example 6 useStreamController:
-https://youtu.be/XsbxM1Aztpo?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=4830 
+https://youtu.be/XsbxM1Aztpo?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=4830
