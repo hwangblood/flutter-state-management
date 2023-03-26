@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-Stream<String> getTime = Stream.periodic(
+Stream<String> datetimeStream = Stream.periodic(
   const Duration(seconds: 1),
   (_) => DateTime.now().toLocal().toString(),
 );
@@ -13,7 +13,7 @@ class UseStreamPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final datetime = useStream(getTime);
+    final datetime = useStream(datetimeStream);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

@@ -76,6 +76,14 @@ final objectBindingEntities = [
       entities: [],
     ),
   ),
+  RouteEntity(
+    title: 'Listenable related hooks',
+    subtitle: 'subtitle of Listenable related hooks',
+    page: EntityPage(
+      title: 'Listenable related hooks',
+      entities: listenableRelatedEntities,
+    ),
+  ),
 ];
 
 final primitivesEntities = [
@@ -108,6 +116,15 @@ final asyncRelatedEntities = [
     subtitle:
         'Subscribes to a Future and returns its current state as an AsyncSnapshot.',
     page: const UseFuturePage(),
+  ),
+];
+
+final listenableRelatedEntities = <RouteEntity>[
+  RouteEntity(
+    title: 'useListenable Example',
+    subtitle:
+        'Subscribes to a Listenable and marks the widget as needing build whenever the listener is called.',
+    page: const UseListenablePage(),
   ),
 ];
 
