@@ -4,7 +4,9 @@ https://www.youtube.com/watch?v=xBFWMYmm9ro&list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynL
 
 
 
-Streams in Rx:
+Streams:
+
+Observables in Rx is Streams in RxDart
 
 https://www.youtube.com/watch?v=xBFWMYmm9ro&list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&index=12&t=765s
 
@@ -12,6 +14,34 @@ https://www.youtube.com/watch?v=xBFWMYmm9ro&list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynL
 
 example 1:
 
-BehaviorSubject, debounceTime
+BehaviorSubject, distinct, debounceTime
 
 https://www.youtube.com/watch?v=xBFWMYmm9ro&list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&index=12&t=1095s
+
+
+
+What are Rx operators?
+
+It's just playing with values that are asynchronously produced on a stream or a  pipe. 
+
+https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=2614
+
+
+
+RxMarbles (Interactive diagrams of Rx Observables)
+
+https://www.youtube.com/watch?v=xBFWMYmm9ro&list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=2883s
+
+
+
+Rx Documentation
+
+https://www.youtube.com/watch?v=xBFWMYmm9ro&list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=3348s
+
+
+
+example 2:
+
+BloC Pattern, 
+
+https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=3485
