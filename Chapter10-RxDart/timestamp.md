@@ -42,6 +42,14 @@ https://www.youtube.com/watch?v=xBFWMYmm9ro&list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynL
 
 example 2:
 
-BloC Pattern, 
+> Don't forget to start Live Server
+
+BloC Pattern, Rx.fromCallable(), delay(), startWith(), onErrorReturnWith()
 
 https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=3485
+
+
+
+example 3:
+
+https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8514
