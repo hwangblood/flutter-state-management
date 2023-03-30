@@ -11,7 +11,7 @@ Rx is a reactive paradigm that builds on top of streams and futures in Dart. The
 | Example3                      |                              | combineLatest()                                              | TODO: A filterable shop list with some switch buttons        |
 | Example4                      |                              | take(), concat(), also see switchMap()                       | TODO: Call a  API with param that produced by anthoer API's result |
 | Example5                      |                              | merge()                                                      | TODO: Build a message list from two or more users            |
-| Example6                      |                              |                                                              |                                                              |
+| Example6                      |                              | zip()                                                        | TODO: ...                                                    |
 | Example7                      |                              |                                                              |                                                              |
 
 # Source Code
