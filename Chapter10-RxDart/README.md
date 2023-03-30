@@ -8,8 +8,13 @@ Rx is a reactive paradigm that builds on top of streams and futures in Dart. The
 | ----------------------------- | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Example1 (With flutter_hooks) | RxDart getting started       | BehaviorSubject, distinct(), debounceTime()                  | ![rxdart-example1](.README.assets/rxdart-example1.gif)       |
 | Example2                      | Search App with BloC Pattern | BloC Pattern, Rx.fromCallable(), delay(), startWith(), onErrorReturnWith() | <img src=".README.assets/rxdart-example2.gif" alt="example2"/> |
-| Example3                      |                              | combineLatest()                                              |                                                              |
+| Example3                      |                              | combineLatest()                                              | TODO: A filterable shop list with some switch buttons        |
+| Example4                      |                              | take(), concat(), also see switchMap()                       | TODO: Call a  API with param that produced by anthoer API's result |
+| Example5                      |                              | merge()                                                      |                                                              |
+| Example6                      |                              |                                                              |                                                              |
+| Example7                      |                              |                                                              |                                                              |
 
 # Source Code
 
 Checkout [youtube-course-rxdart](https://github.com/vandadnp/youtube-course-rxdart) repository of this course by [Vandad Nahavandipoor](https://www.youtube.com/@VandadNP)
+
