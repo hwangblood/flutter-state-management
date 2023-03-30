@@ -10,7 +10,7 @@ Rx is a reactive paradigm that builds on top of streams and futures in Dart. The
 | Example2                      | Search App with BloC Pattern | BloC Pattern, Rx.fromCallable(), delay(), startWith(), onErrorReturnWith() | <img src=".README.assets/rxdart-example2.gif" alt="example2"/> |
 | Example3                      |                              | combineLatest()                                              | TODO: A filterable shop list with some switch buttons        |
 | Example4                      |                              | take(), concat(), also see switchMap()                       | TODO: Call a  API with param that produced by anthoer API's result |
-| Example5                      |                              | merge()                                                      |                                                              |
+| Example5                      |                              | merge()                                                      | TODO: Build a message list from two or more users            |
 | Example6                      |                              |                                                              |                                                              |
 | Example7                      |                              |                                                              |                                                              |
 

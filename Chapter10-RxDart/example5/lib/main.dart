@@ -9,17 +9,19 @@ extension Log on Object {
 
 void main() => runApp(const MyApp());
 
-void testConcat() async {
+void testMerge() async {
   final stream1 = Stream.periodic(
     const Duration(seconds: 1),
     (count) => 'Stream 1, count = $count',
-  ).take(3);
+  );
   final stream2 = Stream.periodic(
     const Duration(seconds: 3),
     (count) => 'Stream 2, count = $count',
   );
 
-  final result = stream1.concatWith([stream2]);
+  // final result = stream1.mergeWith([stream2]);
+
+  final result = Rx.merge([stream1, stream2]);
 
   await for (var value in result) {
     value.log();
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    testConcat();
+    testMerge();
     return const MaterialApp(
       title: 'RxDart Course',
       home: HomePage(),
@@ -48,10 +50,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('concat() Example'),
+        title: const Text('merge() Example'),
       ),
       body: const Center(
-        child: Text('Open your debug console to see how concat() works.'),
+        child: Text('Open your debug console to see how merge() works.'),
       ),
     );
   }
