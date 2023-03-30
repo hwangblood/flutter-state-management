@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:example2/models/models.dart';
 
 // TODO Replace json url with yours
-const animalsUrl = 'http://192.168.113.82:5500/apis/animals.json';
-const personsUrl = 'http://192.168.113.82:5500/apis/persons.json';
+const animalsUrl = 'http://192.168.113.83:5500/apis/animals.json';
+const personsUrl = 'http://192.168.113.83:5500/apis/persons.json';
 
 typedef SearchTerm = String;
 

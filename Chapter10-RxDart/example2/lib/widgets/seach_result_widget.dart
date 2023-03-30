@@ -50,7 +50,7 @@ class SearchResultWidget extends StatelessWidget {
             return const Text('Unknown state!');
           }
         } else {
-          return const Text('Waiting');
+          return const Text('Waiting for typing');
         }
       },
     );

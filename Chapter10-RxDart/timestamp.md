@@ -14,7 +14,7 @@ https://www.youtube.com/watch?v=xBFWMYmm9ro&list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynL
 
 example 1:
 
-BehaviorSubject, distinct, debounceTime
+BehaviorSubject, distinct(), debounceTime()
 
 https://www.youtube.com/watch?v=xBFWMYmm9ro&list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&index=12&t=1095s
 
@@ -55,3 +55,9 @@ example 3:
 combineLatest()
 
 https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8514
+
+
+
+example 4:
+
+https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=9693
