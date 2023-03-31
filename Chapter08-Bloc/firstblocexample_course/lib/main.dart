@@ -70,10 +70,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('First Bloc Example'),
       ),
       body: Column(
         children: [
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('This app require a API by Live Server'),
+          ),
           Row(
             children: [
               TextButton(

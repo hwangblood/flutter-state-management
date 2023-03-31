@@ -49,34 +49,38 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Cubit Example'),
       ),
-      body: StreamBuilder<String?>(
-        stream: cubit.stream,
-        builder: ((context, snapshot) {
-          final button = TextButton(
-            onPressed: () {
-              cubit.pickRandomName();
-            },
-            child: Text('Pick a random name'),
-          );
+      body: Center(
+        child: StreamBuilder<String?>(
+          stream: cubit.stream,
+          builder: ((context, snapshot) {
+            final button = TextButton(
+              onPressed: () {
+                cubit.pickRandomName();
+              },
+              child: const Text('Pick a random name'),
+            );
 
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-              return button;
-            case ConnectionState.waiting:
-              return button;
-            case ConnectionState.active:
-              return Column(
-                children: [
-                  Text(snapshot.data ?? 'unknown'),
-                  button,
-                ],
-              );
-            case ConnectionState.done:
-              return Container();
-          }
-        }),
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                return button;
+              case ConnectionState.waiting:
+                return button;
+              case ConnectionState.active:
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(snapshot.data ?? 'unknown'),
+                    button,
+                  ],
+                );
+              case ConnectionState.done:
+                return Container();
+            }
+          }),
+        ),
       ),
     );
   }
