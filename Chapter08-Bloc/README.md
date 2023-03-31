@@ -15,11 +15,12 @@ I have deleted the Firebase project backing this app for security reasons so bef
 
 # Examples
 
-| Name                            | Description                                                  | Features                                                     | Demo                                                         |
-| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Cubit Example                   | asdasdfasfasfasfasfasfsafasfsafas                            |                                                              | ![first_cubit_example](.README.assets/cubit_example.gif)     |
-| First Bloc Example with Testing | Display two list of users data that fetched form network and cached by Bloc. | API by Live Server, caching data with Bloc                   | ![first_bloc_example](.README.assets/first_bloc_example.gif) |
-| Bloc Notes App                  | A Bloc that has multiple states, it's gonna hold on a variable knowing whether you're longged or not, and also allow you to fetch some notes. | Login with dummy api, Single Bloc Provider, Dependency Inject |                                                              |
+| [Name]()                                                     | Description                                                  | Features                                                     | Demo                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Cubit Example](./cubitexample_course)                       | Just a simple easy cubit example.                            | Cubit, Stream, StreamBuilder                                 | ![first_cubit_example](.README.assets/cubit_example.gif)     |
+| [First Bloc Example](./firstblocexample_course) with Testing | Display two list of users data that fetched form network and cached by Bloc. | API by Live Server, caching data with Bloc                   | ![first_bloc_example](.README.assets/first_bloc_example.gif) |
+| [Bloc Notes App](./notes_app)                                | A Bloc that has multiple states, it's gonna hold on a variable knowing whether you're longged or not, and also allow you to fetch some notes. | Login with dummy api, Only One BlocProvider, Dependency Inject |                                                              |
+|                                                              |                                                              |                                                              |                                                              |
 
 
 
