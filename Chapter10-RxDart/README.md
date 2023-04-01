@@ -4,15 +4,19 @@ Rx is a reactive paradigm that builds on top of streams and futures in Dart. The
 
 # Examples
 
-| Name                                                  | Description                  | Points                                                       | Demo                                                         |
-| ----------------------------------------------------- | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Example1 (With flutter_hooks)](./example1_get_start) | RxDart getting started       | BehaviorSubject, distinct(), debounceTime()                  | ![rxdart-example1](.README.assets/rxdart-example1.gif)       |
-| [Example2](./example2_bloc_search)                    | Search App with BloC Pattern | BloC Pattern, Rx.fromCallable(), delay(), startWith(), onErrorReturnWith() | <img src=".README.assets/rxdart-example2.gif" alt="example2"/> |
-| [Example3](./example3_combineLatest)                  |                              | combineLatest()                                              | TODO: A filterable shop list with some switch buttons or A BMI calculator |
-| [Example4](./example4_concat)                         |                              | take(), concat(), also see switchMap()                       | TODO: Call a  API with param that produced by anthoer API's result |
-| [Example5](./example5_merge)                          |                              | merge()                                                      | TODO: Build a message list from two or more users            |
-| [Example6](./example6_zip)                            |                              | zip()                                                        | TODO: ...                                                    |
-| Example7                                              |                              |                                                              |                                                              |
+| Name                                                  | Description                                                  | Points                                                       | Demo                                                         |
+| ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Example1 (With flutter_hooks)](./example1_get_start) | RxDart getting started                                       | BehaviorSubject, distinct(), debounceTime()                  | ![rxdart-example1](.README.assets/rxdart-example1.gif)       |
+| [Example2](./example2_bloc_search)                    | Search App with BloC Pattern                                 | BloC Pattern, Rx.fromCallable(), delay(), startWith(), onErrorReturnWith() | <img src=".README.assets/rxdart-example2.gif" alt="example2"/> |
+| [Example3](./example3_combineLatest)                  |                                                              | combineLatest()                                              | TODO: A filterable shop list with some switch buttons or A BMI calculator |
+| [Example4](./example4_concat)                         |                                                              | take(), concat(), also see switchMap()                       | TODO: Call a  API with param that produced by anthoer API's result |
+| [Example5](./example5_merge)                          |                                                              | merge()                                                      | TODO: Build a message list from two or more users            |
+| [Example6](./example6_zip)                            |                                                              | zip()                                                        | TODO: ...                                                    |
+| [Example7](./example7_switch_map)                     | Every press of the button will recreate/restart the result stream | switchMap()                                                  | ![rxdart-switchMap-example](.README.assets/rxdart-switchMap-example.gif) |
+| Example8                                              |                                                              |                                                              |                                                              |
+| Example9                                              |                                                              |                                                              |                                                              |
+| Example10                                             |                                                              |                                                              |                                                              |
+| Example11                                             |                                                              |                                                              |                                                              |
 
 # Source Code
 

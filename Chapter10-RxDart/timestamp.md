@@ -93,3 +93,25 @@ example 7:
 switchMap()
 
 https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=11623
+
+
+
+Difference between `flatMap` and `switchMap`
+
+> `flatMap` doesn't dispose of the subscription from the previous mapping that still keeps going, but `siwtchMap` as it likes in some Rx implementations as soon as the new value produced in the source stream and the result stream will be re-start based on the new value from source stream.
+>
+> [Difference Between Flatmap and Switchmap in Rxjava](https://www.baeldung.com/rxjava-flatmap-switchmap)
+
+https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=12344
+
+
+
+Rx is really about pipes of data
+
+https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=12400
+
+
+
+example 8:
+
+https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=12483
