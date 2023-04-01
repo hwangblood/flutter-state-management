@@ -20,12 +20,17 @@ class LoginView extends HookWidget {
       child: Column(
         children: [
           EmailTextField(controller: emailController),
+          const SizedBox(height: 8),
           PasswordTextField(controller: passwordController),
+          const SizedBox(height: 8),
           LoginButton(
             passwordController: passwordController,
             emailController: emailController,
             onLoginTpped: onLoginTpped,
           ),
+          const SizedBox(height: 8),
+          const Text('You can login with a fake user'),
+          const Text('hwnagblood@gmail.com --- asdfghjkl'),
         ],
       ),
     );

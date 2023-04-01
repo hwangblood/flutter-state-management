@@ -51,8 +51,10 @@ class LoadingScreen {
                 maxHeight: size.height * 0.8,
                 minWidth: size.width * 0.5,
               ),
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: SingleChildScrollView(
@@ -60,6 +62,7 @@ class LoadingScreen {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      const SizedBox(height: 16),
                       const CircularProgressIndicator(),
                       const SizedBox(height: 16),
                       StreamBuilder(

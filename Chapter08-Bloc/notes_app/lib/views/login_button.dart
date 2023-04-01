@@ -19,7 +19,7 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return ElevatedButton(
       onPressed: () {
         final email = emailController.text;
         final password = passwordController.text;
