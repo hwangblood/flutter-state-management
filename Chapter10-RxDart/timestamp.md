@@ -114,4 +114,14 @@ https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=12400
 
 example 8:
 
+Display a list of "things", and filter them using a FilterChip with BloC pattern (Flutter 3.3.10)
+
+BloC Pattern, StreamBuilder,  BehaviorSubject, debounceTime(), map(), startWith()
+
 https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=12483
+
+
+
+example 9:
+
+https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=14279
