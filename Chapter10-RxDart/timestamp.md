@@ -134,4 +134,14 @@ https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=14279
 
 example 10:
 
+Concat two streams to one stream using concat(), and display values of the result stream in a ListView.
+
 https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=15653
+
+
+
+example 11:
+
+A full fledged Contacts app with Firebase. (CRUD)
+
+https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16737
