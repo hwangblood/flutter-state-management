@@ -114,7 +114,7 @@ https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=12400
 
 example 8:
 
-Display a list of "things", and filter them using a FilterChip with BloC pattern (Flutter 3.3.10)
+Display a list of "things", and filter them using a FilterChip with BloC pattern
 
 BloC Pattern, StreamBuilder,  BehaviorSubject, debounceTime(), map(), startWith()
 
@@ -124,4 +124,14 @@ https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=12483
 
 example 9:
 
+Two text fields for first name and last name, after both of them are typed, show the name combined.
+
+BLoC Pattern, BehaviorSubject, combineLatest()
+
 https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=14279
+
+
+
+example 10:
+
+https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=15653

@@ -13,10 +13,14 @@ Rx is a reactive paradigm that builds on top of streams and futures in Dart. The
 | [Example5](./example5_merge)                          |                                                              | merge()                                                      | TODO: Build a message list from two or more users            |
 | [Example6](./example6_zip)                            |                                                              | zip()                                                        | TODO: ...                                                    |
 | [Example7](./example7_switch_map)                     | Every press of the button will recreate/restart the result stream | switchMap()                                                  | ![rxdart-switchMap-example](.README.assets/rxdart-switchMap-example.gif) |
-| Example8                                              | Display a list of "things", and filter them using a FilterChip with BloC pattern (Flutter 3.3.10) | BloC Pattern, StreamBuilder,  BehaviorSubject, debounceTime(), map(), startWith() | ![rxdart-example8_filter_list](.README.assets/rxdart-example8_filter_list.gif) |
-| Example9                                              |                                                              |                                                              |                                                              |
+| Example8                                              | Display a list of "things", and filter them using a FilterChip with BloC pattern | BloC Pattern, StreamBuilder,  BehaviorSubject, debounceTime(), map(), startWith() | ![rxdart-example8_filter_list](.README.assets/rxdart-example8_filter_list.gif) |
+| Example9                                              | Two text fields for first name and last name, after both of them are typed, show the name combined. | BLoC Pattern, BehaviorSubject, combineLatest()               | ![rxdart-example9_name_combiner](.README.assets/rxdart-example9_name_combiner.gif) |
 | Example10                                             |                                                              |                                                              |                                                              |
 | Example11                                             |                                                              |                                                              |                                                              |
+
+# Resources
+
+- [RxDart with BLoC Pattern in Flutter > Toshal Infotech](https://www.toshalinfotech.com/Blogs/ID/225/RxDart-with-BLoC-Pattern-in-Flutter)
 
 # Source Code
 
