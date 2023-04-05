@@ -1,16 +1,18 @@
-# rxdart_contacts
+# Contacts with RxDart
 
-A new Flutter project.
+A fully fledged contacts app with Firebase integration together with authentication and storage.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+**Setup Firebase:**
 
-A few resources to get you started if this is your first Flutter project:
+1. Following [Add Firebase to your Flutter app](https://firebase.google.com/docs/flutter/setup)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Run app:**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```shell
+flutter pub get
+
+flutter run
+```
+
