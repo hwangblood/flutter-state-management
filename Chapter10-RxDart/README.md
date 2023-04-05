@@ -1,6 +1,10 @@
 # RxDart State Management
 
-Rx is a reactive paradigm that builds on top of streams and futures in Dart. These streams are also called Observables in other implementations of Rx, such as RxSwift. In this chapter of the Flutter State Management Course we will work on RxDart and we will create 11 different applications. The last application we will create will be a fully fledged app with Firebase integration together with authentication and storage. In this chapter we create business logics (or blocs) with RxDart. To be clear, we are not using the Bloc package at all in this chapter. Bloc is a term generally used as an abbreviation of business logic so you don't need to know about the Bloc package in order to learn this chapter.
+Rx is a reactive paradigm that builds on top of streams and futures in Dart. These streams are also called Observables in other implementations of Rx, such as RxSwift. 
+
+In this chapter of the Flutter State Management Course we will work on RxDart and we will create 11 different applications. The last application we will create will be a fully fledged app with Firebase integration together with authentication and storage. 
+
+In this chapter we create business logics (or blocs) with RxDart. To be clear, we are not using the Bloc package at all in this chapter. Bloc is a term generally used as an abbreviation of business logic so you don't need to know about the Bloc package in order to learn this chapter.
 
 # Examples
 
@@ -16,7 +20,7 @@ Rx is a reactive paradigm that builds on top of streams and futures in Dart. The
 | Example8                                              | Display a list of "things", and filter them using a FilterChip with BloC pattern | BloC Pattern, StreamBuilder,  BehaviorSubject, debounceTime(), map(), startWith() | ![rxdart-example8_filter_list](.README.assets/rxdart-example8_filter_list.gif) |
 | Example9                                              | Two text fields for first name and last name, after both of them are typed, show the name combined. | BLoC Pattern, BehaviorSubject, combineLatest()               | ![rxdart-example9_name_combiner](.README.assets/rxdart-example9_name_combiner.gif) |
 | Example10                                             | Concat two streams to one stream using concat(), and display values of the result stream in a ListView. | concatWith()                                                 | ![rxdart-example10_animal_list](.README.assets/rxdart-example10_animal_list.png) |
-| Example11                                             |                                                              |                                                              |                                                              |
+| Example11                                             | Build a fully fledged contacts app with Firebase integration together with authentication and storage. ([see more about this app](./rxdart_contacts/README.md)) |                                                              |                                                              |
 
 # Resources
 
