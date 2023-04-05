@@ -26,7 +26,9 @@ A fully fledged contacts app with Firebase integration together with authenticat
 
    after that, run this flutter app in a IOS device as simply.
 
-4. ...
+4. Setup Cloud Firestore rules in [Firebase Console](https://console.firebase.google.com/)
+
+   for this app, Each authenticated user will have a collection with the same id as the user id in the Cloud Firestore. And users can only operate in their own collection such as CRUD. see the detail about [how to setup firestore rules](./setup-firestore-database.md).
 
 **Run app:**
 
