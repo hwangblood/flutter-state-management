@@ -164,4 +164,10 @@ https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=17937
 
 a few utilities such as loading screens and dialogs
 
+loading srreen, generic dialog, auth-error doalog 
+
 https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=18648
+
+contact model
+
+https://youtu.be/xBFWMYmm9ro?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=22385
