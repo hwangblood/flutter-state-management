@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'generic_confirm_dialog.dart';
 import 'generic_dialog.dart';
 
 Future<bool> showDeleteContactDialog(BuildContext context) {
@@ -13,3 +14,15 @@ Future<bool> showDeleteContactDialog(BuildContext context) {
     },
   ).then((value) => value ?? false);
 }
+
+Future<bool> showDeleteContactConfirmDialog(BuildContext context) =>
+    showGenericConfirmDialog(
+      context,
+      title: 'Delete contact',
+      content: 'Are you sure you want to delete your contact? You cannot undo '
+          'this operation!',
+      optionsBuilder: () => {
+        'Cancel': false,
+        'Delete': true,
+      },
+    );

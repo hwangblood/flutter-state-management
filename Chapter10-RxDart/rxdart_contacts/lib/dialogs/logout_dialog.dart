@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'generic_confirm_dialog.dart';
 import 'generic_dialog.dart';
 
 Future<bool> showLogoutDialog(BuildContext context) {
@@ -12,3 +13,14 @@ Future<bool> showLogoutDialog(BuildContext context) {
     },
   ).then((value) => value ?? false);
 }
+
+Future<bool> showLogoutConfirmDialog(BuildContext context) =>
+    showGenericConfirmDialog(
+      context,
+      title: 'Logout',
+      content: 'Are you sure you want to logout?',
+      optionsBuilder: () => {
+        'Cancel': false,
+        'Logout': true,
+      },
+    );

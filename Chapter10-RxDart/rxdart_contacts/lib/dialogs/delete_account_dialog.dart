@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'generic_confirm_dialog.dart';
 import 'generic_dialog.dart';
 
 /// For delete account operation, this dialog will return a bool value that used
@@ -25,3 +26,15 @@ Future<bool> showDeleteAccountDialog(BuildContext context) {
     },
   ).then((value) => value ?? false);
 }
+
+Future<bool> showDeleteAccountConfirmDialog(BuildContext context) =>
+    showGenericConfirmDialog(
+      context,
+      title: 'Delete account',
+      content: 'Are you sure you want to delete your account? You cannot undo '
+          'this operation!',
+      optionsBuilder: () => {
+        'Cancel': false,
+        'Delete': true,
+      },
+    );
