@@ -12,7 +12,16 @@ This course is for those who want to either learn Riverpod from scratch or  I as
 
 # Examples
 
-1. [Provider Example](./example1)
+| Name                                        | Description                                                  | Features                                                     | Preview                                                      |
+| ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Provider Example](./example1)              | Basic Provider (Just provide a value, nothing special)       | Provider                                                     |                                                              |
+| [StateNotifierProvider Example](./example2) | Store count in a StateNotifier, and listen to its change of state with StateNotifierProvider. | StateNotifier (in package state_notifier), StateNotifierProvider | ![example2_StateNotifierProvider](.README.assets/example2_StateNotifierProvider.gif) |
+|                                             |                                                              |                                                              |                                                              |
+|                                             |                                                              |                                                              |                                                              |
+|                                             |                                                              |                                                              |                                                              |
+|                                             |                                                              |                                                              |                                                              |
+
+
 
 # Source Code
 
