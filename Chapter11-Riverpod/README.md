@@ -12,14 +12,14 @@ This course is for those who want to either learn Riverpod from scratch or  I as
 
 # Examples
 
-| Name                                        | Description                                                  | Features                                                     | Preview                                                      |
-| ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Provider Example](./example1)              | Basic Provider (Just provide a value, nothing special)       | Provider                                                     |                                                              |
-| [StateNotifierProvider Example](./example2) | Store count in a StateNotifier, and listen to its change of state with StateNotifierProvider. | StateNotifier (in package state_notifier), StateNotifierProvider | ![example2_StateNotifierProvider](.README.assets/example2_StateNotifierProvider.gif) |
-|                                             |                                                              |                                                              |                                                              |
-|                                             |                                                              |                                                              |                                                              |
-|                                             |                                                              |                                                              |                                                              |
-|                                             |                                                              |                                                              |                                                              |
+| Name                                                | Description                                                  | Features                                                     | Preview                                                      |
+| --------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Provider Example](./example1)                      | Basic Provider (Just provide a value, nothing special)       | Provider                                                     |                                                              |
+| [StateNotifierProvider Example](./example2)         | Store count in a StateNotifier, and listen to its change of state with StateNotifierProvider. | StateNotifier (in package state_notifier), StateNotifierProvider | ![example2_StateNotifierProvider](.README.assets/example2_StateNotifierProvider.gif) |
+| [FutureProvider Example](./example3_futureprovider) | Show weather for special city, when click on city radio, update current city and fetch weather with FutureProvider. (Default show a smile emoji 😊) | StateProvider, FutureProvider                                | ![example3_FutureProvider](.README.assets/example3_FutureProvider.gif) |
+|                                                     |                                                              |                                                              |                                                              |
+|                                                     |                                                              |                                                              |                                                              |
+|                                                     |                                                              |                                                              |                                                              |
 
 
 
