@@ -6,7 +6,7 @@ typedef LogoutCallback = VoidCallback;
 
 typedef DeleteAccountCallback = VoidCallback;
 
-typedef GoBackCallbacl = VoidCallback;
+typedef GoBackCallback = VoidCallback;
 
 typedef LoginCallback = void Function(
   String email,
