@@ -45,7 +45,7 @@ class AppBloc implements BaseBloc {
         _contactsBloc = contactsBloc,
         _userIdSubscription = userIdSubscription;
 
-  mm() {
+  factory AppBloc() {
     final authBloc = AuthBloc();
     final viewsBloc = ViewsBloc();
     final contactsBloc = ContactsBloc();
@@ -72,7 +72,7 @@ class AppBloc implements BaseBloc {
 
     // whether is loading
     final Stream<bool> isLoading = Rx.merge([
-      _authBloc.isLoading,
+      authBloc.isLoading,
     ]);
 
     return AppBloc._(
