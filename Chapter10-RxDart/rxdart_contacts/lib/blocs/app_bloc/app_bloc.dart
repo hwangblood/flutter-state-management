@@ -143,6 +143,10 @@ class AppBloc implements BaseBloc {
     );
   }
 
+  void deleteAccount() {
+    // TODO: implemte deleting account
+  }
+
   void navigateToContactsListView() => _viewsBloc.currentViewSink.add(
         CurrentView.contactList,
       );
