@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart' show immutable;
 import 'package:rxdart/rxdart.dart';
 
 import '../../models/contact.dart';
+import '../base_bloc.dart';
 
 /// a series of documents from Cloud FireStore
 typedef _Snapshot = QuerySnapshot<Map<String, dynamic>>;
@@ -30,7 +31,7 @@ extension Unwarp<T> on Stream<T?> {
 /// from outside of [ContactsBloc] is going to listen to these signals, so they
 /// should be Cold Observable
 @immutable
-class ContactsBloc {
+class ContactsBloc implements BaseBloc {
   final Sink<String?> userId;
 
   final Sink<Contact> createContact;
@@ -42,6 +43,7 @@ class ContactsBloc {
   /// Read-only Stream for displaying contacts
   final Stream<Iterable<Contact>> contacts;
 
+  @override
   void dispose() {
     userId.close();
     createContact.close();

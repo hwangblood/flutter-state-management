@@ -2,15 +2,18 @@
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:rxdart/rxdart.dart';
 
+import '../base_bloc.dart';
+
 import 'current_view.dart';
 
 @immutable
-class ViewsBloc {
+class ViewsBloc implements BaseBloc {
   final Sink<CurrentView> currentViewSink;
 
   /// The first view should be login when app start
   final Stream<CurrentView> currentView;
 
+  @override
   void dispose() {
     currentViewSink.close();
   }

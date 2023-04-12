@@ -1,15 +1,15 @@
-import 'package:flutter/foundation.dart' show immutable;
-
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart' show immutable;
 import 'package:rxdart/rxdart.dart';
 
+import '../base_bloc.dart';
 import 'auth_error.dart';
 
-part 'auth_state.dart';
 part 'auth_action.dart';
+part 'auth_state.dart';
 
 @immutable
-class AuthBloc {
+class AuthBloc implements BaseBloc {
   // read-only properties
   final Stream<AuthState> authState;
   final Stream<AuthError?> authError;
@@ -31,6 +31,7 @@ class AuthBloc {
   /// ```
   final Sink<void> logout;
 
+  @override
   void dispose() {
     login.close();
     register.close();
