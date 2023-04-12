@@ -36,44 +36,47 @@ class CreateContactView extends HookWidget {
         title: const Text('Create a new Contact'),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            TextField(
-              controller: firstNameController,
-              decoration: const InputDecoration(
-                hintText: 'First name...',
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              TextField(
+                controller: firstNameController,
+                decoration: const InputDecoration(
+                  hintText: 'First name...',
+                ),
+                keyboardType: TextInputType.name,
               ),
-              keyboardType: TextInputType.name,
-            ),
-            TextField(
-              controller: lastNameController,
-              decoration: const InputDecoration(
-                hintText: 'Last name...',
+              TextField(
+                controller: lastNameController,
+                decoration: const InputDecoration(
+                  hintText: 'Last name...',
+                ),
+                keyboardType: TextInputType.name,
               ),
-              keyboardType: TextInputType.name,
-            ),
-            TextField(
-              controller: phoneNumberController,
-              decoration: const InputDecoration(
-                hintText: 'Phone number...',
+              TextField(
+                controller: phoneNumberController,
+                decoration: const InputDecoration(
+                  hintText: 'Phone number...',
+                ),
+                keyboardType: TextInputType.phone,
               ),
-              keyboardType: TextInputType.phone,
-            ),
-            TextButton(
-              onPressed: () {
-                final firstName = firstNameController.text.trim();
-                final lastName = lastNameController.text.trim();
-                final phoneNumber = phoneNumberController.text.trim();
-                createContact(
-                  firstName,
-                  lastName,
-                  phoneNumber,
-                );
-                goBack();
-              },
-              child: const Text('Save Contact'),
-            ),
-          ],
+              TextButton(
+                onPressed: () {
+                  final firstName = firstNameController.text.trim();
+                  final lastName = lastNameController.text.trim();
+                  final phoneNumber = phoneNumberController.text.trim();
+                  createContact(
+                    firstName,
+                    lastName,
+                    phoneNumber,
+                  );
+                  goBack();
+                },
+                child: const Text('Save Contact'),
+              ),
+            ],
+          ),
         ),
       ),
     );
