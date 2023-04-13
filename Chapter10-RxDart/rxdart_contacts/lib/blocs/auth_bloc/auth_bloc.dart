@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:rxdart/rxdart.dart';
@@ -31,11 +33,14 @@ class AuthBloc implements BaseBloc {
   /// ```
   final Sink<void> logout;
 
+  final Sink<void> deleteAccount;
+
   @override
   void dispose() {
     login.close();
     register.close();
     logout.close();
+    deleteAccount.close();
   }
 
   const AuthBloc._({
@@ -46,6 +51,7 @@ class AuthBloc implements BaseBloc {
     required this.login,
     required this.register,
     required this.logout,
+    required this.deleteAccount,
   });
 
   factory AuthBloc() {
@@ -70,7 +76,7 @@ class AuthBloc implements BaseBloc {
 
     // login and error handling
     final loginSubject = BehaviorSubject<LoginAction>();
-    final Stream<AuthError?> loginErrorStream = loginSubject.auth(
+    final Stream<AuthError?> loginError = loginSubject.auth(
       (action) => FirebaseAuth.instance.signInWithEmailAndPassword(
         email: action.email,
         password: action.password,
@@ -80,7 +86,7 @@ class AuthBloc implements BaseBloc {
 
     // register and error handling
     final registerSubject = BehaviorSubject<RegisterAction>();
-    final Stream<AuthError?> rigisterErrorStream = registerSubject.auth(
+    final Stream<AuthError?> rigisterError = registerSubject.auth(
       (action) => FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: action.email,
         password: action.password,
@@ -90,17 +96,33 @@ class AuthBloc implements BaseBloc {
 
     // logout and error handling
     final logoutSubject = BehaviorSubject<void>();
-    final logoutErrorStream = logoutSubject.auth(
+    final logoutError = logoutSubject.auth(
       (_) => FirebaseAuth.instance.signOut(),
       loadingSubject,
     );
 
+    // delete account
+    final deleteAccountSubject = BehaviorSubject<void>();
+    final Stream<AuthError?> deleteAccountError = deleteAccountSubject
+        .setLoadingTo(true, sink: loadingSubject)
+        .asyncMap((_) async {
+      try {
+        await FirebaseAuth.instance.currentUser?.delete();
+        return null;
+      } on FirebaseAuthException catch (e) {
+        return AuthError.from(e);
+      } catch (_) {
+        return const AuthErrorUnknown();
+      }
+    }).setLoadingTo(false, sink: loadingSubject);
+
     // auth error = (login error + register error + logout error)
     // Merge login, register and logout error streams into one stream
     final Stream<AuthError?> authErrorStream = Rx.merge([
-      loginErrorStream,
-      rigisterErrorStream,
-      logoutErrorStream,
+      loginError,
+      rigisterError,
+      logoutError,
+      deleteAccountError,
     ]);
 
     return AuthBloc._(
@@ -111,6 +133,7 @@ class AuthBloc implements BaseBloc {
       login: loginSubject.sink,
       register: registerSubject.sink,
       logout: logoutSubject.sink,
+      deleteAccount: deleteAccountSubject.sink,
     );
   }
 }
@@ -137,7 +160,9 @@ extension Auth<T> on Stream<T> {
       } on FirebaseAuthException catch (e) {
         return AuthError.from(e);
       } catch (e) {
-        return const AuthErrorUnknown();
+        return AuthErrorUnknown(
+          message: e.toString(),
+        );
       }
     }).setLoadingTo(false, sink: loadingSubject.sink);
   }

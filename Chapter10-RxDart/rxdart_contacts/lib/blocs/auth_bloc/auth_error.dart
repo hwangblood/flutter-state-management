@@ -9,7 +9,7 @@ const Map<String, AuthError> authErrorMapping = {
   'user-not-found': AuthErrorUserNotFound(),
   'weak-password': AuthErrorWeakPassword(),
   'operation-not-allowed': AuthErrorOperationNotAllowed(),
-  'email-already-exists': AuthErrorEmailAlreadyExists(),
+  'email-already-in-use': AuthErrorEmailAlreadyInUse(),
   'requires-receent-login': AuthErrorRequiresRecentLogin(),
   'no-current-user': AuthErrorNoCurrentUser(),
 };
@@ -25,16 +25,19 @@ abstract class AuthError {
 
   factory AuthError.from(FirebaseAuthException exception) =>
       authErrorMapping[exception.code.toLowerCase().trim()] ??
-      const AuthErrorUnknown();
+      AuthErrorUnknown(
+        title: exception.code,
+        message: exception.message,
+      );
 }
 
 /// Unknown auth errro
 @immutable
 class AuthErrorUnknown extends AuthError {
-  const AuthErrorUnknown()
+  const AuthErrorUnknown({String? title, String? message})
       : super(
-          title: 'Authentication error',
-          content: 'Unknown authentication error',
+          title: title ?? 'Authentication error',
+          content: message ?? 'Unknown authentication error',
         );
 }
 
@@ -123,10 +126,10 @@ class AuthErrorInvalidEmail extends AuthError {
 
 /// auth/email-already-exists
 @immutable
-class AuthErrorEmailAlreadyExists extends AuthError {
-  const AuthErrorEmailAlreadyExists()
+class AuthErrorEmailAlreadyInUse extends AuthError {
+  const AuthErrorEmailAlreadyInUse()
       : super(
-          title: 'Email already exists',
+          title: 'Email already is use',
           content: 'Please choose another email to register with!',
         );
 }

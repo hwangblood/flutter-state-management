@@ -66,8 +66,8 @@ class AppBloc implements BaseBloc {
     });
     //  current view
     final Stream<CurrentView> currentView = Rx.merge([
-      currentViewBasedOnAuthStatus,
       viewsBloc.currentView,
+      currentViewBasedOnAuthStatus,
     ]);
 
     // whether is loading
@@ -144,7 +144,8 @@ class AppBloc implements BaseBloc {
   }
 
   void deleteAccount() {
-    // TODO: implemte deleting account
+    _contactsBloc.deleteAllContacts.add(null);
+    _authBloc.deleteAccount.add(null);
   }
 
   void navigateToContactsListView() => _viewsBloc.currentViewSink.add(

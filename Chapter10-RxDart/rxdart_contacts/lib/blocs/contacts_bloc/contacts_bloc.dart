@@ -36,9 +36,11 @@ class ContactsBloc implements BaseBloc {
 
   final Sink<Contact> createContact;
   final Sink<Contact> deleteContact;
+  final Sink<void> deleteAllContacts;
 
   final StreamSubscription<void> _createContactSubscription;
   final StreamSubscription<void> _deleteContactSubscription;
+  final StreamSubscription<void> _deleteAllContactsSubscription;
 
   /// Read-only Stream for displaying contacts
   final Stream<Iterable<Contact>> contacts;
@@ -56,11 +58,14 @@ class ContactsBloc implements BaseBloc {
     required this.userId,
     required this.createContact,
     required this.deleteContact,
+    required this.deleteAllContacts,
+    required this.contacts,
     required StreamSubscription<void> createContactSubscription,
     required StreamSubscription<void> deleteContactSubscription,
-    required this.contacts,
+    required StreamSubscription<void> deleteAllContactsSubscription,
   })  : _createContactSubscription = createContactSubscription,
-        _deleteContactSubscription = deleteContactSubscription;
+        _deleteContactSubscription = deleteContactSubscription,
+        _deleteAllContactsSubscription = deleteAllContactsSubscription;
 
   factory ContactsBloc() {
     final firestore = FirebaseFirestore.instance;
@@ -121,14 +126,39 @@ class ContactsBloc implements BaseBloc {
             )
             .listen((event) {});
 
+    // delete all contacts
+    final deleteAllContacts = BehaviorSubject<void>();
+    final StreamSubscription<void> deleteAllContactsSubscription =
+        deleteAllContacts
+            .switchMap(
+              (_) => userIdSubject
+                  // no null userId
+                  .unwrap()
+                  // take lastest userId
+                  .takeLast(1),
+            )
+            .asyncMap(
+              (userId) => firestore.collection(userId).get(),
+            )
+            .switchMap(
+              (collection) => Stream.fromFutures(
+                collection.docs.map(
+                  (doc) => doc.reference.delete(),
+                ),
+              ),
+            )
+            .listen((_) {});
+
     // create ContactsBloc
     return ContactsBloc._(
       userId: userIdSubject.sink,
       createContact: createContactSubject.sink,
       deleteContact: deleteContactSubject.sink,
+      deleteAllContacts: deleteAllContacts.sink,
+      contacts: contactsStream,
       createContactSubscription: createContactSubscription,
       deleteContactSubscription: deleteContactSubscription,
-      contacts: contactsStream,
+      deleteAllContactsSubscription: deleteAllContactsSubscription,
     );
   }
 }
