@@ -52,7 +52,7 @@ class LoadingScreen {
             child: Container(
               constraints: BoxConstraints(
                 maxWidth: availableSize.width * 0.8,
-                minWidth: availableSize.height * 0.5,
+                minWidth: availableSize.width * 0.5,
                 maxHeight: availableSize.height * 0.8,
               ),
               decoration: BoxDecoration(
