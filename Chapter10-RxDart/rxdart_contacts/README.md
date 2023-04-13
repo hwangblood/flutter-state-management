@@ -30,10 +30,6 @@ A fully fledged contacts app with Firebase integration together with authenticat
 
    for this app, Each authenticated user will have a collection with the same id as the user id in the Cloud Firestore. And users can only operate in their own collection such as CRUD. see the detail about [how to setup firestore rules](./setup-firestore-database.md).
 
-## TODO
-
-- [ ] Cannot Create new contact , delete contact, delele all contacts (when delete account)
-
 **Run app:**
 
 ```shell

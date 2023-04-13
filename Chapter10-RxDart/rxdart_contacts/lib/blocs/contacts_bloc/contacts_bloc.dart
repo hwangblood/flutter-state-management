@@ -97,8 +97,8 @@ class ContactsBloc implements BaseBloc {
         // if you need a Future to come out of every elemant of a stream, using asyncMap()
         .switchMap(
           (contactToCreate) => userIdSubject
-              // take lastest userId
-              .takeLast(1)
+              // take current userId
+              .take(1)
               // no null userId
               .unwrap()
               // add a contact document to firestore upon userId
@@ -115,8 +115,8 @@ class ContactsBloc implements BaseBloc {
         deleteContactSubject
             .switchMap(
               (Contact contactToDelete) => userIdSubject
-                  // take lastest userId
-                  .takeLast(1)
+                  // take current userId
+                  .take(1)
                   // no null userId
                   .unwrap()
                   .asyncMap(
@@ -130,12 +130,12 @@ class ContactsBloc implements BaseBloc {
 
     // delete all contacts
     final deleteAllContacts = BehaviorSubject<void>();
-    final /* StreamSubscription<void> */ deleteAllContactsSubscription =
+    final StreamSubscription<void> deleteAllContactsSubscription =
         deleteAllContacts
             .switchMap(
               (_) => userIdSubject
-                  // take lastest userId
-                  .takeLast(1)
+                  // take current userId
+                  .take(1)
                   // no null userId
                   .unwrap(),
             )
