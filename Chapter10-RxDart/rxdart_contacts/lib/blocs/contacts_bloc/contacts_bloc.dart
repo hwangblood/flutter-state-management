@@ -50,8 +50,10 @@ class ContactsBloc implements BaseBloc {
     userId.close();
     createContact.close();
     deleteContact.close();
+    deleteAllContacts.close();
     _createContactSubscription.cancel();
     _deleteContactSubscription.cancel();
+    _deleteAllContactsSubscription.cancel();
   }
 
   const ContactsBloc._({
@@ -95,10 +97,10 @@ class ContactsBloc implements BaseBloc {
         // if you need a Future to come out of every elemant of a stream, using asyncMap()
         .switchMap(
           (contactToCreate) => userIdSubject
-              // no null userId
-              .unwrap()
               // take lastest userId
               .takeLast(1)
+              // no null userId
+              .unwrap()
               // add a contact document to firestore upon userId
               .asyncMap(
                 (userId) =>
@@ -113,10 +115,10 @@ class ContactsBloc implements BaseBloc {
         deleteContactSubject
             .switchMap(
               (Contact contactToDelete) => userIdSubject
-                  // no null userId
-                  .unwrap()
                   // take lastest userId
                   .takeLast(1)
+                  // no null userId
+                  .unwrap()
                   .asyncMap(
                     (userId) => firestore
                         .collection(userId)
@@ -128,14 +130,14 @@ class ContactsBloc implements BaseBloc {
 
     // delete all contacts
     final deleteAllContacts = BehaviorSubject<void>();
-    final StreamSubscription<void> deleteAllContactsSubscription =
+    final /* StreamSubscription<void> */ deleteAllContactsSubscription =
         deleteAllContacts
             .switchMap(
               (_) => userIdSubject
-                  // no null userId
-                  .unwrap()
                   // take lastest userId
-                  .takeLast(1),
+                  .takeLast(1)
+                  // no null userId
+                  .unwrap(),
             )
             .asyncMap(
               (userId) => firestore.collection(userId).get(),

@@ -103,18 +103,10 @@ class AuthBloc implements BaseBloc {
 
     // delete account
     final deleteAccountSubject = BehaviorSubject<void>();
-    final Stream<AuthError?> deleteAccountError = deleteAccountSubject
-        .setLoadingTo(true, sink: loadingSubject)
-        .asyncMap((_) async {
-      try {
-        await FirebaseAuth.instance.currentUser?.delete();
-        return null;
-      } on FirebaseAuthException catch (e) {
-        return AuthError.from(e);
-      } catch (_) {
-        return const AuthErrorUnknown();
-      }
-    }).setLoadingTo(false, sink: loadingSubject);
+    final Stream<AuthError?> deleteAccountError = deleteAccountSubject.auth(
+      (_) => FirebaseAuth.instance.currentUser?.delete(),
+      loadingSubject,
+    );
 
     // auth error = (login error + register error + logout error)
     // Merge login, register and logout error streams into one stream
@@ -140,7 +132,7 @@ class AuthBloc implements BaseBloc {
 
 /// T will be LoginAction and RegisterAction for login and register operation,
 /// and void for logout operation
-typedef AuthRunner<T> = Future Function(T action);
+typedef AuthRunner<T> = Future? Function(T action);
 
 extension Auth<T> on Stream<T> {
   /// Generic auth rx-operator for login, register, logout operation, all of
