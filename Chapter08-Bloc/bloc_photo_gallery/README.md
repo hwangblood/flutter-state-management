@@ -6,11 +6,11 @@ see [timestamp](./timestamp.md) of this app in the [course](https://youtu.be/Mn2
 
 ## Getting Started
 
-**Setup Firebase:**
+### Setup Firebase
 
 1. Following [Add Firebase to your Flutter app](https://firebase.google.com/docs/flutter/setup)
 
-2. Enable email and pasword authentication in [Firebase Console](https://console.firebase.google.com/)
+2. Enable Email/Password Authentication in [Firebase Console](https://console.firebase.google.com/)
 
 3. (Optional) As I am building this application on the Linux operating system, I am unable to verify whether this application can run properly on the IOS platform. 
 
@@ -28,15 +28,32 @@ see [timestamp](./timestamp.md) of this app in the [course](https://youtu.be/Mn2
 
    after that, run this flutter app in IOS device as simply.
 
-4. Setup Cloud Firestore rules in [Firebase Console](https://console.firebase.google.com/)
+4. Setup Firebase Storage rules in [Firebase Console](https://console.firebase.google.com/)
 
-   for this app, Each authenticated user will have a collection with the same id as the user id in the Cloud Firestore. And users can only operate in their own collection such as CRUD.
+   ```
+   rules_version = '2';
+   service firebase.storage {
+     match /b/{bucket}/o {
+       	
+       function isFolderOwner(userId){
+         return request.auth != null && request.auth.uid == userId;
+       }
+         
+       // eg. /random-user-id/photo-1.png
+       match /{userId}/{allPaths=**} {
+         // update rule includes delete rule
+         allow read, write, update, write: if isFolderOwner(userId);
+       }
+     }
+   }
+   ```
 
-**Run app:**
+   for this app, Each authenticated user will have a storage folder with the same id as the user id in Firebase. And users can only operate in their own folder such as Read, Write, Update, Delete operators and more.
+
+### Run app
 
 ```shell
 flutter pub get
 
 flutter run
 ```
-
