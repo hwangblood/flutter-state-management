@@ -41,7 +41,7 @@ abstract class AppState {
 
   const AppState({
     required this.isLoading,
-    required this.authError,
+    this.authError,
   });
 
   @override
@@ -60,7 +60,7 @@ class AppStateLoggedIn extends AppState {
     required this.user,
     required this.images,
     required super.isLoading,
-    required super.authError,
+    super.authError,
   });
 
   @override
@@ -89,7 +89,7 @@ class AppStateLoggedIn extends AppState {
 class AppStateLoggedOut extends AppState {
   const AppStateLoggedOut({
     required super.isLoading,
-    required super.authError,
+    super.authError,
   });
 
   @override
@@ -101,6 +101,6 @@ class AppStateLoggedOut extends AppState {
 class AppStateInRegistrationView extends AppState {
   const AppStateInRegistrationView({
     required super.isLoading,
-    required super.authError,
+    super.authError,
   });
 }

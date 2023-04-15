@@ -14,8 +14,14 @@ Flutter Bloc State Manegement - PhotoGallery App
 
 [07:53:13](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=28393) Define Authentication Errors
 
-[08:28:25](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=30505)  Define Events for App
+[08:28:25](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=30505) Define Events for GalleryApp
 
-[08:42:47](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=31367) Define States for App
+[08:42:47](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=31367) Define States for GalleryApp
 
-[09:10:47](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=33047) Implement AppBloc
+[09:10:47](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=33047) Implement AppBloc for GalleryApp
+
+[09:19:27](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=33567) Handle uploading images for GalleryApp
+
+[09:33:56](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=34436) Handle account deletion for GalleryApp
+
+[09:46:56](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=35216) Handle logging out for GalleryApp
