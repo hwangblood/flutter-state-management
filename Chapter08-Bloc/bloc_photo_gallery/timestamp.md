@@ -43,3 +43,5 @@ Flutter Bloc State Manegement - PhotoGallery App
 [10:07:55](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36476) Account deletion dialog for GalleryApp
 
 [10:12:39](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36759) Log-out dialog for GalleryApp
+
+[10:13:53](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36833) auth error dialog for GalleryApp
