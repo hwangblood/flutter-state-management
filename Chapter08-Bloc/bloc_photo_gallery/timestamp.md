@@ -35,3 +35,7 @@ Flutter Bloc State Manegement - PhotoGallery App
 [09:59:32](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=35974) Handle logging in for GalleryApp 
 
 [10:04:14](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36254) Handle navigate to registration screen for GalleryApp
+
+[10:05:33](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36334) AppBloc Outro for GalleryApp
+
+[10:06:07](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36368) Generic Dialog
