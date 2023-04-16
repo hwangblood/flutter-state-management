@@ -27,3 +27,5 @@ Flutter Bloc State Manegement - PhotoGallery App
 [09:46:56](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=35216) Handle logging out for GalleryApp
 
 [09:48:59](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=35339) Handle AppEventInitial for GalleryApp
+
+[09:52:37](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=35558) Handle registration for GalleryApp

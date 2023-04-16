@@ -14,6 +14,27 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       : super(
           const AppStateLoggedOut(isLoading: false),
         ) {
+    // handle app initialization
+    // check user is whether logged in or not, then load all iamges of user
+    on<AppEventInitial>((event, emit) async {
+      // get the current user
+      final User? user = FirebaseAuth.instance.currentUser;
+      if (user == null) {
+        emit(
+          const AppStateLoggedOut(isLoading: false),
+        );
+      } else {
+        // go grab the user's uploaded images
+        final images = await _fetchImages(user.uid);
+        emit(
+          AppStateLoggedIn(
+            user: user,
+            images: images,
+            isLoading: false,
+          ),
+        );
+      }
+    });
     // handle log-out event
     on<AppEventLogOut>((event, emit) async {
       // start loading
