@@ -14,6 +14,43 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       : super(
           const AppStateLoggedOut(isLoading: false),
         ) {
+    // Handle registration
+    on<AppEventRegister>((event, emit) async {
+      // start loading, in registration view
+      emit(
+        const AppStateInRegistrationView(isLoading: true),
+      );
+
+      final email = event.email;
+      final password = event.password;
+
+      try {
+        // create the user
+        final UserCredential credential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        // after register successfully, app should be already logged in
+        emit(
+          AppStateLoggedIn(
+            user: credential.user!,
+            images: const [],
+            isLoading: false,
+          ),
+        );
+        // get user's images
+        final userId = credential.user!.uid;
+      } on FirebaseAuthException catch (e) {
+        emit(
+          AppStateInRegistrationView(
+            isLoading: false,
+            authError: AuthError.from(e),
+          ),
+        );
+      }
+    });
+
     // handle app initialization
     // check user is whether logged in or not, then load all iamges of user
     on<AppEventInitial>((event, emit) async {
@@ -35,6 +72,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         );
       }
     });
+
     // handle log-out event
     on<AppEventLogOut>((event, emit) async {
       // start loading
