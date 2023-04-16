@@ -51,3 +51,5 @@ Flutter Bloc State Manegement - PhotoGallery App
 [10:21:04](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=37264) Generic Loading Overlay for GalleryApp
 
 [10:22:26](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=37346) LoginView for GalleryApp
+
+[10:37:44](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=38264) RegisterView for GalleryApp
