@@ -56,4 +56,8 @@ Flutter Bloc State Manegement - PhotoGallery App
 
 [10:40:14](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=38416) MainPopupMenuButton for GalleryView
 
-[10:49:34](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=38974) GalleryView to diaplay Firebase images
+[10:49:34](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=38974) PhtotoGalleryView to diaplay Firebase images
+
+[11:09:05](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=40145) Put all views together into PhotoGalleryApp
+
+[11:18:15](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=40695) Demo Time

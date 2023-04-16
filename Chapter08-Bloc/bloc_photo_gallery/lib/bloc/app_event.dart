@@ -9,8 +9,8 @@ abstract class AppEvent {
 ///
 /// For example:
 ///
-/// using cached user token (if existed) to login automatically, when you start
-/// app.
+/// using cached user token (if existed) to login automatically and load images
+/// from Firebase Storage, when you start app.
 @immutable
 class AppEventInitial implements AppEvent {
   const AppEventInitial();
