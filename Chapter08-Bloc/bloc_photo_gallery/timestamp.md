@@ -12,7 +12,7 @@ Flutter Bloc State Manegement - PhotoGallery App
 
 [07:45:02](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=27902) Edit security rules in Firebase Storage
 
-[07:53:13](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=28393) Define Authentication Errors
+[07:53:13](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=28393) Define Authentication Errors for GalleryApp
 
 [08:28:25](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=30505) Define Events for GalleryApp
 
@@ -33,3 +33,5 @@ Flutter Bloc State Manegement - PhotoGallery App
 [09:58:22](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=35903) Handle navigate to login screeen for GalleryApp
 
 [09:59:32](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=35974) Handle logging in for GalleryApp 
+
+[10:04:14](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36254) Handle navigate to registration screen for GalleryApp

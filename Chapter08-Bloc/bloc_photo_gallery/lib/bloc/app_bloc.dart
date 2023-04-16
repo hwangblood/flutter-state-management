@@ -14,6 +14,44 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       : super(
           const AppStateLoggedOut(isLoading: false),
         ) {
+    // handle logging in
+    on<AppEventLogIn>((event, emit) async {
+      // start loading, now user should be already logged out
+      emit(
+        const AppStateLoggedOut(isLoading: true),
+      );
+
+      // log the user in
+      try {
+        final email = event.email;
+        final password = event.password;
+        final UserCredential userCredential =
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        final user = userCredential.user!;
+
+        // after user logged in, load images of user
+        final images = await _fetchImages(user.uid);
+
+        emit(
+          AppStateLoggedIn(
+            user: user,
+            images: images,
+            isLoading: false,
+          ),
+        );
+      } on FirebaseAuthException catch (e) {
+        emit(
+          AppStateLoggedOut(
+            isLoading: false,
+            authError: AuthError.from(e),
+          ),
+        );
+      }
+    });
+
     // handle navigate to  login screen
     on<AppEventNavToLogin>((event, emit) {
       emit(
@@ -32,7 +70,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
       try {
         // create the user
-        final UserCredential credential =
+        final UserCredential userCredential =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email,
           password: password,
@@ -40,13 +78,13 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         // after register successfully, app should be already logged in
         emit(
           AppStateLoggedIn(
-            user: credential.user!,
+            user: userCredential.user!,
             images: const [],
             isLoading: false,
           ),
         );
         // get user's images
-        final userId = credential.user!.uid;
+        final userId = userCredential.user!.uid;
       } on FirebaseAuthException catch (e) {
         emit(
           AppStateInRegistrationView(
