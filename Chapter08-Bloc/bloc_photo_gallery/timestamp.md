@@ -44,4 +44,6 @@ Flutter Bloc State Manegement - PhotoGallery App
 
 [10:12:39](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36759) Log-out dialog for GalleryApp
 
-[10:13:53](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36833) auth error dialog for GalleryApp
+[10:13:53](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36833) Dialog with AuthError for GalleryApp
+
+[10:17:40](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=37060) Debugging String
