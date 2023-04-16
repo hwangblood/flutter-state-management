@@ -14,41 +14,17 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       : super(
           const AppStateLoggedOut(isLoading: false),
         ) {
-    // handle uploading images
-    on<AppEventUploadImage>((event, emit) async {
-      final User? user = state.user;
-      // log out user if we don't have valid user in app state
-      if (user == null) {
-        emit(
-          const AppStateLoggedOut(isLoading: false),
-        );
-        // stop doing next things if user is null
-        return;
-      }
-
-      // start loading process
+    // handle log-out event
+    on<AppEventLogOut>((event, emit) async {
+      // start loading
       emit(
-        AppStateLoggedIn(
-          user: user,
-          images: state.images ?? [],
-          isLoading: true,
-        ),
+        const AppStateLoggedOut(isLoading: true),
       );
-
-      // upload the file
-      final file = File(event.filePath);
-      // In fact, this app doesn't care about whether the file is successfully uploaded or not
-      // ignore: unused_local_variable
-      bool uploadResult = await uploadImage(userId: user.uid, file: file);
-      // after upload is completed, grap the latest file references
-      final images = await _fetchImages(user.uid);
-      // emit the new images and turn off loading
+      // log the user out
+      await FirebaseAuth.instance.signOut();
+      // log the user out in the UI as well
       emit(
-        AppStateLoggedIn(
-          user: user,
-          images: images,
-          isLoading: false,
-        ),
+        const AppStateLoggedOut(isLoading: false),
       );
     });
 
@@ -111,6 +87,44 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           const AppStateLoggedOut(isLoading: false),
         );
       }
+    });
+
+    // handle uploading images
+    on<AppEventUploadImage>((event, emit) async {
+      final User? user = state.user;
+      // log out user if we don't have valid user in app state
+      if (user == null) {
+        emit(
+          const AppStateLoggedOut(isLoading: false),
+        );
+        // stop doing next things if user is null
+        return;
+      }
+
+      // start loading process
+      emit(
+        AppStateLoggedIn(
+          user: user,
+          images: state.images ?? [],
+          isLoading: true,
+        ),
+      );
+
+      // upload the file
+      final file = File(event.filePath);
+      // In fact, this app doesn't care about whether the file is successfully uploaded or not
+      // ignore: unused_local_variable
+      bool uploadResult = await uploadImage(userId: user.uid, file: file);
+      // after upload is completed, grap the latest file references
+      final images = await _fetchImages(user.uid);
+      // emit the new images and turn off loading
+      emit(
+        AppStateLoggedIn(
+          user: user,
+          images: images,
+          isLoading: false,
+        ),
+      );
     });
   }
 
