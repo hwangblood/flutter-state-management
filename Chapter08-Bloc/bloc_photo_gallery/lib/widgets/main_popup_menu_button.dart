@@ -44,11 +44,11 @@ class MainPopupMenuButton extends StatelessWidget {
       itemBuilder: (context) {
         return [
           const PopupMenuItem<MenuAction>(
-            value: MenuAction.deleteAccount,
+            value: MenuAction.logout,
             child: Text('Log out'),
           ),
           const PopupMenuItem<MenuAction>(
-            value: MenuAction.logout,
+            value: MenuAction.deleteAccount,
             child: Text('Delete account'),
           ),
         ];
