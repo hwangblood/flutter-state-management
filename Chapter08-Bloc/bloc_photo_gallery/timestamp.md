@@ -38,4 +38,6 @@ Flutter Bloc State Manegement - PhotoGallery App
 
 [10:05:33](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36334) AppBloc Outro for GalleryApp
 
-[10:06:07](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36368) Generic Dialog
+[10:06:07](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36368) Generic Dialog for GalleryApp
+
+[10:07:55](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36476) Account deletion dialog for GalleryApp
