@@ -27,7 +27,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       emit(
         const AppStateLoggedOut(isLoading: true),
       );
-
       // log the user in
       try {
         final email = event.email;
@@ -38,10 +37,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           password: password,
         );
         final user = userCredential.user!;
-
         // after user logged in, load images of user
         final images = await _fetchImages(user.uid);
-
         emit(
           AppStateLoggedIn(
             user: user,
@@ -71,11 +68,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       emit(
         const AppStateInRegistrationView(isLoading: true),
       );
-
-      final email = event.email;
-      final password = event.password;
-
       try {
+        final email = event.email;
+        final password = event.password;
         // create the user
         final UserCredential userCredential =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -90,8 +85,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
             isLoading: false,
           ),
         );
-        // get user's images
-        final userId = userCredential.user!.uid;
       } on FirebaseAuthException catch (e) {
         emit(
           AppStateInRegistrationView(
@@ -149,7 +142,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         // stop doing next things if user is null
         return;
       }
-
       // start loading process
       emit(
         AppStateLoggedIn(
@@ -158,7 +150,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           isLoading: true,
         ),
       );
-
       // delete the storage folder, and delete user account
       try {
         // delete contents in storage folder
@@ -172,7 +163,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         await FirebaseStorage.instance.ref(user.uid).delete().catchError((_) {
           // HACK: handle the error, When deleting the folder fails
         });
-
         // delete the user
         await user.delete();
         // log the user out
@@ -210,7 +200,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         // stop doing next things if user is null
         return;
       }
-
       // start loading process
       emit(
         AppStateLoggedIn(
@@ -219,7 +208,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           isLoading: true,
         ),
       );
-
       // upload the file
       final file = File(event.filePath);
       // In fact, this app doesn't care about whether the file is successfully uploaded or not

@@ -22,7 +22,7 @@ class PhotoGalleryView extends HookWidget {
     );
 
     final Iterable<Reference> imageRefs =
-        context.read<AppBloc>().state.images ?? [];
+        context.watch<AppBloc>().state.images ?? [];
 
     return Scaffold(
       appBar: AppBar(
