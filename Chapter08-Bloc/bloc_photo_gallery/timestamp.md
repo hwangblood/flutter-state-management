@@ -46,4 +46,6 @@ Flutter Bloc State Manegement - PhotoGallery App
 
 [10:13:53](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=36833) Dialog with AuthError for GalleryApp
 
-[10:17:40](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=37060) Debugging String
+[10:17:40](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=37060) String Extension ifDebugging for GalleryApp
+
+[10:21:04](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=37264) Generic Loading Screen Overlay for GalleryApp
