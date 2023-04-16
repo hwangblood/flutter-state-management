@@ -31,3 +31,5 @@ Flutter Bloc State Manegement - PhotoGallery App
 [09:52:37](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=35558) Handle registration for GalleryApp
 
 [09:58:22](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=35903) Handle navigate to login screeen for GalleryApp
+
+[09:59:32](https://youtu.be/Mn254cnduOY?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=35974) Handle logging in for GalleryApp 

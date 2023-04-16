@@ -14,6 +14,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       : super(
           const AppStateLoggedOut(isLoading: false),
         ) {
+    // handle navigate to  login screen
+    on<AppEventNavToLogin>((event, emit) {
+      emit(
+        const AppStateLoggedOut(isLoading: false),
+      );
+    });
     // Handle registration
     on<AppEventRegister>((event, emit) async {
       // start loading, in registration view
