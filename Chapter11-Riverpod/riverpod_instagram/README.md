@@ -2,7 +2,7 @@
 
 An Instagram Clone App built with [Riverpod](https://github.com/rrousselGit/riverpod) and [Firebase](https://firebase.google.com/).
 
-## Run it
+## Setup
 
 Follow the steps below to start this app.
 
@@ -28,7 +28,23 @@ Follow the steps below to start this app.
 
    after that, run this flutter app in IOS device as simply.
 
-4. ...
+4. Enable Cloud FireStore, and edit rules like:
+
+   ```objective-c
+   rules_version = '2';
+   service cloud.firestore {
+     match /databases/{database}/documents {
+       match /{collectionName}/{document=**} {
+           allow read, update: if request.auth != null;
+           allow create: if request.auth != null;
+           // Only allow users to delete their own likes and comments
+           allow delete: if request.auth != null && ((collectionName == "likes" || collectionName == "comments") || request.auth.uid == resource.data.uid);
+       }
+     }
+   }
+   ```
+
+5. ...
 
 ### Setup Facebook Sign-in
 
@@ -70,18 +86,12 @@ Follow the steps below to start this app.
 
 ### Setup Google Sign-in
 
-Follow [google_sign_in | Flutter Package - Pub.dev](https://pub.dev/packages/google_sign_in)
-
-- Add the `CFBundleURLTypes` attributes into the `Info.plist`
-- that's all
-
-### Run
-
-```shell
-flutter pub get
-
-flutter run
-```
+- Open your project in **Firebase Console**
+- Follow **Authentication** > **Sign-In Method** > Add **Google Provider** 
+- Toggle siwtch button to **TRUE**, then input **Project public-facing name** (eg. `riverpod-instagram`) and **Project support email**, and **Save** it to go ahead
+- finally, you need to re-download `google-services.json` for Android and `GoogleService-Info.plist` for IOS, then rebuild your app
+- follow [google_sign_in | Flutter Package - Pub.dev](https://pub.dev/packages/google_sign_in)
+- Add **SHA Certificate Fingerprint** to Android apps in Firebase project settings
 
 ## Features
 
@@ -129,6 +139,3 @@ flutter run
 
   url_launcher: ^6.1.10
 
-## About
-
-https://github.com/hwangblood/flutter-state-management/tree/master/Chapter11-Riverpod/riverpod_instagram
