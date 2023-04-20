@@ -67,7 +67,7 @@ class MainView extends StatelessWidget {
       ),
       body: Center(
         child: Consumer(
-          builder: (context, ref, child) {
+          builder: (_, ref, child) {
             return ElevatedButton(
               onPressed: () {
                 ref.read(authStateProvider.notifier).logout();
