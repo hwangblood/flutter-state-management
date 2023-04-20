@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Riverpod Instagram</string>
+    <string name="facebook_app_id">6113981722014717</string>
+    <string name="fb_login_protocol_scheme">fb6113981722014717</string>
+    <string name="facebook_client_token">3b6c712a1278e4393603700cde7ab862</string>
+</resources>

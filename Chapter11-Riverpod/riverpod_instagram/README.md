@@ -30,6 +30,51 @@ Follow the steps below to start this app.
 
 4. ...
 
+### Setup Facebook Sign-in
+
+- Firstly, Create a app with **Comsumer** type in [Meta for Developers - Facebook](https://developers.facebook.com/)
+- After app created, You can find **APP ID** and **APP KEY** in app's settings
+- Open your project in **Firebase Console**
+- Follow **Authentication** > **Sign-In Method** > Add **Facebook Provider** > Input  **APP ID** and **APP KEY**
+- Also, You need to add OAuth redirect URI to **Facebook App Settinngs** then Save it
+- Back to your Facebook App Dashboard
+- Add **Facebook Login Product** for App, next to **Quickstart**
+- Choose **IOS** platform:
+  - Setup Development Environment, select **SDK: Cocoapods** and go to **Next**
+  - Add Bundle Identifier, paste your app's **Bundle ID**, then **Save** it and go to **Next**
+  - Enable Single Sign On: toggle it to **YES**, then **Save** it and go to **Next**
+  - Configure Your `Info.plist`: just follow the steps (exclude **Keychain Sharing Capability**), then go to **Next**
+  - Conenect App Delegate: we don't have to do any of this native Swift code, because we're actually using Flutter, please go to **Next**
+  - Add Facebook Login Button: we also don't  have to do this native Swift code, just go to **Next**
+  - Check Current Login Status: also navite Swift code, jump it and go to **Next**
+  - Ask for Permissions: jump this native Swift code, jump it and go to **Next**
+  - Now, we have added **Facebook Login** to IOS app
+  - Congrats!
+- Choose **Android** platform:
+  - Download the Facebook SDK for Android: we don't have to do this, because we're using Firebase, go to **Next**
+  - Import the Facebook SDK: follow the steps (but exclude import Facebook SDK package), then go to **Next**
+  - Tell About Android Project: input **Package Name** and **Default Activity Class Name**, then **Save** it and go to **Next**
+  - Add Development and Release Key Hashes: paste your keys, then **Save** it and go to **Next**
+  - Enable Single Sign On: toggle it to **YES**, then **Save** it and go to **Next**
+  - Edit Resources and Manifest: follow all the steps (maybe you need to create `app/res/values/strings.xml` file), then go to **Next**
+  - Log App Event: don't have to do this natively, we 're going to throught it in Flutter, then go to **Next**
+  - Add Facebook Login Button: we also don't  have to do this native Kotlin code, just go to **Next**
+  - Register a Callback: no need to do this, go to **Next**
+  - Check Login Status: no need to do this, go to **Next**
+  - Now, we have added **Facebook Login** to Android app
+  - Congrats!
+- It's time to add OAuth redirect URI to FAcebook App Setting
+- Find **Facebook Login** in app's Products, go to its **Settings**
+- paste valid OAuth redirect URI, and save it.
+- And, there are some in-need steps to do in [flutter_facebook_auth | Flutter Package - Pub.dev](https://pub.dev/packages/flutter_facebook_auth)
+
+### Setup Google Sign-in
+
+Follow [google_sign_in | Flutter Package - Pub.dev](https://pub.dev/packages/google_sign_in)
+
+- Add the `CFBundleURLTypes` attributes into the `Info.plist`
+- that's all
+
 ### Run
 
 ```shell
