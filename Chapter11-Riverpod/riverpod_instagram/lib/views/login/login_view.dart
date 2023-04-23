@@ -22,11 +22,11 @@ class LoginView extends ConsumerWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               Text(
                 Strings.welcomeToAppName,
                 style: Theme.of(context).textTheme.displaySmall,
