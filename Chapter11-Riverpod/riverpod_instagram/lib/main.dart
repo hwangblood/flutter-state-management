@@ -7,6 +7,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:riverpod_instagram/state/auth/providers/auth_state_provider.dart';
 import 'package:riverpod_instagram/state/auth/providers/is_logged_in_provider.dart';
+import 'package:riverpod_instagram/state/prividers/is_loading_provider.dart';
+import 'package:riverpod_instagram/views/components/loading/loading_overlay.dart';
 
 import 'firebase_options.dart';
 
@@ -41,6 +43,20 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Consumer(
         builder: (context, ref, child) {
+          // take care of displaying the loading overlay
+          // listen won't rebuild widget, it just get the ability to do sth
+          ref.listen(
+            isLoadingProvider,
+            (previous, next) {
+              // next is the new state of the provider
+              if (next) {
+                LoadingOverlay.instance().show(context);
+              } else {
+                LoadingOverlay.instance().hide();
+              }
+            },
+          );
+
           final isLoggedIn = ref.watch(isLoggedInProvider);
           if (isLoggedIn) {
             return const MainView();
