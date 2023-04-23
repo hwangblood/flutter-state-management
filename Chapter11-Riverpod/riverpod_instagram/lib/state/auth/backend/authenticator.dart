@@ -82,7 +82,7 @@ class Authenticator {
     try {
       await FirebaseAuth.instance.signInWithCredential(oauthCredential);
       return AuthResult.success;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (_) {
       return AuthResult.failure;
     }
   }

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
 import 'package:riverpod_instagram/views/components/constants/strings.dart';
 
 import 'loading_overlay_controller.dart';

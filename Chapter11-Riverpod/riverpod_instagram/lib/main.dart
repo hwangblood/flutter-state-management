@@ -9,6 +9,7 @@ import 'package:riverpod_instagram/state/auth/providers/auth_state_provider.dart
 import 'package:riverpod_instagram/state/auth/providers/is_logged_in_provider.dart';
 import 'package:riverpod_instagram/state/prividers/is_loading_provider.dart';
 import 'package:riverpod_instagram/views/components/loading/loading_overlay.dart';
+import 'package:riverpod_instagram/views/login/login_view.dart';
 
 import 'firebase_options.dart';
 
@@ -92,34 +93,6 @@ class MainView extends StatelessWidget {
             );
           },
         ),
-      ),
-    );
-  }
-}
-
-/// for when you are not logged in
-class LoginView extends ConsumerWidget {
-  const LoginView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login View'),
-      ),
-      body: Column(
-        children: [
-          TextButton(
-            onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
-            child: const Text('Sign In with Google'),
-          ),
-          TextButton(
-            onPressed: ref.read(authStateProvider.notifier).loginWithFacebook,
-            child: const Text('Sign In with Facebok'),
-          ),
-        ],
       ),
     );
   }
