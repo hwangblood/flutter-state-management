@@ -44,7 +44,21 @@ Follow the steps below to start this app.
    }
    ```
 
-5. ...
+5. Enable Firebase Storage, and edit rules like:
+
+   ```objective-c
+   rules_version = '2';
+   service firebase.storage {
+     match /b/{bucket}/o {
+       match /{collectionId}/{allPaths=**} {
+         // Each user has a storage collection with the same name as their uid
+         allow create, update, write: if request.auth != null && request.auth.uid == collectionId;
+         allow read: if request.auth != null;
+       }
+     }
+   }
+
+6. And You can see all structures of app's data in `data-structure` folder, I have defined them in Typescript Types, also I will do some diagrams in the future.
 
 ### Setup Facebook Sign-in
 

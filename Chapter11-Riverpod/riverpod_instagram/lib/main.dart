@@ -101,14 +101,14 @@ class MainView extends StatelessWidget {
             },
           ),
           const Expanded(
-            // child: DataNotFoundAnimationWidget(),
+            child: DataNotFoundAnimationWidget(),
             // child: EmptyContentAnimationWidget(),
             // child: EmptyContentWithTextAnimationWidget(
             //   text: 'Nothing to show',
             // ),
             // child: ErrorAnimationWidget(),
             // child: SimpleErrorAnimationWidget(),
-            child: LoadingAnimationWidget(),
+            // child: LoadingAnimationWidget(),
           ),
         ],
       ),
