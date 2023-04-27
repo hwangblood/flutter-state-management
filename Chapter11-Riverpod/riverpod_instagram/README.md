@@ -58,7 +58,7 @@ Follow the steps below to start this app.
      }
    }
 
-6. And You can see all structures of app's data in `data-structure` folder, I have defined them in Typescript Types, also I will do some diagrams in the future.
+6. ...
 
 ### Setup Facebook Sign-in
 

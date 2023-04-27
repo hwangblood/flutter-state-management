@@ -9,13 +9,9 @@ import 'package:riverpod_instagram/state/auth/providers/auth_state_provider.dart
 import 'package:riverpod_instagram/state/auth/providers/is_logged_in_provider.dart';
 import 'package:riverpod_instagram/state/prividers/is_loading_provider.dart';
 import 'package:riverpod_instagram/views/components/animations/data_not_found_animation_widget.dart';
-import 'package:riverpod_instagram/views/components/animations/empty_content_animation_widget.dart';
-import 'package:riverpod_instagram/views/components/animations/empty_content_with_text_animation_widget.dart';
-import 'package:riverpod_instagram/views/components/animations/error_animation_widget.dart';
-import 'package:riverpod_instagram/views/components/animations/loading_animation_widget.dart';
-import 'package:riverpod_instagram/views/components/animations/simple_error_animation_widget.dart';
 import 'package:riverpod_instagram/views/components/loading/loading_overlay.dart';
 import 'package:riverpod_instagram/views/login/login_view.dart';
+import 'package:riverpod_instagram/views/main/main_view.dart';
 
 import 'firebase_options.dart';
 
@@ -71,46 +67,6 @@ class MyApp extends StatelessWidget {
             return const LoginView();
           }
         },
-      ),
-    );
-  }
-}
-
-/// for when you are already logged in
-class MainView extends StatelessWidget {
-  const MainView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Riverpod Instagram'),
-      ),
-      body: Column(
-        children: [
-          Consumer(
-            builder: (_, ref, child) {
-              return ElevatedButton(
-                onPressed: () {
-                  ref.read(authStateProvider.notifier).logout();
-                },
-                child: const Text('Logout'),
-              );
-            },
-          ),
-          const Expanded(
-            child: DataNotFoundAnimationWidget(),
-            // child: EmptyContentAnimationWidget(),
-            // child: EmptyContentWithTextAnimationWidget(
-            //   text: 'Nothing to show',
-            // ),
-            // child: ErrorAnimationWidget(),
-            // child: SimpleErrorAnimationWidget(),
-            // child: LoadingAnimationWidget(),
-          ),
-        ],
       ),
     );
   }
