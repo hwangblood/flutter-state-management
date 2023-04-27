@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testingflutterhooks_course/navigete_to.dart';
+import 'package:testingflutterhooks_course/navigate_to.dart';
 import 'package:testingflutterhooks_course/routes.dart';
 import 'package:testingflutterhooks_course/widgets/entity_subtitle.dart';
 
