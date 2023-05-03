@@ -1,8 +1,9 @@
+import 'dart:developer' as devtools show log;
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'dart:developer' as devtools show log;
+const String appName = 'InheritedModel Example';
 
 void main() => runApp(const MyApp());
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Material App',
+      title: appName,
       home: HomePage(),
     );
   }
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Material App Bar'),
+        title: const Text(appName),
       ),
       body: AvailableColorsWidget(
         color1: _color1,
