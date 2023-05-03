@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:vanillacontacts_course/contact_book.dart';
 
 class NewContactView extends StatefulWidget {

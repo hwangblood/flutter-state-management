@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:vanillacontacts_course/constants.dart';
 import 'package:vanillacontacts_course/home_page.dart';
 import 'package:vanillacontacts_course/new_contact_view.dart';
 
@@ -10,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Contact Book',
+      title: Constants.appName,
       debugShowCheckedModeBanner: false,
       home: const HomePage(),
       routes: {

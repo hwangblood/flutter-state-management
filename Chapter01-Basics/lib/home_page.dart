@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:vanillacontacts_course/constants.dart';
 import 'package:vanillacontacts_course/contact_book.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,7 +12,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contact Book'),
+        title: const Text(Constants.appName),
       ),
       body: ValueListenableBuilder(
         valueListenable: ContactBook(),
