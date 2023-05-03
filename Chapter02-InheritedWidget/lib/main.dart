@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
+const String appName = 'InheritedWidget Example';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -9,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
+      title: appName,
       home: ApiProvider(
         api: MockApi(),
         child: const HomePage(),
@@ -33,8 +35,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text(ApiProvider.of(context).api.dateAndTime ?? 'Material App Bar'),
+        title: Text(ApiProvider.of(context).api.dateAndTime ?? appName),
       ),
       body: GestureDetector(
         onTap: () async {
@@ -84,8 +85,9 @@ class MockApi {
 
   Future<String> getDateAndTime() {
     return Future.delayed(
-            const Duration(seconds: 1), () => DateTime.now().toIso8601String())
-        .then((value) {
+      const Duration(seconds: 1),
+      () => DateTime.now().toIso8601String(),
+    ).then((value) {
       dateAndTime = value;
       return value;
     });
