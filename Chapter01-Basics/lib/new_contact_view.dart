@@ -37,12 +37,13 @@ class _NewContactViewState extends State<NewContactView> {
             ),
           ),
           TextButton(
-              onPressed: () {
-                final contact = Contact(name: _controller.text);
-                ContactBook().add(contact: contact);
-                Navigator.pop(context);
-              },
-              child: const Text('Add contact')),
+            onPressed: () {
+              final contact = Contact(name: _controller.text);
+              ContactBook().add(contact: contact);
+              Navigator.pop(context);
+            },
+            child: const Text('Add contact'),
+          ),
         ],
       ),
     );

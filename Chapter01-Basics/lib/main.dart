@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
+      title: 'Contact Book',
       debugShowCheckedModeBanner: false,
       home: const HomePage(),
       routes: {
