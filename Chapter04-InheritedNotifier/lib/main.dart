@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const String appName = 'InheritedNotifier Example';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -8,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Material App',
+      title: appName,
       home: HomPage(),
     );
   }
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
 class SliderData extends ChangeNotifier {
   double _value = 0.0;
   double get value => _value;
+
   set value(double newValue) {
     if (newValue != _value) {
       _value = newValue;
@@ -52,40 +55,42 @@ class HomPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ChangeNotifier & InheritedNotifier Demo'),
+        title: const Text('ChangeNotifier + InheritedNotifier'),
       ),
       body: SliderInheritedNotifier(
         sliderData: sliderData,
-        child: Builder(builder: (context) {
-          return Column(
-            children: [
-              Slider(
-                value: SliderInheritedNotifier.of(context),
-                onChanged: (double value) {
-                  sliderData.value = value;
-                },
-              ),
-              Row(
-                children: [
-                  Opacity(
-                    opacity: SliderInheritedNotifier.of(context),
-                    child: Container(
-                      color: Colors.yellow,
-                      height: 200,
+        child: Builder(
+          builder: (context) {
+            return Column(
+              children: [
+                Slider(
+                  value: SliderInheritedNotifier.of(context),
+                  onChanged: (double value) {
+                    sliderData.value = value;
+                  },
+                ),
+                Row(
+                  children: [
+                    Opacity(
+                      opacity: SliderInheritedNotifier.of(context),
+                      child: Container(
+                        color: Colors.yellow,
+                        height: 200,
+                      ),
                     ),
-                  ),
-                  Opacity(
-                    opacity: SliderInheritedNotifier.of(context),
-                    child: Container(
-                      color: Colors.blue,
-                      height: 200,
+                    Opacity(
+                      opacity: SliderInheritedNotifier.of(context),
+                      child: Container(
+                        color: Colors.blue,
+                        height: 200,
+                      ),
                     ),
-                  ),
-                ].expandequally().toList(),
-              ),
-            ],
-          );
-        }),
+                  ].expandequally().toList(),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
