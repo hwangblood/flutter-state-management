@@ -1,6 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
+
+const String appName = 'Multiple Provider Example';
 
 void main() {
   runApp(
@@ -32,6 +34,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      title: appName,
       home: HomePage(),
     );
   }
@@ -110,7 +113,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('MultiProvider Example'),
+        title: const Text(appName),
       ),
       body: Column(
         children: [

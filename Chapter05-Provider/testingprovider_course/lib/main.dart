@@ -1,15 +1,19 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
+const String appName = 'Provider Example - Breadcrumb';
+
 void main() {
-  runApp(ChangeNotifierProvider(
-    create: (context) => BreadCrumbProvider(),
-    child: const MyApp(),
-  ));
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => BreadCrumbProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Breadcrumb App',
+      title: appName,
       debugShowCheckedModeBanner: false,
       home: const HomePage(),
       routes: {
@@ -110,7 +114,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Material App Bar'),
+        title: const Text(appName),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
