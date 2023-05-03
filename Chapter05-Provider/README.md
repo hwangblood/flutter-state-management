@@ -4,11 +4,7 @@ Provider is a 3rd party package available from pub.dev. This package allows you 
 
 Provider will greatly simplify your state management in your Flutter applications.
 
-## Projects Table of Content
-
-1. testingprovider_course
-1. detailsofprovider_course
-1. mutilprovider_course
+## Example Previews
 
 | testingprovider_course                                       | detailsofprovider_course                                     | mutilprovider_course                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
