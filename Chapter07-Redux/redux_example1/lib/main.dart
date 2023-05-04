@@ -18,6 +18,17 @@ class MyApp extends StatelessWidget {
 
 enum ItemFilter { all, longTexts, shortTexts }
 
+@immutable
+class State {
+  final Iterable<String> items;
+  final ItemFilter itemFilter;
+
+  const State({
+    required this.items,
+    required this.itemFilter,
+  });
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
