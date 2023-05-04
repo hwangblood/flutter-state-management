@@ -96,6 +96,14 @@ Reducer<Iterable<String>> itemsReducer = combineReducers<Iterable<String>>([
   TypedReducer<Iterable<String>, RemoveItemAction>(removeItemReducer),
 ]);
 
+ItemFilter itemFIlterReducer(State oldState, Action action) {
+  if (action is ChangeFilterTypeAction) {
+    return action.filter;
+  } else {
+    return oldState.filter;
+  }
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
