@@ -104,6 +104,11 @@ ItemFilter itemFIlterReducer(State oldState, Action action) {
   }
 }
 
+State appStateReducer(State oldState, action) => State(
+      items: itemsReducer(oldState.items, action),
+      filter: itemFIlterReducer(oldState, action),
+    );
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
