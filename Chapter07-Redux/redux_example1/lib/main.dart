@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
+
 const String appName = 'Redux Example1';
 
 void main() => runApp(const MyApp());
@@ -21,15 +24,15 @@ enum ItemFilter { all, longTexts, shortTexts }
 @immutable
 class State {
   final Iterable<String> items;
-  final ItemFilter itemFilter;
+  final ItemFilter filter;
 
   const State({
     required this.items,
-    required this.itemFilter,
+    required this.filter,
   });
 
   Iterable<String> get filteredItems {
-    switch (itemFilter) {
+    switch (filter) {
       case ItemFilter.all:
         return items;
       case ItemFilter.longTexts:
@@ -84,9 +87,14 @@ Iterable<String> addItemReducer(
 
 Iterable<String> removeItemReducer(
   Iterable<String> previousItems,
-  AddItemAction action,
+  RemoveItemAction action,
 ) =>
     previousItems - action.item;
+
+Reducer<Iterable<String>> itemsReducer = combineReducers<Iterable<String>>([
+  TypedReducer<Iterable<String>, AddItemAction>(addItemReducer),
+  TypedReducer<Iterable<String>, RemoveItemAction>(removeItemReducer),
+]);
 
 class HomePage extends StatelessWidget {
   const HomePage({
