@@ -82,6 +82,12 @@ Iterable<String> addItemReducer(
 ) =>
     previousItems + action.item;
 
+Iterable<String> removeItemReducer(
+  Iterable<String> previousItems,
+  AddItemAction action,
+) =>
+    previousItems - action.item;
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
