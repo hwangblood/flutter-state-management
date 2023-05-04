@@ -68,6 +68,11 @@ class RemoveItemAction extends ItemAction {
   const RemoveItemAction(super.item);
 }
 
+extension AdddRemoveItems<T> on Iterable<T> {
+  Iterable<T> operator +(T other) => followedBy([other]);
+  Iterable<T> operator -(T other) => where((el) => el != other);
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
