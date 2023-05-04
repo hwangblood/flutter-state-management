@@ -40,6 +40,18 @@ class State {
   }
 }
 
+@immutable
+abstract class Action {
+  const Action();
+}
+
+@immutable
+class ChangeFilterTypeAction extends Action {
+  final ItemFilter filter;
+
+  const ChangeFilterTypeAction(this.filter);
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
