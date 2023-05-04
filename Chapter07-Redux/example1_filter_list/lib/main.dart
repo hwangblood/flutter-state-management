@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart' as hooks;
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
-const String appName = 'Redux Example1';
+const String appName = 'Redux Filter List';
 
 void main() {
   final store = Store<State>(
