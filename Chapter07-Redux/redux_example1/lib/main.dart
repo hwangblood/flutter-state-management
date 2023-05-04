@@ -69,9 +69,18 @@ class RemoveItemAction extends ItemAction {
 }
 
 extension AdddRemoveItems<T> on Iterable<T> {
+  /// Add an item to a list
   Iterable<T> operator +(T other) => followedBy([other]);
+
+  /// Remove items from a list
   Iterable<T> operator -(T other) => where((el) => el != other);
 }
+
+Iterable<String> addItemReducer(
+  Iterable<String> previousItems,
+  AddItemAction action,
+) =>
+    previousItems + action.item;
 
 class HomePage extends StatelessWidget {
   const HomePage({
