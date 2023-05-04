@@ -27,6 +27,17 @@ class State {
     required this.items,
     required this.itemFilter,
   });
+
+  Iterable<String> get filteredItems {
+    switch (itemFilter) {
+      case ItemFilter.all:
+        return items;
+      case ItemFilter.longTexts:
+        return items.where((element) => element.length > 10);
+      case ItemFilter.shortTexts:
+        return items.where((element) => element.length <= 5);
+    }
+  }
 }
 
 class HomePage extends StatelessWidget {
