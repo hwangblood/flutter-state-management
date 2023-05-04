@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_hooks/flutter_hooks.dart' as hooks;
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 const String appName = 'Redux Example1';
 
-void main() => runApp(const MyApp());
+void main() {
+  final store = Store<State>(
+    appStateReducer,
+    initialState: const State(items: [], filter: ItemFilter.all),
+  );
+
+  runApp(
+    StoreProvider(
+      store: store,
+      child: const MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -56,7 +69,7 @@ class ChangeFilterTypeAction extends Action {
 }
 
 @immutable
-abstract class ItemAction {
+abstract class ItemAction extends Action {
   final String item;
   const ItemAction(this.item);
 }
@@ -109,19 +122,111 @@ State appStateReducer(State oldState, action) => State(
       filter: itemFIlterReducer(oldState, action),
     );
 
-class HomePage extends StatelessWidget {
+class HomePage extends hooks.HookWidget {
   const HomePage({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final textController = hooks.useTextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text(appName),
       ),
-      body: const Center(
-        child: Text('Hello World'),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              StoreConnector<State, VoidCallback>(
+                converter: (Store<dynamic> store) {
+                  return () => store.dispatch(
+                        const ChangeFilterTypeAction(ItemFilter.all),
+                      );
+                },
+                builder: (context, callback) {
+                  return TextButton(
+                    onPressed: callback,
+                    child: const Text('All'),
+                  );
+                },
+              ),
+              StoreConnector<State, VoidCallback>(
+                converter: (Store<dynamic> store) {
+                  return () => store.dispatch(
+                        const ChangeFilterTypeAction(ItemFilter.shortTexts),
+                      );
+                },
+                builder: (context, callback) {
+                  return TextButton(
+                    onPressed: callback,
+                    child: const Text('Short Items'),
+                  );
+                },
+              ),
+              StoreConnector<State, VoidCallback>(
+                converter: (Store<dynamic> store) {
+                  return () => store.dispatch(
+                        const ChangeFilterTypeAction(ItemFilter.longTexts),
+                      );
+                },
+                builder: (context, callback) {
+                  return TextButton(
+                    onPressed: callback,
+                    child: const Text('Long Items'),
+                  );
+                },
+              ),
+            ],
+          ),
+          TextField(
+            controller: textController,
+          ),
+          Row(
+            children: [
+              StoreConnector<State, VoidCallback>(
+                converter: (Store<dynamic> store) {
+                  final text = textController.text.trim();
+                  return () => store.dispatch(
+                        AddItemAction(text),
+                      );
+                },
+                builder: (context, callback) {
+                  return TextButton(
+                    onPressed: () {
+                      callback();
+                      textController.clear();
+                    },
+                    child: const Text('Add'),
+                  );
+                },
+              ),
+              StoreConnector<State, VoidCallback>(
+                converter: (Store<State> store) {
+                  final text = textController.text.trim();
+                  return () => store.dispatch(
+                        RemoveItemAction(text),
+                      );
+                },
+                builder: (context, callback) {
+                  return TextButton(
+                    onPressed: () {
+                      callback();
+                      textController.clear();
+                    },
+                    child: const Text('Remove'),
+                  );
+                },
+              ),
+            ],
+          ),
+          StoreConnector<State, Iterable<String>>(
+            converter: (store) => store.state.filteredItems,
+            builder: (context, items) {
+              return Text('items count: ${items.length}');
+            },
+          ),
+        ],
       ),
     );
   }
