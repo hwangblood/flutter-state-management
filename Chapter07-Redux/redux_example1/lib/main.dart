@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+enum ItemFilter { all, longTexts, shortTexts }
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
