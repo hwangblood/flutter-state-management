@@ -223,7 +223,25 @@ class HomePage extends hooks.HookWidget {
           StoreConnector<State, Iterable<String>>(
             converter: (store) => store.state.filteredItems,
             builder: (context, items) {
-              return Text('items count: ${items.length}');
+              return Expanded(
+                child: Column(
+                  children: [
+                    Text('items count: ${items.length}'),
+                    Expanded(
+                      child: ListView.separated(
+                        itemCount: items.length,
+                        itemBuilder: ((context, index) {
+                          final item = items.elementAt(index);
+                          return ListTile(
+                            title: Text(item),
+                          );
+                        }),
+                        separatorBuilder: (_, __) => const Divider(),
+                      ),
+                    ),
+                  ],
+                ),
+              );
             },
           ),
         ],
