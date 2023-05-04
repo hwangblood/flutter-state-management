@@ -52,6 +52,22 @@ class ChangeFilterTypeAction extends Action {
   const ChangeFilterTypeAction(this.filter);
 }
 
+@immutable
+abstract class ItemAction {
+  final String item;
+  const ItemAction(this.item);
+}
+
+@immutable
+class AddItemAction extends ItemAction {
+  const AddItemAction(super.item);
+}
+
+@immutable
+class RemoveItemAction extends ItemAction {
+  const RemoveItemAction(super.item);
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
