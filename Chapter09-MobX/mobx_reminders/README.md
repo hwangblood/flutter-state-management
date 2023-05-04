@@ -1,16 +1,37 @@
-# mobx_reminders
+# MobX Reminders
 
 A new Flutter project.
 
-## Getting Started
+## Setup Firebase
 
-This project is a starting point for a Flutter application.
+1. Create a FIrebase project for this app in Firebase Console
 
-A few resources to get you started if this is your first Flutter project:
+2. Enable **Email/Password** Sign-in method
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3. Enable **Cloud Firestore** Databse, and set the database rules like bellow:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+   ```
+   rules_version = '2';
+   service cloud.firestore {
+     match /databases/{database}/documents {
+       match /{collection}/{document=**} {
+       	function isCollectionOwner(collectionId) {
+         	return request.auth != null && request.auth.uid == collectionId;
+         }
+         // the update rule includes delete rule, so the delete rule in no-need here
+         allow create, read, update, write, delete: if isCollectionOwner(collection);
+       }
+     }
+   }
+   ```
+
+4. ...
+
+## Run app
+
+```shell
+flutter pub get
+
+flutter run
+```
+

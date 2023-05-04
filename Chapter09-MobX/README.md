@@ -12,11 +12,11 @@ I have deleted the Firebase project backing this app for security reasons so bef
 
 
 
-| Name      | Description                    | Features | Preview |
-| --------- | ------------------------------ | -------- | ------- |
-| Reminders | A CRUD app works with Firebase |          |         |
-|           |                                |          |         |
-|           |                                |          |         |
+| Name                          | Description                    | Features | Preview |
+| ----------------------------- | ------------------------------ | -------- | ------- |
+| [Reminders](./mobx_reminders) | A CRUD app works with Firebase |          |         |
+|                               |                                |          |         |
+|                               |                                |          |         |
 
 ## Resrouses
 
