@@ -1,6 +1,6 @@
 # MobX Reminders
 
-A new Flutter project.
+A Flutter CRUD Reminders App built with [MobX](https://mobx.netlify.app/) and Firebase.
 
 ## Setup Firebase
 
@@ -34,4 +34,3 @@ flutter pub get
 
 flutter run
 ```
-
