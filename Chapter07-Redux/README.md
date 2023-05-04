@@ -9,6 +9,14 @@ Redux is a third party package that you can bring into your Flutter applications
 
 In this chapter we will have a look at integrating Redux and Flutter Redux packages into our Flutter application by looking at 3 separate examples.
 
-# Source Code
+## Preview Examples
+
+| Name                         | Description                                   | Preview |
+| ---------------------------- | --------------------------------------------- | ------- |
+| [Example1](./redux_example1) | Hold onto a list, and add/remove/filter items |         |
+| Example2                     |                                               |         |
+| Example3                     |                                               |         |
+
+## Source Code
 
 Checkout [youtube-course-redux](https://github.com/vandadnp/youtube-course-redux) repository of this course by [Vandad Nahavandipoor](https://www.youtube.com/@VandadNP)
