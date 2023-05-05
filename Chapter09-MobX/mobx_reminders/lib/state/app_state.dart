@@ -101,6 +101,7 @@ abstract class AppStateBase with Store {
       reminders.clear();
       return true;
     } on FirebaseAuthException catch (e) {
+      currentUser = null;
       authError = AuthError.from(e);
       return false;
     } catch (_) {
@@ -120,6 +121,7 @@ abstract class AppStateBase with Store {
       currentScreen = AppScreen.login;
       reminders.clear();
     } on FirebaseAuthException catch (e) {
+      currentUser = null;
       authError = AuthError.from(e);
     } catch (_) {
       // we are ignoring the error here
@@ -204,7 +206,7 @@ abstract class AppStateBase with Store {
     }
   }
 
-  /// Initialize app's state
+  /// Initialize app's state, only be called when launch the app
   @action
   Future<void> initialize() async {
     isLoading = true;
@@ -214,7 +216,8 @@ abstract class AppStateBase with Store {
       currentScreen = AppScreen.login;
     }
     // load the reminders from Cloud Firestore
-    final loadResult = await _loadReminder();
+    // ignore: unused_local_variable
+    final loadResult = await _loadData();
     currentScreen = AppScreen.reminders;
     // TODO: check loading reminders is successful or not, and do some special operation for different result
     // if (loadResult) {
@@ -229,7 +232,7 @@ abstract class AppStateBase with Store {
 
   /// Load the reminders from Cloud Firestore
   @action
-  Future<bool> _loadReminder() async {
+  Future<bool> _loadData() async {
     final userId = currentUser?.uid;
     if (userId == null) {
       return false;
@@ -251,6 +254,35 @@ abstract class AppStateBase with Store {
       return true;
     } catch (_) {
       return false;
+    }
+  }
+
+  /// Login or register user
+  @action
+  Future<bool> _loginOrRegister({
+    required LoginOrRegisterFunction fn,
+    required String email,
+    required String password,
+  }) async {
+    authError = null;
+    isLoading = true;
+
+    try {
+      await fn(email: email, password: password);
+      currentUser = FirebaseAuth.instance.currentUser;
+      await _loadData();
+      return true;
+    } on FirebaseAuthException catch (e) {
+      authError = null;
+      authError = AuthError.from(e);
+      return false;
+    } catch (_) {
+      return false;
+    } finally {
+      isLoading = false;
+      if (currentUser != null) {
+        currentScreen = AppScreen.reminders;
+      }
     }
   }
 }

@@ -12,6 +12,8 @@ A Flutter CRUD Reminders App built with [MobX](https://mobx.netlify.app/) and Fi
 
 [02:02:10](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=7330) Action for logging in or registering
 
+[02:07:50](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=7670) Action for registering
+
 ## Setup Firebase
 
 1. Create a FIrebase project for this app in Firebase Console
