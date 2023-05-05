@@ -37,7 +37,7 @@ abstract class AppStateBase with Store {
     currentScreen = screen;
   }
 
-  /// Delete a reminder from Cloud Firestore and local state
+  /// Delete a reminder from Cloud Firestore and app's state
   @action
   Future<bool> deleteReminder(Reminder reminder) async {
     isLoading = true;
@@ -128,6 +128,7 @@ abstract class AppStateBase with Store {
     }
   }
 
+  /// Create a reminder to Cloud Firestore and app's state
   @action
   Future<bool> createReminder(String text) async {
     isLoading = true;
@@ -160,6 +161,46 @@ abstract class AppStateBase with Store {
       return false;
     } finally {
       isLoading = false;
+    }
+  }
+
+  /// Modify a reminder is done or not
+  ///
+  /// And the isLoading state is not needed for this case
+  @action
+  Future<bool> modify(
+    Reminder reminder, {
+    required bool isDone,
+  }) async {
+    final userId = currentUser?.uid;
+    if (userId == null) {
+      return false;
+    }
+
+    try {
+      // update the remote reminder
+      final colletion =
+          await FirebaseFirestore.instance.collection(userId).get();
+      final storedReminder = colletion.docs
+          .firstWhere(
+            (element) => element.id == reminder.id,
+          )
+          .reference;
+      await storedReminder.update({
+        _DocumentKeys.isDone: isDone,
+      });
+
+      // update the local reminder
+      reminders
+          .firstWhere(
+            (element) => element.id == reminder.id,
+          )
+          .isDone = isDone;
+
+      // update app state
+      return true;
+    } catch (e) {
+      return false;
     }
   }
 }

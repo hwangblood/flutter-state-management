@@ -2,6 +2,12 @@
 
 A Flutter CRUD Reminders App built with [MobX](https://mobx.netlify.app/) and Firebase.
 
+## Timestamp
+
+[01:48:13](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=6493) Define action for setting reminders as done
+
+[01:55:24](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=6924) Initialize our app state
+
 ## Setup Firebase
 
 1. Create a FIrebase project for this app in Firebase Console
