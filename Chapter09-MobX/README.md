@@ -10,8 +10,6 @@ I have deleted the Firebase project backing this app for security reasons so bef
 
 ## Preview Examples
 
-
-
 | Name                          | Description                    | Features | Preview |
 | ----------------------------- | ------------------------------ | -------- | ------- |
 | [Reminders](./mobx_reminders) | A CRUD app works with Firebase |          |         |
