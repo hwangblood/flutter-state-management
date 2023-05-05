@@ -6,7 +6,11 @@ A Flutter CRUD Reminders App built with [MobX](https://mobx.netlify.app/) and Fi
 
 [01:48:13](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=6493) Define action for setting reminders as done
 
-[01:55:24](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=6924) Initialize our app state
+[01:55:24](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=6924) Initialization of our app state
+
+[01:58:03](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=7083) Private action for loading reminders
+
+[02:02:10](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=7330) Action for logging in or registering
 
 ## Setup Firebase
 

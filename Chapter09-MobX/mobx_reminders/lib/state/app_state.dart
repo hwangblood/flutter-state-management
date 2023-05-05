@@ -203,6 +203,56 @@ abstract class AppStateBase with Store {
       return false;
     }
   }
+
+  /// Initialize app's state
+  @action
+  Future<void> initialize() async {
+    isLoading = true;
+    currentUser = FirebaseAuth.instance.currentUser;
+
+    if (currentUser == null) {
+      currentScreen = AppScreen.login;
+    }
+    // load the reminders from Cloud Firestore
+    final loadResult = await _loadReminder();
+    currentScreen = AppScreen.reminders;
+    // TODO: check loading reminders is successful or not, and do some special operation for different result
+    // if (loadResult) {
+    // loading successful, navgate user to reminders screen
+    // } else {
+    // loading failed, should show error message to user, or more
+    // }
+
+    // close loading state
+    isLoading = false;
+  }
+
+  /// Load the reminders from Cloud Firestore
+  @action
+  Future<bool> _loadReminder() async {
+    final userId = currentUser?.uid;
+    if (userId == null) {
+      return false;
+    }
+
+    try {
+      final collection =
+          await FirebaseFirestore.instance.collection(userId).get();
+      final storedReminders = collection.docs.map(
+        (doc) => Reminder(
+          id: doc.id,
+          createAt: DateTime.parse(doc[_DocumentKeys.createAt] as String),
+          text: doc[_DocumentKeys.text] as String,
+          isDone: doc[_DocumentKeys.isDone] as bool,
+        ),
+      );
+      // update the app state
+      reminders = ObservableList.of(storedReminders);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
 }
 
 abstract class _DocumentKeys {
