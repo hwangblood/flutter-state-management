@@ -127,6 +127,41 @@ abstract class AppStateBase with Store {
       isLoading = false;
     }
   }
+
+  @action
+  Future<bool> createReminder(String text) async {
+    isLoading = true;
+    final userId = currentUser?.uid;
+    if (userId == null) {
+      isLoading = false;
+      return false;
+    }
+
+    try {
+      final createAt = DateTime.now();
+      // create the firestore reminder
+      final firestoreReminder =
+          await FirebaseFirestore.instance.collection(userId).add({
+        _DocumentKeys.text: text,
+        _DocumentKeys.createAt: createAt,
+        _DocumentKeys.isDone: false,
+      });
+      // create locally reminder
+      final reminder = Reminder(
+        id: firestoreReminder.id,
+        createAt: createAt,
+        text: text,
+        isDone: false,
+      );
+      // update app state
+      reminders.add(reminder);
+      return true;
+    } catch (e) {
+      return false;
+    } finally {
+      isLoading = false;
+    }
+  }
 }
 
 abstract class _DocumentKeys {
