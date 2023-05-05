@@ -97,6 +97,28 @@ mixin _$AppState on AppStateBase, Store {
     });
   }
 
+  late final _$deleteAsyncAction =
+      AsyncAction('AppStateBase.delete', context: context);
+
+  @override
+  Future<bool> delete(Reminder reminder) {
+    return _$deleteAsyncAction.run(() => super.delete(reminder));
+  }
+
+  late final _$AppStateBaseActionController =
+      ActionController(name: 'AppStateBase', context: context);
+
+  @override
+  void navigateTo(AppScreen screen) {
+    final _$actionInfo = _$AppStateBaseActionController.startAction(
+        name: 'AppStateBase.navigateTo');
+    try {
+      return super.navigateTo(screen);
+    } finally {
+      _$AppStateBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

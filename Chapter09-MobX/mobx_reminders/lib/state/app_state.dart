@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobx/mobx.dart';
 import 'package:mobx_reminders/state/auth_error.dart';
@@ -29,6 +30,45 @@ abstract class AppStateBase with Store {
   ObservableList<Reminder> get sortedReminders => ObservableList.of(
         reminders.sorted(),
       );
+
+  @action
+  void navigateTo(AppScreen screen) {
+    // observable field can only be change in function with action annotation
+    currentScreen = screen;
+  }
+
+  @action
+  Future<bool> delete(Reminder reminder) async {
+    isLoading = true;
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+
+    if (user == null) {
+      isLoading = false;
+      return false;
+    }
+
+    final String userId = user.uid;
+    final colletion = await FirebaseFirestore.instance.collection(userId).get();
+
+    try {
+      // delete from Cloud Firestore
+      final storedReminder = colletion.docs.firstWhere(
+        (doc) => doc.id == reminder.id,
+      );
+      await storedReminder.reference.delete();
+      // delete locally as well
+      reminders.removeWhere(
+        (element) => element.id == reminder.id,
+      );
+      // delete action successfully
+      return true;
+    } catch (_) {
+      return false;
+    } finally {
+      isLoading = false;
+    }
+  }
 }
 
 abstract class _DocumentKeys {
