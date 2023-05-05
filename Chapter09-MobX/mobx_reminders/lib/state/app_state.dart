@@ -37,12 +37,13 @@ abstract class AppStateBase with Store {
     currentScreen = screen;
   }
 
+  /// Delete a reminder from Cloud Firestore and local state
   @action
-  Future<bool> delete(Reminder reminder) async {
+  Future<bool> deleteReminder(Reminder reminder) async {
     isLoading = true;
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
-
+    // if user not logged in, can't delete any reminders
     if (user == null) {
       isLoading = false;
       return false;
@@ -63,6 +64,44 @@ abstract class AppStateBase with Store {
       );
       // delete action successfully
       return true;
+    } catch (_) {
+      return false;
+    } finally {
+      isLoading = false;
+    }
+  }
+
+  /// Delete current user account, which also deletes all reminders of the user
+  @action
+  Future<bool> deleteAccount() async {
+    isLoading = true;
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    if (user == null) {
+      isLoading = false;
+      return false;
+    }
+
+    final String userId = user.uid;
+    try {
+      final firestore = FirebaseFirestore.instance;
+      final operation = firestore.batch();
+      final collection = await firestore.collection(userId).get();
+      for (final document in collection.docs) {
+        operation.delete(document.reference);
+      }
+      // delete all reminders for current user on Firebase
+      await operation.commit();
+      // delete the current user
+      await user.delete();
+      // log the current user out
+      await auth.signOut();
+      // update app state
+      currentScreen = AppScreen.login;
+      return true;
+    } on FirebaseAuthException catch (e) {
+      authError = AuthError.from(e);
+      return false;
     } catch (_) {
       return false;
     } finally {

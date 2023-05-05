@@ -101,8 +101,8 @@ mixin _$AppState on AppStateBase, Store {
       AsyncAction('AppStateBase.delete', context: context);
 
   @override
-  Future<bool> delete(Reminder reminder) {
-    return _$deleteAsyncAction.run(() => super.delete(reminder));
+  Future<bool> deleteReminder(Reminder reminder) {
+    return _$deleteAsyncAction.run(() => super.deleteReminder(reminder));
   }
 
   late final _$AppStateBaseActionController =
