@@ -35,3 +35,5 @@ extension Sorted on Iterable<Reminder> {
       return a.createAt.compareTo(b.createAt);
     });
 }
+
+enum AppScreens { login, register, reminders }
