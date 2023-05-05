@@ -98,12 +98,31 @@ abstract class AppStateBase with Store {
       await auth.signOut();
       // update app state
       currentScreen = AppScreen.login;
+      reminders.clear();
       return true;
     } on FirebaseAuthException catch (e) {
       authError = AuthError.from(e);
       return false;
     } catch (_) {
       return false;
+    } finally {
+      isLoading = false;
+    }
+  }
+
+  /// Logout the current user
+  @action
+  Future<void> logout() async {
+    isLoading = true;
+    try {
+      await FirebaseAuth.instance.signOut();
+      // update app state
+      currentScreen = AppScreen.login;
+      reminders.clear();
+    } on FirebaseAuthException catch (e) {
+      authError = AuthError.from(e);
+    } catch (_) {
+      // we are ignoring the error here
     } finally {
       isLoading = false;
     }
