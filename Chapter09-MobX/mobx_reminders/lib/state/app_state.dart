@@ -1,5 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mobx/mobx.dart';
+import 'package:mobx_reminders/state/auth_error.dart';
 import 'package:mobx_reminders/state/reminder.dart';
+
+part 'app_state.g.dart';
+
+class AppState = AppStateBase with _$AppState;
+
+abstract class AppStateBase with Store {
+  @observable
+  AppScreen currentScreen = AppScreen.login;
+
+  @observable
+  bool isLoading = false;
+
+  @observable
+  User? currentUser;
+
+  @observable
+  AuthError? authError;
+
+  /// Observe all reminders, and it default be empty [ObservableList]
+  @observable
+  ObservableList<Reminder> reminders = ObservableList<Reminder>();
+
+  /// Sorted reminder list, it is also [ObservableList]
+  @computed
+  ObservableList<Reminder> get sortedReminders => ObservableList.of(
+        reminders.sorted(),
+      );
+}
 
 abstract class _DocumentKeys {
   static const String text = 'text';
@@ -36,4 +66,4 @@ extension Sorted on Iterable<Reminder> {
     });
 }
 
-enum AppScreens { login, register, reminders }
+enum AppScreen { login, register, reminders }
