@@ -20,6 +20,8 @@ A Flutter CRUD Reminders App built with [MobX](https://mobx.netlify.app/) and Fi
 
 [02:10:33](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=7833) Bring delete-account dialog into project
 
+[02:13:46](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8026) Bring log-out dialog into project
+
 ## Setup Firebase
 
 1. Create a FIrebase project for this app in Firebase Console
