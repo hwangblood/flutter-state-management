@@ -32,7 +32,9 @@ A Flutter CRUD Reminders App built with [MobX](https://mobx.netlify.app/) and Fi
 
 [02:26:56](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8816) IfDebugging String Extension
 
-[02:27:28](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8848) Bring loading-overlay into project
+[02:27:28](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8848) Bring loading screen and controller into project
+
+[02:32:29](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=9149) Create the login view(screen)
 
 ## Setup Firebase
 
