@@ -193,6 +193,17 @@ mixin _$AppState on AppStateBase, Store {
   }
 
   @override
+  Future<bool> login({required String email, required String password}) {
+    final _$actionInfo =
+        _$AppStateBaseActionController.startAction(name: 'AppStateBase.login');
+    try {
+      return super.login(email: email, password: password);
+    } finally {
+      _$AppStateBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 currentScreen: ${currentScreen},

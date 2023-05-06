@@ -297,6 +297,18 @@ abstract class AppStateBase with Store {
         email: email,
         password: password,
       );
+
+  /// Log a user account in with email and pasword by [FirebaseAuth]
+  @action
+  Future<bool> login({
+    required String email,
+    required String password,
+  }) =>
+      _loginOrRegister(
+        fn: FirebaseAuth.instance.signInWithEmailAndPassword,
+        email: email,
+        password: password,
+      );
 }
 
 abstract class _DocumentKeys {
