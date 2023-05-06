@@ -30,6 +30,10 @@ A Flutter CRUD Reminders App built with [MobX](https://mobx.netlify.app/) and Fi
 
 [02:25:09](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8709) We are done with dialogs, next things to do?
 
+[02:26:56](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8816) IfDebugging String Extension
+
+[02:27:28](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8848) Bring loading-overlay into project
+
 ## Setup Firebase
 
 1. Create a FIrebase project for this app in Firebase Console
