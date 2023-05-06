@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobx/mobx.dart';
-import 'package:mobx_reminders/state/auth_error.dart';
+import 'package:mobx_reminders/errors/auth_error.dart';
 import 'package:mobx_reminders/state/reminder.dart';
 
 part 'app_state.g.dart';
