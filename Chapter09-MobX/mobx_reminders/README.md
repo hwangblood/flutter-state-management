@@ -28,6 +28,8 @@ A Flutter CRUD Reminders App built with [MobX](https://mobx.netlify.app/) and Fi
 
 [02:16:30](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8190) Create text-filed dialog for creating reminder
 
+[02:25:09](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8709) We are done with dialogs, next things to do?
+
 ## Setup Firebase
 
 1. Create a FIrebase project for this app in Firebase Console
