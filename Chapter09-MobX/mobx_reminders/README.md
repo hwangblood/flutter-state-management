@@ -24,7 +24,9 @@ A Flutter CRUD Reminders App built with [MobX](https://mobx.netlify.app/) and Fi
 
 [02:14:08](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8048) Bring auth-error dialog into project
 
-[02:15:18](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8118) Bring delete-reminder dialog into project
+[02:15:18](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8118) Create dialog for deleting reminder
+
+[02:16:30](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=8190) Create text-filed dialog for creating reminder
 
 ## Setup Firebase
 
