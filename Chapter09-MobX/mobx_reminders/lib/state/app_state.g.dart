@@ -97,12 +97,74 @@ mixin _$AppState on AppStateBase, Store {
     });
   }
 
-  late final _$deleteAsyncAction =
-      AsyncAction('AppStateBase.delete', context: context);
+  late final _$deleteReminderAsyncAction =
+      AsyncAction('AppStateBase.deleteReminder', context: context);
 
   @override
   Future<bool> deleteReminder(Reminder reminder) {
-    return _$deleteAsyncAction.run(() => super.deleteReminder(reminder));
+    return _$deleteReminderAsyncAction
+        .run(() => super.deleteReminder(reminder));
+  }
+
+  late final _$deleteAccountAsyncAction =
+      AsyncAction('AppStateBase.deleteAccount', context: context);
+
+  @override
+  Future<bool> deleteAccount() {
+    return _$deleteAccountAsyncAction.run(() => super.deleteAccount());
+  }
+
+  late final _$logoutAsyncAction =
+      AsyncAction('AppStateBase.logout', context: context);
+
+  @override
+  Future<void> logout() {
+    return _$logoutAsyncAction.run(() => super.logout());
+  }
+
+  late final _$createReminderAsyncAction =
+      AsyncAction('AppStateBase.createReminder', context: context);
+
+  @override
+  Future<bool> createReminder(String text) {
+    return _$createReminderAsyncAction.run(() => super.createReminder(text));
+  }
+
+  late final _$modifyAsyncAction =
+      AsyncAction('AppStateBase.modify', context: context);
+
+  @override
+  Future<bool> modify(Reminder reminder, {required bool isDone}) {
+    return _$modifyAsyncAction
+        .run(() => super.modify(reminder, isDone: isDone));
+  }
+
+  late final _$initializeAsyncAction =
+      AsyncAction('AppStateBase.initialize', context: context);
+
+  @override
+  Future<void> initialize() {
+    return _$initializeAsyncAction.run(() => super.initialize());
+  }
+
+  late final _$_loadDataAsyncAction =
+      AsyncAction('AppStateBase._loadData', context: context);
+
+  @override
+  Future<bool> _loadData() {
+    return _$_loadDataAsyncAction.run(() => super._loadData());
+  }
+
+  late final _$_loginOrRegisterAsyncAction =
+      AsyncAction('AppStateBase._loginOrRegister', context: context);
+
+  @override
+  Future<bool> _loginOrRegister(
+      {required LoginOrRegisterFunction fn,
+      required String email,
+      required String password}) {
+    return _$_loginOrRegisterAsyncAction.run(
+        () => super._loginOrRegister(fn: fn, email: email, password: password));
   }
 
   late final _$AppStateBaseActionController =
@@ -114,6 +176,17 @@ mixin _$AppState on AppStateBase, Store {
         name: 'AppStateBase.navigateTo');
     try {
       return super.navigateTo(screen);
+    } finally {
+      _$AppStateBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  Future<bool> register({required String email, required String password}) {
+    final _$actionInfo = _$AppStateBaseActionController.startAction(
+        name: 'AppStateBase.register');
+    try {
+      return super.register(email: email, password: password);
     } finally {
       _$AppStateBaseActionController.endAction(_$actionInfo);
     }

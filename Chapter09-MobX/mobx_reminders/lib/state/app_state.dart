@@ -285,6 +285,18 @@ abstract class AppStateBase with Store {
       }
     }
   }
+
+  /// Create a user account with email and pasword by [FirebaseAuth]
+  @action
+  Future<bool> register({
+    required String email,
+    required String password,
+  }) =>
+      _loginOrRegister(
+        fn: FirebaseAuth.instance.createUserWithEmailAndPassword,
+        email: email,
+        password: password,
+      );
 }
 
 abstract class _DocumentKeys {
