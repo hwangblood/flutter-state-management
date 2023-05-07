@@ -162,7 +162,7 @@ abstract class AppStateBase with Store {
       final firestoreReminder =
           await FirebaseFirestore.instance.collection(userId).add({
         _DocumentKeys.text: text,
-        _DocumentKeys.createAt: createAt,
+        _DocumentKeys.createAt: createAt.toIso8601String(),
         _DocumentKeys.isDone: false,
       });
       // create locally reminder
@@ -230,20 +230,21 @@ abstract class AppStateBase with Store {
 
     if (currentUser == null) {
       navigateToLogin();
+      isLoading = false;
+      return;
     }
     // load the reminders from Cloud Firestore
     // ignore: unused_local_variable
-    final loadResult = await _loadData();
-    navigateToReminders();
-    // TODO: check loading reminders is successful or not, and do some special operation for different result
+    final dataResult = await _loadData();
+    // TODO: check loaded reminders is successful or not, and do some special operation for different result
     // if (loadResult) {
     // loading successful, navgate user to reminders screen
     // } else {
     // loading failed, should show error message to user, or more
     // }
 
-    // close loading state
     isLoading = false;
+    navigateToReminders();
   }
 
   /// Load the reminders from Cloud Firestore
@@ -286,13 +287,14 @@ abstract class AppStateBase with Store {
     try {
       await fn(email: email, password: password);
       currentUser = FirebaseAuth.instance.currentUser;
+      // if the user isn't logged in app, can't be able to load data
+      if (currentUser == null) {
+        throw Exception('Unknown error');
+      }
       await _loadData();
       return true;
     } on FirebaseAuthException catch (e) {
-      authError = null;
       authError = AuthError.from(e);
-      return false;
-    } catch (_) {
       return false;
     } finally {
       isLoading = false;

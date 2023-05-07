@@ -21,7 +21,11 @@ class ReminderListView extends StatelessWidget {
           },
           itemBuilder: (BuildContext context, int index) {
             final reminder = appState.sortedReminders.elementAt(index);
-            return ReminderListTile(reminder: reminder);
+            return Observer(
+              builder: (context) {
+                return ReminderListTile(reminder: reminder);
+              },
+            );
           },
         );
       },

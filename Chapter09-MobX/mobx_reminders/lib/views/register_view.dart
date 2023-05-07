@@ -19,43 +19,47 @@ class RegisterView extends HookWidget {
     );
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Register'),
       ),
-      body: Column(
-        children: [
-          TextField(
-            controller: emailController,
-            decoration: const InputDecoration(
-              hintText: 'Enter your email here...',
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: emailController,
+              decoration: const InputDecoration(
+                hintText: 'Enter your email here...',
+              ),
+              keyboardType: TextInputType.emailAddress,
             ),
-            keyboardType: TextInputType.emailAddress,
-          ),
-          TextField(
-            controller: passwordController,
-            decoration: const InputDecoration(
-              hintText: 'Enter your password here...',
+            TextField(
+              controller: passwordController,
+              decoration: const InputDecoration(
+                hintText: 'Enter your password here...',
+              ),
+              obscureText: true,
+              obscuringCharacter: '◉',
             ),
-            obscureText: true,
-            obscuringCharacter: '◉',
-          ),
-          TextButton(
-            onPressed: () {
-              final email = emailController.text;
-              final password = passwordController.text;
-              context.read<AppState>().register(
-                    email: email,
-                    password: password,
-                  );
-            },
-            child: const Text('Register'),
-          ),
-          TextButton(
-            onPressed: () {
-              context.read<AppState>().navigateToLogin();
-            },
-            child: const Text('Already registered? Log in here!'),
-          ),
-        ],
+            TextButton(
+              onPressed: () {
+                final email = emailController.text;
+                final password = passwordController.text;
+                context.read<AppState>().register(
+                      email: email,
+                      password: password,
+                    );
+              },
+              child: const Text('Register'),
+            ),
+            TextButton(
+              onPressed: () {
+                context.read<AppState>().navigateToLogin();
+              },
+              child: const Text('Already registered? Log in here!'),
+            ),
+          ],
+        ),
       ),
     );
   }
