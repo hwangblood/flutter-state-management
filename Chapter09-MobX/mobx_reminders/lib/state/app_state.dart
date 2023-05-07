@@ -33,9 +33,24 @@ abstract class AppStateBase with Store {
       );
 
   @action
-  void navigateTo(AppScreen screen) {
+  void _navigateTo(AppScreen screen) {
     // observable field can only be change in function with action annotation
     currentScreen = screen;
+  }
+
+  @action
+  void navigateToLogin() {
+    _navigateTo(AppScreen.login);
+  }
+
+  @action
+  void navigateToRegister() {
+    _navigateTo(AppScreen.register);
+  }
+
+  @action
+  void navigateToReminders() {
+    _navigateTo(AppScreen.reminders);
   }
 
   /// Delete a reminder from Cloud Firestore and app's state
@@ -98,7 +113,7 @@ abstract class AppStateBase with Store {
       // log the current user out
       await auth.signOut();
       // update app state
-      currentScreen = AppScreen.login;
+      navigateToLogin();
       reminders.clear();
       return true;
     } on FirebaseAuthException catch (e) {
@@ -119,7 +134,7 @@ abstract class AppStateBase with Store {
     try {
       await FirebaseAuth.instance.signOut();
       // update app state
-      currentScreen = AppScreen.login;
+      navigateToLogin();
       reminders.clear();
     } on FirebaseAuthException catch (e) {
       currentUser = null;
@@ -214,12 +229,12 @@ abstract class AppStateBase with Store {
     currentUser = FirebaseAuth.instance.currentUser;
 
     if (currentUser == null) {
-      currentScreen = AppScreen.login;
+      navigateToLogin();
     }
     // load the reminders from Cloud Firestore
     // ignore: unused_local_variable
     final loadResult = await _loadData();
-    currentScreen = AppScreen.reminders;
+    navigateToReminders();
     // TODO: check loading reminders is successful or not, and do some special operation for different result
     // if (loadResult) {
     // loading successful, navgate user to reminders screen
@@ -282,7 +297,7 @@ abstract class AppStateBase with Store {
     } finally {
       isLoading = false;
       if (currentUser != null) {
-        currentScreen = AppScreen.reminders;
+        navigateToReminders();
       }
     }
   }

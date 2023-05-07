@@ -171,11 +171,44 @@ mixin _$AppState on AppStateBase, Store {
       ActionController(name: 'AppStateBase', context: context);
 
   @override
-  void navigateTo(AppScreen screen) {
+  void _navigateTo(AppScreen screen) {
     final _$actionInfo = _$AppStateBaseActionController.startAction(
-        name: 'AppStateBase.navigateTo');
+        name: 'AppStateBase._navigateTo');
     try {
-      return super.navigateTo(screen);
+      return super._navigateTo(screen);
+    } finally {
+      _$AppStateBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void navigateToLogin() {
+    final _$actionInfo = _$AppStateBaseActionController.startAction(
+        name: 'AppStateBase.navigateToLogin');
+    try {
+      return super.navigateToLogin();
+    } finally {
+      _$AppStateBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void navigateToRegister() {
+    final _$actionInfo = _$AppStateBaseActionController.startAction(
+        name: 'AppStateBase.navigateToRegister');
+    try {
+      return super.navigateToRegister();
+    } finally {
+      _$AppStateBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void navigateToReminders() {
+    final _$actionInfo = _$AppStateBaseActionController.startAction(
+        name: 'AppStateBase.navigateToReminders');
+    try {
+      return super.navigateToReminders();
     } finally {
       _$AppStateBaseActionController.endAction(_$actionInfo);
     }
