@@ -6,8 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:mobx_reminders/extensions/if_debugging.dart';
 import 'package:mobx_reminders/state/app_state.dart';
 
-class LoginView extends HookWidget {
-  const LoginView({super.key});
+class RegisterView extends HookWidget {
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class LoginView extends HookWidget {
     );
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Register'),
       ),
       body: Column(
         children: [
@@ -42,15 +42,18 @@ class LoginView extends HookWidget {
             onPressed: () {
               final email = emailController.text;
               final password = passwordController.text;
-              context.read<AppState>().login(email: email, password: password);
+              context.read<AppState>().register(
+                    email: email,
+                    password: password,
+                  );
             },
-            child: const Text('Login'),
+            child: const Text('Register'),
           ),
           TextButton(
             onPressed: () {
-              context.read<AppState>().navigateToRegister();
+              context.read<AppState>().navigateToLogin();
             },
-            child: const Text('Not registered yet? Register here!'),
+            child: const Text('Already registered? Log in here!'),
           ),
         ],
       ),
