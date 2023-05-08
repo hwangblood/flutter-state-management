@@ -18,6 +18,17 @@ class CreateNewPostView extends StatefulHookConsumerWidget {
   final File fileToPost;
   final FileType fileType;
 
+  static MaterialPageRoute route({
+    required File fileToPost,
+    required FileType fileType,
+  }) =>
+      MaterialPageRoute(
+        builder: (context) => CreateNewPostView(
+          fileToPost: fileToPost,
+          fileType: fileType,
+        ),
+      );
+
   const CreateNewPostView({
     super.key,
     required this.fileToPost,
@@ -74,6 +85,11 @@ class _CreateNewPostViewState extends ConsumerState<CreateNewPostView> {
                               postSetting: currentPostSetting,
                             );
                     if (isUploaded && mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('uploading success'),
+                        ),
+                      );
                       Navigator.of(context).pop();
                     }
                   }

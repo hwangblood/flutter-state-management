@@ -2,6 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -47,6 +48,12 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<!-- add premissions below -->
+
+	<!-- for image_picker -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PROJECT_NAME) would like to access your photos</string>
 
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
