@@ -5,10 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:riverpod_instagram/state/auth/providers/auth_state_provider.dart';
 import 'package:riverpod_instagram/state/auth/providers/is_logged_in_provider.dart';
 import 'package:riverpod_instagram/state/prividers/is_loading_provider.dart';
-import 'package:riverpod_instagram/views/components/animations/data_not_found_animation_widget.dart';
 import 'package:riverpod_instagram/views/components/loading/loading_overlay.dart';
 import 'package:riverpod_instagram/views/login/login_view.dart';
 import 'package:riverpod_instagram/views/main/main_view.dart';
