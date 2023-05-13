@@ -33,9 +33,6 @@ final postCommentsProvider = StreamProvider.family
     // sorting
     final result = comments.applySortingFrom(request);
 
-    for (var com in comments) {
-      print('comment: ${com.comment}');
-    }
     controller.sink.add(result);
   });
 

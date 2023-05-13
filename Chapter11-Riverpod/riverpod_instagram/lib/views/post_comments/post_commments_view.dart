@@ -60,6 +60,7 @@ class PostCommentsView extends HookConsumerWidget {
             onPressed: hasText.value
                 ? () {
                     _submitCommentWithController(
+                      context: context,
                       controller: commentController,
                       ref: ref,
                     );
@@ -74,7 +75,6 @@ class PostCommentsView extends HookConsumerWidget {
           Expanded(
             child: comments.when(
               data: (data) {
-                print('data: $data');
                 if (data.isEmpty) {
                   return const SingleChildScrollView(
                     child: EmptyContentWithTextAnimationWidget(
@@ -117,6 +117,7 @@ class PostCommentsView extends HookConsumerWidget {
               onSubmitted: (value) {
                 if (value.isNotEmpty) {
                   _submitCommentWithController(
+                    context: context,
                     controller: commentController,
                     ref: ref,
                   );
@@ -134,11 +135,17 @@ class PostCommentsView extends HookConsumerWidget {
   }
 
   Future<void> _submitCommentWithController({
-    required TextEditingController controller,
+    required BuildContext context,
     required WidgetRef ref,
+    required TextEditingController controller,
   }) async {
     final userId = ref.read(userIdProvider);
     if (userId == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('send comment failed'),
+        ),
+      );
       return;
     }
     final isSent = await ref.read(sendCommentProvider.notifier).sendComment(
@@ -147,9 +154,14 @@ class PostCommentsView extends HookConsumerWidget {
           comment: controller.text,
         );
 
-    if (isSent) {
+    if (isSent && context.mounted) {
       controller.clear();
       dismissKeyboard();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('send comment successed'),
+        ),
+      );
     }
   }
 }

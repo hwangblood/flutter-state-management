@@ -20,17 +20,15 @@ class CommentTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print('mm: ${comment.fromUserId}');
     final userInfo = ref.watch(
       userInfoModelProvider(comment.fromUserId),
     );
     return userInfo.when(
       data: (userInfo) {
         final currentUserId = ref.read(userIdProvider);
-        print('comment tile: ${comment.comment}');
         return ListTile(
-          title: Text(userInfo.displayName),
-          subtitle: Text(comment.comment),
+          title: Text(comment.comment),
+          subtitle: Text('by ${userInfo.displayName}'),
           trailing: currentUserId == comment.fromUserId
               ? IconButton(
                   icon: const Icon(Icons.delete),
