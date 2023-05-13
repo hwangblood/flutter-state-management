@@ -27,29 +27,25 @@ class Authenticator {
   Future<AuthResult> loginWithFacebook() async {
     final loginResult = await FacebookAuth.instance.login();
     final token = loginResult.accessToken?.token;
-
     if (token == null) {
-      // user has aborted the logging in process
       return AuthResult.aborted;
     }
-    final oauthCredential = FacebookAuthProvider.credential(token);
+    final oauthCredentials = FacebookAuthProvider.credential(token);
 
     try {
       await FirebaseAuth.instance.signInWithCredential(
-        oauthCredential,
+        oauthCredentials,
       );
       return AuthResult.success;
     } on FirebaseAuthException catch (e) {
       final email = e.email;
       final credential = e.credential;
       // https://firebase.google.com/docs/auth/web/google-signin#expandable-1
-      if (e.code == Constants.accountExistsWithDifferentCredential &&
+      if (e.code == Constants.accountExistsWithDifferentCredentialsError &&
           email != null &&
           credential != null) {
         final providers =
-            await FirebaseAuth.instance.fetchSignInMethodsForEmail(
-          email,
-        );
+            await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
         if (providers.contains(Constants.googleCom)) {
           await loginWithGoogle();
           FirebaseAuth.instance.currentUser?.linkWithCredential(credential);
@@ -67,22 +63,22 @@ class Authenticator {
         Constants.emailScope,
       ],
     );
-
     final signInAccount = await googleSignIn.signIn();
     if (signInAccount == null) {
       return AuthResult.aborted;
     }
 
     final googleAuth = await signInAccount.authentication;
-    final oauthCredential = GoogleAuthProvider.credential(
+    final oauthCredentials = GoogleAuthProvider.credential(
       idToken: googleAuth.idToken,
       accessToken: googleAuth.accessToken,
     );
-
     try {
-      await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+      await FirebaseAuth.instance.signInWithCredential(
+        oauthCredentials,
+      );
       return AuthResult.success;
-    } on FirebaseAuthException catch (_) {
+    } catch (e) {
       return AuthResult.failure;
     }
   }

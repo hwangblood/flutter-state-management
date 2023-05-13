@@ -110,10 +110,10 @@ class _MainViewState extends ConsumerState<MainView> {
         body: const TabBarView(
           children: [
             Center(
-              child: Text('home view'),
+              child: Text('this view has not been built yet'),
             ),
             Center(
-              child: Text('search view'),
+              child: Text('this view has not been built yet'),
             ),
             UerPostsView(),
           ],
