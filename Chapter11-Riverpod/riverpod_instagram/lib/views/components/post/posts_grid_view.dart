@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:riverpod_instagram/state/posts/models/post.dart';
 import 'package:riverpod_instagram/views/components/post/post_thumbnail_widget.dart';
-import 'package:riverpod_instagram/views/post_comments/post_commments_view.dart';
+import 'package:riverpod_instagram/views/post_detail/post_detail_view.dart';
 
 class PostsGridView extends StatelessWidget {
   final Iterable<Post> posts;
@@ -27,9 +27,8 @@ class PostsGridView extends StatelessWidget {
         return PostThumbnailWidget(
           post: post,
           onTapped: () {
-            // TODO: navigate to post detail page
             Navigator.of(context).push(
-              PostCommentsView.route(postId: post.postId),
+              PostDetailView.route(post: post),
             );
           },
         );

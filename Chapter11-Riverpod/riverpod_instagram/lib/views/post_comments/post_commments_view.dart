@@ -110,7 +110,7 @@ class PostCommentsView extends HookConsumerWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.all(8.0),
             child: TextField(
               controller: commentController,
               textInputAction: TextInputAction.send,
@@ -157,11 +157,6 @@ class PostCommentsView extends HookConsumerWidget {
     if (isSent && context.mounted) {
       controller.clear();
       dismissKeyboard();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('send comment successed'),
-        ),
-      );
     }
   }
 }
