@@ -1,17 +1,17 @@
 import 'package:riverpod_instagram/state/post_setting/constants/constants.dart';
 
 enum PostSetting {
-  /// if allow user to like the current post, true or false, default should as
-  /// false
-  allowLikes(
+  /// if allow user to comment the current post, true or false, default should
+  /// as false
+  allowComments(
     title: PostSettingConstants.allowCommentsTitle,
     description: PostSettingConstants.allowCommentsDescription,
     storageKey: PostSettingConstants.allowCommentsStorageKey,
   ),
 
-  /// if allow user to comment the current post, true or false, default should
-  /// as false
-  allowComments(
+  /// if allow user to like the current post, true or false, default should as
+  /// false
+  allowLikes(
     title: PostSettingConstants.allowLikesTitle,
     description: PostSettingConstants.allowLikesDescription,
     storageKey: PostSettingConstants.allowLikesStorageKey,
