@@ -11,6 +11,7 @@ import 'package:riverpod_instagram/views/components/dialogs/alert_dialog_model.d
 import 'package:riverpod_instagram/views/components/dialogs/logout_dialog.dart';
 import 'package:riverpod_instagram/views/constants/strings.dart';
 import 'package:riverpod_instagram/views/create_new_post/create_new_post_view.dart';
+import 'package:riverpod_instagram/views/tabs/home/home_view.dart';
 import 'package:riverpod_instagram/views/tabs/search_posts/search_posts_view.dart';
 import 'package:riverpod_instagram/views/tabs/user_posts/user_posts_view.dart';
 
@@ -110,9 +111,7 @@ class _MainViewState extends ConsumerState<MainView> {
         ),
         body: const TabBarView(
           children: [
-            Center(
-              child: Text('this view has not been built yet'),
-            ),
+            HomeView(),
             SearchPostsView(),
             UerPostsView(),
           ],

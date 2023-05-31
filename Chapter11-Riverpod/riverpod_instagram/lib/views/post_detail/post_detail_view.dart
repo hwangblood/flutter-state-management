@@ -151,6 +151,8 @@ class _PostDetailViewState extends ConsumerState<PostDetailView> {
                   post: postWithCommentsData.post,
                 ),
                 PostDateWidget(dateTime: postWithCommentsData.post.createdAt),
+
+                // divider
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Divider(
