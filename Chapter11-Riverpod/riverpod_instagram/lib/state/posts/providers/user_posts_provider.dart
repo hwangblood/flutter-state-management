@@ -37,6 +37,9 @@ Stream<Iterable<Post>> userPosts(UserPostsRef ref) {
             postId: doc.id,
             json: doc.data(),
           ),
+        )
+        .where(
+          (post) => post.userId == userId,
         );
     controller.sink.add(posts);
   });
