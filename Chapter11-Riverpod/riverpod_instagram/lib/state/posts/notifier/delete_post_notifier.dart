@@ -9,8 +9,9 @@ import 'package:riverpod_instagram/state/image_upload/typedefs/is_loading.dart';
 import 'package:riverpod_instagram/state/posts/models/post.dart';
 import 'package:riverpod_instagram/state/posts/typedefs/post_id.dart';
 
-class DeletePostNotifier extends StateNotifier<IsLoading> {
-  DeletePostNotifier() : super(false);
+class DeletePostNotifier extends Notifier<IsLoading> {
+  @override
+  bool build() => false;
 
   set isLoading(bool value) => state = value;
 

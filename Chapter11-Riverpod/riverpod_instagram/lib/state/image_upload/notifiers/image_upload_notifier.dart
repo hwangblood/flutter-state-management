@@ -20,9 +20,12 @@ import 'package:riverpod_instagram/state/post_setting/models/post_setting.dart';
 import 'package:riverpod_instagram/state/posts/models/post_payload.dart';
 import 'package:riverpod_instagram/state/posts/typedefs/user_id.dart';
 
-class ImageUploadNotifier extends StateNotifier<IsLoading> {
-  // it's not loading by default
-  ImageUploadNotifier() : super(false);
+class ImageUploadNotifier extends Notifier<IsLoading> {
+  @override
+  bool build() {
+    // initial state
+    return false;
+  }
 
   set isLoading(bool value) => state = value;
 

@@ -6,18 +6,20 @@ import 'package:riverpod_instagram/state/auth/models/auth_state.dart';
 import 'package:riverpod_instagram/state/posts/typedefs/user_id.dart';
 import 'package:riverpod_instagram/state/user_info/backend/user_info_storage.dart';
 
-class AuthStateNotifier extends StateNotifier<AuthState> {
+class AuthStateNotifier extends Notifier<AuthState> {
   final _authenticator = Authenticator();
   final _userInfoStorage = UserInfoStorage();
 
-  AuthStateNotifier() : super(const AuthState.unknown()) {
+  @override
+  AuthState build() {
     if (_authenticator.isAlreadyLoggedIn) {
-      state = AuthState(
+      return AuthState(
         result: AuthResult.success,
         isLoading: false,
         userId: _authenticator.userId,
       );
     }
+    return const AuthState.unknown();
   }
 
   Future<void> logout() async {

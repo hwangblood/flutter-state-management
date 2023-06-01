@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:riverpod/riverpod.dart';
 
@@ -5,8 +7,13 @@ import 'package:riverpod_instagram/state/comments/typedefs/comment_id.dart';
 import 'package:riverpod_instagram/state/constants/firebase_collection_name.dart';
 import 'package:riverpod_instagram/state/image_upload/typedefs/is_loading.dart';
 
-class DeleteCommentNotifier extends StateNotifier<IsLoading> {
-  DeleteCommentNotifier() : super(false);
+/// delete a comment, return true if successful, false otherwise
+class DeleteCommentNotifier extends Notifier<IsLoading> {
+  @override
+  bool build() {
+    // initial state
+    return false;
+  }
 
   set isLoading(bool value) => state = value;
 

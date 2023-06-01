@@ -4,13 +4,11 @@ import 'package:riverpod/riverpod.dart';
 
 import 'package:riverpod_instagram/state/post_setting/models/post_setting.dart';
 
-class PostSettingNotifier extends StateNotifier<Map<PostSetting, bool>> {
-  PostSettingNotifier()
-      : super(
-          UnmodifiableMapView(
-            {for (final setting in PostSetting.values) setting: true},
-          ),
-        );
+class PostSettingNotifier extends Notifier<Map<PostSetting, bool>> {
+  @override
+  Map<PostSetting, bool> build() => UnmodifiableMapView(
+        {for (final setting in PostSetting.values) setting: true},
+      );
 
   void setSetting(
     PostSetting setting,

@@ -7,8 +7,9 @@ import 'package:riverpod_instagram/state/image_upload/typedefs/is_loading.dart';
 import 'package:riverpod_instagram/state/posts/typedefs/post_id.dart';
 import 'package:riverpod_instagram/state/posts/typedefs/user_id.dart';
 
-class SendCommentNotifier extends StateNotifier<IsLoading> {
-  SendCommentNotifier() : super(false);
+class SendCommentNotifier extends Notifier<IsLoading> {
+  @override
+  bool build() => false;
 
   set isLoading(value) => state = value;
 
