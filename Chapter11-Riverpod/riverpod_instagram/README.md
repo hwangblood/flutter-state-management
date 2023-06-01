@@ -109,11 +109,24 @@ Follow the steps below to start this app.
 
 ## Features
 
-- Social Login (Google & Facebook)
+- Social Auth (Google & Facebook), Login and Logout
+- Upload, Delete Post (Image , Video)
+- Allow Like or Comment on a Post
+- LIke or Dislike on a Post
+- Comment or Delete-Comment on a Post
+- Display All Posts
+- Display Logged User's Posts
 
-## Packages
+## TODO
 
-  firebase_core: ^2.9.0
+- [ ] completely code genarate providers 
+
+- [ ] posts pagenation (firebase_ui_firestore)
+
+
+## Dependencies
+
+firebase_core: ^2.9.0
 
   firebase_auth: ^4.2.2
 
@@ -127,7 +140,9 @@ Follow the steps below to start this app.
 
   flutter_hooks: ^0.18.6
 
-  hooks_riverpod: ^2.3.4
+  hooks_riverpod: ^2.3.6
+
+  riverpod_annotation: ^2.1.1
 
   font_awesome_flutter: ^10.4.0
 
