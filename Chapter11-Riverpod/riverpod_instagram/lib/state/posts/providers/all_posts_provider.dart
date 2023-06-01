@@ -18,12 +18,16 @@ Stream<Iterable<Post>> allPosts(AllPostsRef ref) {
       .orderBy(FirebaseFieldName.createdAt, descending: true)
       .snapshots()
       .listen((snapshot) {
-    final posts = snapshot.docs.map(
-      (doc) => Post(
-        postId: doc.id,
-        json: doc.data(),
-      ),
-    );
+    final posts = snapshot.docs
+        .where(
+          (doc) => !doc.metadata.hasPendingWrites,
+        )
+        .map(
+          (doc) => Post(
+            postId: doc.id,
+            json: doc.data(),
+          ),
+        );
     controller.sink.add(posts);
   });
 
