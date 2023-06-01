@@ -17,7 +17,7 @@ class CompactCommentTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userInfoModel = ref.watch(
-      userInfoModelProvider(comment.fromUserId),
+      userInfoModelProvider(userId: comment.fromUserId),
     );
     return userInfoModel.when(
       data: (userInfo) {

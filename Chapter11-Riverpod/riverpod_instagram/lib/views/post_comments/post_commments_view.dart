@@ -39,7 +39,9 @@ class PostCommentsView extends HookConsumerWidget {
       RequestForPostAndComments(postId: postId),
     );
 
-    final comments = ref.watch(postCommentsProvider(request.value));
+    final comments = ref.watch(
+      postCommentsProvider(request: request.value),
+    );
 
     useEffect(
       () {
@@ -98,7 +100,7 @@ class PostCommentsView extends HookConsumerWidget {
                   onRefresh: () {
                     // ignore: unused_result
                     ref.refresh(
-                      postCommentsProvider(request.value),
+                      postCommentsProvider(request: request.value),
                     );
 
                     return Future.delayed(const Duration(seconds: 1));

@@ -19,7 +19,9 @@ class LikeButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hasLiked = ref.watch(hasLikedPostProvider(postId));
+    final hasLiked = ref.watch(
+      hasLikedPostProvider(postId: postId),
+    );
     return hasLiked.when(
       data: (likedValue) {
         return IconButton(
@@ -37,7 +39,9 @@ class LikeButton extends ConsumerWidget {
               postId: postId,
             );
 
-            ref.read(likeDislikePostProvider(likeDislikeRequest));
+            ref.read(
+              likeDislikePostProvider(request: likeDislikeRequest),
+            );
           },
         );
       },

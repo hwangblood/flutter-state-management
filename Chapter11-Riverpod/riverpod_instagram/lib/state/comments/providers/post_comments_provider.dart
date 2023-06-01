@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:riverpod_instagram/state/comments/extensions/comment_sorting_by_request.dart';
 import 'package:riverpod_instagram/state/comments/models/comment.dart';
@@ -9,8 +9,13 @@ import 'package:riverpod_instagram/state/comments/models/post_comments_request.d
 import 'package:riverpod_instagram/state/constants/firebase_collection_name.dart';
 import 'package:riverpod_instagram/state/constants/firebase_field_name.dart';
 
-final postCommentsProvider = StreamProvider.family
-    .autoDispose<Iterable<Comment>, RequestForPostAndComments>((ref, request) {
+part 'post_comments_provider.g.dart';
+
+@riverpod
+Stream<Iterable<Comment>> postComments(
+  PostCommentsRef ref, {
+  required RequestForPostAndComments request,
+}) {
   final controller = StreamController<Iterable<Comment>>();
 
   final sub = FirebaseFirestore.instance
@@ -41,4 +46,4 @@ final postCommentsProvider = StreamProvider.family
     controller.close();
   });
   return controller.stream;
-});
+}

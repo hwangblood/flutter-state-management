@@ -17,7 +17,9 @@ class LikesCountWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final likesCount = ref.watch(postLikesCountProvider(postId));
+    final likesCount = ref.watch(
+      postLikesCountProvider(postId: postId),
+    );
     return likesCount.when(
       data: (int count) {
         final personOrPeople = count == 1 ? Strings.person : Strings.people;

@@ -16,7 +16,9 @@ class PostDisplayNameAndMessageWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userInfoModel = ref.watch(userInfoModelProvider(post.userId));
+    final userInfoModel = ref.watch(
+      userInfoModelProvider(userId: post.userId),
+    );
 
     return userInfoModel.when(
       data: (userInfo) {

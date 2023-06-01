@@ -1,17 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:riverpod_instagram/state/constants/firebase_collection_name.dart';
 import 'package:riverpod_instagram/state/constants/firebase_field_name.dart';
 import 'package:riverpod_instagram/state/likes/models/like_dislike_request.dart';
 import 'package:riverpod_instagram/state/likes/models/like_model.dart';
 
+part 'like_dislike_post_provider.g.dart';
+
 /// send like or dislike request to firebase
-final likeDislikePostProvider =
-    FutureProvider.family.autoDispose<bool, LikeDislikeRequest>((
-  ref,
-  LikeDislikeRequest request,
-) async {
+@riverpod
+Future<bool> likeDislikePost(
+  LikeDislikePostRef ref, {
+  required LikeDislikeRequest request,
+}) async {
   final query = FirebaseFirestore.instance
       .collection(FirebaseCollectionName.likes)
       .where(FirebaseFieldName.postId, isEqualTo: request.postId)
@@ -51,4 +53,4 @@ final likeDislikePostProvider =
       return false;
     }
   }
-});
+}

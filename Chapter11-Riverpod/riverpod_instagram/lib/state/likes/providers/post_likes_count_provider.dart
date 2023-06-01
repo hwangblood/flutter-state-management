@@ -1,16 +1,19 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:riverpod_instagram/state/constants/firebase_collection_name.dart';
 import 'package:riverpod_instagram/state/constants/firebase_field_name.dart';
 import 'package:riverpod_instagram/state/posts/typedefs/post_id.dart';
 
-final postLikesCountProvider = StreamProvider.autoDispose.family<int, PostId>((
-  ref,
-  PostId postId,
-) {
+part 'post_likes_count_provider.g.dart';
+
+@riverpod
+Stream<int> postLikesCount(
+  PostLikesCountRef ref, {
+  required PostId postId,
+}) {
   final controller = StreamController<int>.broadcast();
 
   controller.onListen = () {
@@ -31,4 +34,4 @@ final postLikesCountProvider = StreamProvider.autoDispose.family<int, PostId>((
     controller.close();
   });
   return controller.stream;
-});
+}

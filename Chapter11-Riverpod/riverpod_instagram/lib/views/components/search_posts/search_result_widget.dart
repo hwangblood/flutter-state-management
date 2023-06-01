@@ -28,7 +28,9 @@ class SearchResultWidget extends ConsumerWidget {
       );
     }
 
-    final posts = ref.watch(postsBySearchTermProvider(searchTerm));
+    final posts = ref.watch(
+      postsBySearchTermProvider(searchTerm: searchTerm),
+    );
     return posts.when(
       data: (postsData) {
         if (postsData.isEmpty) {

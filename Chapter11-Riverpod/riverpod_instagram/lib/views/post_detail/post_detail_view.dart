@@ -48,12 +48,12 @@ class _PostDetailViewState extends ConsumerState<PostDetailView> {
 
     // get the actual post together with its comments
     final postWithComments = ref.watch(
-      specificPostWithCommentsProvider(request),
+      specificPostWithCommentsProvider(request: request),
     );
 
     // can delete this post or not
     final canDeletePost = ref.watch(
-      canCurrentUserDeletePostProvider(widget.post),
+      canCurrentUserDeletePostProvider(post: widget.post),
     );
 
     return Scaffold(

@@ -1,13 +1,16 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:riverpod_instagram/state/constants/firebase_collection_name.dart';
 import 'package:riverpod_instagram/state/constants/firebase_field_name.dart';
 import 'package:riverpod_instagram/state/posts/models/post.dart';
 
-final allPostsProvider = StreamProvider.autoDispose<Iterable<Post>>((ref) {
+part 'all_posts_provider.g.dart';
+
+@riverpod
+Stream<Iterable<Post>> allPosts(AllPostsRef ref) {
   final controller = StreamController<Iterable<Post>>();
 
   final sub = FirebaseFirestore.instance
@@ -29,4 +32,4 @@ final allPostsProvider = StreamProvider.autoDispose<Iterable<Post>>((ref) {
     controller.close();
   });
   return controller.stream;
-});
+}
