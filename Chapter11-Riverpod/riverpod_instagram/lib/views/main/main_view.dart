@@ -42,7 +42,7 @@ class _MainViewState extends ConsumerState<MainView> {
                 }
                 // reset the postSetting, because we wanna create a new post
                 // ignore: unused_result
-                ref.refresh(postSettingProvider);
+                ref.refresh(postSettingNotifierProvider);
 
                 // go to the screen to create a new post
                 if (!mounted) {
@@ -68,7 +68,7 @@ class _MainViewState extends ConsumerState<MainView> {
                 }
                 // reset the postSetting, because we wanna create a new post
                 // ignore: unused_result
-                ref.refresh(postSettingProvider);
+                ref.refresh(postSettingNotifierProvider);
 
                 // go to the screen to create a new post
                 if (!mounted) {
@@ -89,7 +89,7 @@ class _MainViewState extends ConsumerState<MainView> {
                       (value) => value ?? false,
                     );
                 if (shouldLogout) {
-                  await ref.read(authStateProvider.notifier).logout();
+                  await ref.read(authStateNotifierProvider.notifier).logout();
                 }
               },
               icon: const Icon(Icons.logout),

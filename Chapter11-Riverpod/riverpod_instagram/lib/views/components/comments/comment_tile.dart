@@ -37,7 +37,7 @@ class CommentTile extends ConsumerWidget {
                         await displayDeleteDialog(context);
                     if (shouldDeleteComment) {
                       await ref
-                          .read(deleteCommentProvider.notifier)
+                          .read(deleteCommentNotifierProvider.notifier)
                           .deleteComment(commentId: comment.id);
                     }
                   },

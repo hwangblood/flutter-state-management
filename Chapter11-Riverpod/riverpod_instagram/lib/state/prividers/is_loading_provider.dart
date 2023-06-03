@@ -11,11 +11,11 @@ part 'is_loading_provider.g.dart';
 
 @riverpod
 bool isLoading(IsLoadingRef ref) {
-  final authState = ref.watch(authStateProvider);
-  final isUploaderLoading = ref.watch(imageUploaderProvider);
-  final isSendingComment = ref.watch(sendCommentProvider);
-  final isDeletingComment = ref.watch(deleteCommentProvider);
-  final isDeletingPost = ref.watch(deletePostProvider);
+  final authState = ref.watch(authStateNotifierProvider);
+  final isUploaderLoading = ref.watch(imageUploaderNotifierProvider);
+  final isSendingComment = ref.watch(sendCommentNotifierProvider);
+  final isDeletingComment = ref.watch(deleteCommentNotifierProvider);
+  final isDeletingPost = ref.watch(deletePostNotifierProvider);
 
   return authState.isLoading ||
       isUploaderLoading ||

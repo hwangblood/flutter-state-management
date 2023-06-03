@@ -47,7 +47,7 @@ class _CreateNewPostViewState extends ConsumerState<CreateNewPostView> {
       file: widget.fileToPost,
       fileType: widget.fileType,
     );
-    final currentPostSetting = ref.watch(postSettingProvider);
+    final currentPostSetting = ref.watch(postSettingNotifierProvider);
     final messageController = useTextEditingController();
     final isPostButtonEnabled = useState(false);
     useEffect(
@@ -76,14 +76,15 @@ class _CreateNewPostViewState extends ConsumerState<CreateNewPostView> {
                       return;
                     }
                     final message = messageController.text;
-                    final isUploaded =
-                        await ref.read(imageUploaderProvider.notifier).upload(
-                              userId: userId,
-                              file: widget.fileToPost,
-                              fileType: widget.fileType,
-                              message: message,
-                              postSetting: currentPostSetting,
-                            );
+                    final isUploaded = await ref
+                        .read(imageUploaderNotifierProvider.notifier)
+                        .upload(
+                          userId: userId,
+                          file: widget.fileToPost,
+                          fileType: widget.fileType,
+                          message: message,
+                          postSetting: currentPostSetting,
+                        );
                     if (isUploaded && mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
@@ -126,7 +127,7 @@ class _CreateNewPostViewState extends ConsumerState<CreateNewPostView> {
                   value: currentPostSetting[postSetting] ?? false,
                   onChanged: (onOrOff) {
                     ref
-                        .read(postSettingProvider.notifier)
+                        .read(postSettingNotifierProvider.notifier)
                         .setSetting(postSetting, onOrOff);
                   },
                 ),

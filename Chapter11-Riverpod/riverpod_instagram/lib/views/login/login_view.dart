@@ -38,7 +38,9 @@ class LoginView extends ConsumerWidget {
               ),
               const SizedBox(height: 20),
               TextButton(
-                onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
+                onPressed: ref
+                    .read(authStateNotifierProvider.notifier)
+                    .loginWithGoogle,
                 style: TextButton.styleFrom(
                   backgroundColor: AppColors.loginButtonColor,
                   foregroundColor: AppColors.loginButtonTextColor,
@@ -47,8 +49,9 @@ class LoginView extends ConsumerWidget {
               ),
               const SizedBox(height: 20),
               TextButton(
-                onPressed:
-                    ref.read(authStateProvider.notifier).loginWithFacebook,
+                onPressed: ref
+                    .read(authStateNotifierProvider.notifier)
+                    .loginWithFacebook,
                 style: TextButton.styleFrom(
                   backgroundColor: AppColors.loginButtonColor,
                   foregroundColor: AppColors.loginButtonTextColor,

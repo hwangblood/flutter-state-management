@@ -91,7 +91,7 @@ class _PostDetailViewState extends ConsumerState<PostDetailView> {
 
                 // start deleting
                 final deletePostNotifier =
-                    ref.read(deletePostProvider.notifier);
+                    ref.read(deletePostNotifierProvider.notifier);
                 final successed = await deletePostNotifier.deletePost(
                   post: widget.post,
                 );

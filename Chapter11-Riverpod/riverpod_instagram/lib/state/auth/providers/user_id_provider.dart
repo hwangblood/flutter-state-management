@@ -6,4 +6,4 @@ import 'package:riverpod_instagram/state/posts/typedefs/user_id.dart';
 part 'user_id_provider.g.dart';
 
 @riverpod
-UserId? userId(UserIdRef ref) => ref.watch(authStateProvider).userId;
+UserId? userId(UserIdRef ref) => ref.watch(authStateNotifierProvider).userId;

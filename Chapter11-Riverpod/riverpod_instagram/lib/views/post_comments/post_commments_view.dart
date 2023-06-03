@@ -150,11 +150,12 @@ class PostCommentsView extends HookConsumerWidget {
       );
       return;
     }
-    final isSent = await ref.read(sendCommentProvider.notifier).sendComment(
-          fromUserId: userId,
-          onPostId: postId,
-          comment: controller.text,
-        );
+    final isSent =
+        await ref.read(sendCommentNotifierProvider.notifier).sendComment(
+              fromUserId: userId,
+              onPostId: postId,
+              comment: controller.text,
+            );
 
     if (isSent && context.mounted) {
       controller.clear();

@@ -119,9 +119,15 @@ Follow the steps below to start this app.
 
 ## TODO
 
-- [ ] completely code genarate providers 
+- [x] completely code genarate providers 
 
-- [ ] posts pagenation (firebase_ui_firestore)
+- [ ] Shimmer Effect for all possiable widgets
+
+- [ ] Image place holder
+
+- [ ] Multiple Languages Supported
+
+- [ ] posts pagenation (firebase_ui_firestore or other solution)
 
 
 ## Dependencies
