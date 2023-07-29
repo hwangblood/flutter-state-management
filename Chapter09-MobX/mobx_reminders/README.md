@@ -2,6 +2,10 @@
 
 A Flutter CRUD Reminders App built with [MobX](https://mobx.netlify.app/) and Firebase.
 
+## App Preview
+
+TODO
+
 ## Timestamp
 
 [01:48:13](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=6493) Define action for setting reminders as done
@@ -45,6 +49,10 @@ A Flutter CRUD Reminders App built with [MobX](https://mobx.netlify.app/) and Fi
 [03:05:57](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=11157) Put all together and fix errors
 
 [03:32:58](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=12778) Refactoring before testing
+
+[03:34:58]() implement auth provider
+
+[03:48:42]() implement reminders provider
 
 ## Setup Firebase
 
