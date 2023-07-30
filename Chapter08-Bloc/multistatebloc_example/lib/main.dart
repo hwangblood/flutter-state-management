@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Notea App with Bloc',
+      title: 'Multistate Notes',
       home: BlocProvider(
         create: (context) => AppBloc(
           loginApi: LoginApi.instance(),
