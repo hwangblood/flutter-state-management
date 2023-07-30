@@ -60,7 +60,9 @@ TODO
 
 [04:29:22](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16162) Update AppState to only require reminderId when modifying it
 
-[04:31:32](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16292) Now to the tests
+[04:31:32](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16292) some utils for testing
+
+[04:37:18](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16638) mock auth provider
 
 ## Setup Firebase
 
