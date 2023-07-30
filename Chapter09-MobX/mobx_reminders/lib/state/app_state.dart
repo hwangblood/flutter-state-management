@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobx/mobx.dart';
 
 import 'package:mobx_reminders/errors/auth_error.dart';
+import 'package:mobx_reminders/provider/auth_provider.dart';
+import 'package:mobx_reminders/provider/reminders_provider.dart';
 import 'package:mobx_reminders/state/reminder.dart';
 
 part 'app_state.g.dart';
@@ -10,6 +12,14 @@ part 'app_state.g.dart';
 class AppState = AppStateBase with _$AppState;
 
 abstract class AppStateBase with Store {
+  final AuthProvider authProvider;
+  final RemindersProvider remindersProvider;
+
+  AppStateBase({
+    required this.authProvider,
+    required this.remindersProvider,
+  });
+
   @observable
   AppScreen currentScreen = AppScreen.login;
 
