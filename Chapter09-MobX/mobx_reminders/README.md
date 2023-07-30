@@ -50,9 +50,11 @@ TODO
 
 [03:32:58](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=12778) Refactoring before testing
 
-[03:34:58]() implement auth provider
+[03:34:58](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=12898) implement auth provider
 
-[03:48:42]() implement reminders provider
+[03:48:42](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=13722) implement reminders provider
+
+[https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=14872](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=14872) Dependency injection into AppState
 
 ## Setup Firebase
 
