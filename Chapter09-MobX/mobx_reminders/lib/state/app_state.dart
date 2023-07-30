@@ -173,8 +173,8 @@ abstract class AppStateBase with Store {
   ///
   /// And the isLoading state is not needed for this case
   @action
-  Future<bool> modify(
-    Reminder reminder, {
+  Future<bool> modifyReminder({
+    required ReminderId reminderId,
     required bool isDone,
   }) async {
     final String? userId = authProvider.userId;
@@ -185,7 +185,7 @@ abstract class AppStateBase with Store {
 
     // update the remote reminder
     await remindersProvider.modify(
-      reminderId: reminder.id,
+      reminderId: reminderId,
       isDone: isDone,
       userId: userId,
     );
@@ -193,7 +193,7 @@ abstract class AppStateBase with Store {
     // update the local reminder
     reminders
         .firstWhere(
-          (element) => element.id == reminder.id,
+          (element) => element.id == reminderId,
         )
         .isDone = isDone;
 

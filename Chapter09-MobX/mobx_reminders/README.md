@@ -58,7 +58,9 @@ TODO
 
 [04:10:36](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=15036) Update AppState to use dependencies
 
-[04:29:22](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16162) Update AppState to use reminderId for modify function
+[04:29:22](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16162) Update AppState to only require reminderId when modifying it
+
+[04:31:32](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16292) Now to the tests
 
 ## Setup Firebase
 

@@ -19,7 +19,10 @@ class ReminderListTile extends StatelessWidget {
     return CheckboxListTile(
       controlAffinity: ListTileControlAffinity.leading,
       onChanged: (bool? value) {
-        context.read<AppState>().modify(reminder, isDone: value ?? false);
+        context.read<AppState>().modifyReminder(
+              reminderId: reminder.id,
+              isDone: value ?? false,
+            );
         reminder.isDone = value ?? false;
       },
       value: reminder.isDone,
