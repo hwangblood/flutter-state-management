@@ -66,6 +66,8 @@ TODO
 
 [04:42:55](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16975) Implementing MockRemindersProvider
 
+[04:50:07](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=17407) Now let't write our app tests
+
 ## Setup Firebase
 
 1. Create a FIrebase project for this app in Firebase Console
