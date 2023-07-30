@@ -58,6 +58,8 @@ TODO
 
 [04:10:36](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=15036) Update AppState to use dependencies
 
+[04:29:22](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16162) Update AppState to use reminderId for modify function
+
 ## Setup Firebase
 
 1. Create a FIrebase project for this app in Firebase Console
@@ -87,6 +89,8 @@ TODO
 
 ```shell
 flutter pub get
+
+flutter pub run build_runner watch --delete-conflicting-outputs
 
 flutter run
 ```

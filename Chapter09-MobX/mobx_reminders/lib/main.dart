@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
+import 'package:mobx_reminders/provider/auth_provider.dart';
+import 'package:mobx_reminders/provider/reminders_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mobx_reminders/dialogs/auth_error_dialog.dart';
@@ -25,7 +27,10 @@ void main() async {
 
   runApp(
     Provider(
-      create: (_) => AppState()..initialize(),
+      create: (_) => AppState(
+        authProvider: FirebaseAuthProvider(),
+        remindersProvider: FirestoreRemindersProvider(),
+      )..initialize(),
       child: const MyApp(),
     ),
   );

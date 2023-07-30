@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobx/mobx.dart';
 
 import 'package:mobx_reminders/errors/auth_error.dart';
@@ -25,9 +23,6 @@ abstract class AppStateBase with Store {
 
   @observable
   bool isLoading = false;
-
-  @observable
-  User? currentUser;
 
   @observable
   AuthError? authError;
@@ -65,25 +60,22 @@ abstract class AppStateBase with Store {
 
   /// Delete a reminder from Cloud Firestore and app's state
   @action
-  Future<bool> deleteReminder(Reminder reminder) async {
+  Future<bool> deleteReminder(
+    Reminder reminder,
+  ) async {
     isLoading = true;
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    final User? user = auth.currentUser;
-    // if user not logged in, can't delete any reminders
-    if (user == null) {
+    final String? userId = authProvider.userId;
+    if (userId == null) {
       isLoading = false;
       return false;
     }
 
-    final String userId = user.uid;
-    final colletion = await FirebaseFirestore.instance.collection(userId).get();
-
     try {
       // delete from Cloud Firestore
-      final storedReminder = colletion.docs.firstWhere(
-        (doc) => doc.id == reminder.id,
+      await remindersProvider.deleteReminderWithId(
+        reminder.id,
+        userId: userId,
       );
-      await storedReminder.reference.delete();
       // delete locally as well
       reminders.removeWhere(
         (element) => element.id == reminder.id,
@@ -101,34 +93,26 @@ abstract class AppStateBase with Store {
   @action
   Future<bool> deleteAccount() async {
     isLoading = true;
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    final User? user = auth.currentUser;
-    if (user == null) {
+    final String? userId = authProvider.userId;
+    if (userId == null) {
       isLoading = false;
       return false;
     }
 
-    final String userId = user.uid;
     try {
-      final firestore = FirebaseFirestore.instance;
-      final operation = firestore.batch();
-      final collection = await firestore.collection(userId).get();
-      for (final document in collection.docs) {
-        operation.delete(document.reference);
-      }
-      // delete all reminders for current user on Firebase
-      await operation.commit();
-      // delete the current user
-      await user.delete();
-      // log the current user out
-      await auth.signOut();
-      // update app state
-      navigateToLogin();
+      // delete all reminder documents from firestore
+      await remindersProvider.deleteAllReminders(
+        userId: userId,
+      );
+      // remove all reminders locally when we log out
       reminders.clear();
+      // delete accounts and sign out
+      await authProvider.deleteAccountAndSignOut();
+      // update app state, navigate to login
+      navigateToLogin();
       return true;
-    } on FirebaseAuthException catch (e) {
-      currentUser = null;
-      authError = AuthError.from(e);
+    } on AuthError catch (e) {
+      authError = e;
       return false;
     } catch (_) {
       return false;
@@ -141,26 +125,21 @@ abstract class AppStateBase with Store {
   @action
   Future<void> logout() async {
     isLoading = true;
-    try {
-      await FirebaseAuth.instance.signOut();
-      // update app state
-      navigateToLogin();
-      reminders.clear();
-    } on FirebaseAuthException catch (e) {
-      currentUser = null;
-      authError = AuthError.from(e);
-    } catch (_) {
-      // we are ignoring the error here
-    } finally {
-      isLoading = false;
-    }
+
+    // sign out the current user
+    await authProvider.signOut();
+
+    // update app state
+    reminders.clear();
+    isLoading = false;
+    navigateToLogin();
   }
 
   /// Create a reminder to Cloud Firestore and app's state
   @action
   Future<bool> createReminder(String text) async {
     isLoading = true;
-    final userId = currentUser?.uid;
+    final String? userId = authProvider.userId;
     if (userId == null) {
       isLoading = false;
       return false;
@@ -168,16 +147,14 @@ abstract class AppStateBase with Store {
 
     try {
       final createAt = DateTime.now();
-      // create the firestore reminder
-      final firestoreReminder =
-          await FirebaseFirestore.instance.collection(userId).add({
-        _DocumentKeys.text: text,
-        _DocumentKeys.createAt: createAt.toIso8601String(),
-        _DocumentKeys.isDone: false,
-      });
+      final reminderId = await remindersProvider.createReminder(
+        userId: userId,
+        text: text,
+        creationDate: createAt,
+      );
       // create locally reminder
       final reminder = Reminder(
-        id: firestoreReminder.id,
+        id: reminderId,
         createAt: createAt,
         text: text,
         isDone: false,
@@ -200,52 +177,44 @@ abstract class AppStateBase with Store {
     Reminder reminder, {
     required bool isDone,
   }) async {
-    final userId = currentUser?.uid;
+    final String? userId = authProvider.userId;
     if (userId == null) {
+      isLoading = false;
       return false;
     }
 
-    try {
-      // update the remote reminder
-      final colletion =
-          await FirebaseFirestore.instance.collection(userId).get();
-      final storedReminder = colletion.docs
-          .firstWhere(
-            (element) => element.id == reminder.id,
-          )
-          .reference;
-      await storedReminder.update({
-        _DocumentKeys.isDone: isDone,
-      });
+    // update the remote reminder
+    await remindersProvider.modify(
+      reminderId: reminder.id,
+      isDone: isDone,
+      userId: userId,
+    );
 
-      // update the local reminder
-      reminders
-          .firstWhere(
-            (element) => element.id == reminder.id,
-          )
-          .isDone = isDone;
+    // update the local reminder
+    reminders
+        .firstWhere(
+          (element) => element.id == reminder.id,
+        )
+        .isDone = isDone;
 
-      // update app state
-      return true;
-    } catch (e) {
-      return false;
-    }
+    return true;
   }
 
   /// Initialize app's state, only be called when launch the app
   @action
   Future<void> initialize() async {
     isLoading = true;
-    currentUser = FirebaseAuth.instance.currentUser;
+    final String? userId = authProvider.userId;
 
-    if (currentUser == null) {
+    if (userId == null) {
       navigateToLogin();
       isLoading = false;
       return;
     }
+
     // load the reminders from Cloud Firestore
     // ignore: unused_local_variable
-    final dataResult = await _loadData();
+    final dataResult = await _loadReminders();
     // TODO: check loaded reminders is successful or not, and do some special operation for different result
     // if (loadResult) {
     // loading successful, navgate user to reminders screen
@@ -259,28 +228,25 @@ abstract class AppStateBase with Store {
 
   /// Load the reminders from Cloud Firestore
   @action
-  Future<bool> _loadData() async {
-    final userId = currentUser?.uid;
+  Future<bool> _loadReminders() async {
+    final String? userId = authProvider.userId;
     if (userId == null) {
+      isLoading = false;
       return false;
     }
 
     try {
-      final collection =
-          await FirebaseFirestore.instance.collection(userId).get();
-      final storedReminders = collection.docs.map(
-        (doc) => Reminder(
-          id: doc.id,
-          createAt: DateTime.parse(doc[_DocumentKeys.createAt] as String),
-          text: doc[_DocumentKeys.text] as String,
-          isDone: doc[_DocumentKeys.isDone] as bool,
-        ),
+      final data = await remindersProvider.loadReminders(
+        userId: userId,
       );
+
       // update the app state
-      reminders = ObservableList.of(storedReminders);
+      reminders = ObservableList.of(data);
       return true;
     } catch (_) {
       return false;
+    } finally {
+      isLoading = false;
     }
   }
 
@@ -295,20 +261,21 @@ abstract class AppStateBase with Store {
     isLoading = true;
 
     try {
-      await fn(email: email, password: password);
-      currentUser = FirebaseAuth.instance.currentUser;
-      // if the user isn't logged in app, can't be able to load data
-      if (currentUser == null) {
-        throw Exception('Unknown error');
+      final succeeded = await fn(
+        email: email,
+        password: password,
+      );
+
+      if (succeeded) {
+        await _loadReminders();
       }
-      await _loadData();
-      return true;
-    } on FirebaseAuthException catch (e) {
-      authError = AuthError.from(e);
+      return succeeded;
+    } on AuthError catch (e) {
+      authError = e;
       return false;
     } finally {
       isLoading = false;
-      if (currentUser != null) {
+      if (authProvider.userId != null) {
         navigateToReminders();
       }
     }
@@ -321,7 +288,7 @@ abstract class AppStateBase with Store {
     required String password,
   }) =>
       _loginOrRegister(
-        fn: FirebaseAuth.instance.createUserWithEmailAndPassword,
+        fn: authProvider.register,
         email: email,
         password: password,
       );
@@ -333,19 +300,13 @@ abstract class AppStateBase with Store {
     required String password,
   }) =>
       _loginOrRegister(
-        fn: FirebaseAuth.instance.signInWithEmailAndPassword,
+        fn: authProvider.login,
         email: email,
         password: password,
       );
 }
 
-abstract class _DocumentKeys {
-  static const String text = 'text';
-  static const String createAt = 'create_at';
-  static const String isDone = 'is_done';
-}
-
-typedef LoginOrRegisterFunction = Future<UserCredential> Function({
+typedef LoginOrRegisterFunction = Future<bool> Function({
   required String email,
   required String password,
 });

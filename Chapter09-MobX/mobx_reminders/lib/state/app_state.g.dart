@@ -49,22 +49,6 @@ mixin _$AppState on AppStateBase, Store {
     });
   }
 
-  late final _$currentUserAtom =
-      Atom(name: 'AppStateBase.currentUser', context: context);
-
-  @override
-  User? get currentUser {
-    _$currentUserAtom.reportRead();
-    return super.currentUser;
-  }
-
-  @override
-  set currentUser(User? value) {
-    _$currentUserAtom.reportWrite(value, super.currentUser, () {
-      super.currentUser = value;
-    });
-  }
-
   late final _$authErrorAtom =
       Atom(name: 'AppStateBase.authError', context: context);
 
@@ -147,12 +131,12 @@ mixin _$AppState on AppStateBase, Store {
     return _$initializeAsyncAction.run(() => super.initialize());
   }
 
-  late final _$_loadDataAsyncAction =
-      AsyncAction('AppStateBase._loadData', context: context);
+  late final _$_loadRemindersAsyncAction =
+      AsyncAction('AppStateBase._loadReminders', context: context);
 
   @override
-  Future<bool> _loadData() {
-    return _$_loadDataAsyncAction.run(() => super._loadData());
+  Future<bool> _loadReminders() {
+    return _$_loadRemindersAsyncAction.run(() => super._loadReminders());
   }
 
   late final _$_loginOrRegisterAsyncAction =
@@ -241,7 +225,6 @@ mixin _$AppState on AppStateBase, Store {
     return '''
 currentScreen: ${currentScreen},
 isLoading: ${isLoading},
-currentUser: ${currentUser},
 authError: ${authError},
 reminders: ${reminders},
 sortedReminders: ${sortedReminders}
