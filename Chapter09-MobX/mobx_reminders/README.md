@@ -62,7 +62,9 @@ TODO
 
 [04:31:32](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16292) some utils for testing
 
-[04:37:18](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16638) mock auth provider
+[04:37:18](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16638) Implementing MockAuthProvider
+
+[04:42:55](https://youtu.be/7Od55PBxYkI?list=PL6yRaaP0WPkUf-ff1OX99DVSL1cynLHxO&t=16975) Implementing MockRemindersProvider
 
 ## Setup Firebase
 
